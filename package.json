@@ -1,0 +1,31 @@
+{
+  "name": "landingpage-1124-nextjs15-ts-gsap",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.1",
+    "@types/gsap": "^1.20.2",
+    "eslint": "^9.14.0",
+    "eslint-config-next": "^15.0.3",
+    "gsap": "^3.12.5",
+    "locomotive-scroll": "5.0.0-beta.8",
+    "next": "^15.0.3",
+    "postcss": "^8.4.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.7"
+  }
+}
