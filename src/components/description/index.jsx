@@ -1,10 +1,13 @@
-// ScrambleTextAnimation.jsx
+'use client';
+
 import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
+import SlideUpWrapper from '../common/SlideUpWrapper';
 
 gsap.registerPlugin(ScrambleTextPlugin);
-const HeroSection = () => {
+
+const Description = () => {
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { duration: 2, ease: 'none' } });
 
@@ -50,7 +53,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="demo bg-gray-900 text-white p-10 h-[200px]">
+    <SlideUpWrapper className="demo bg-gray-900 text-white p-10 h-[200px]">
       <div id="textblock" className="text-2xl leading-8">
         <div id="scramble"></div>
         <span id="charsCustom" className="block mt-4">
@@ -64,7 +67,8 @@ const HeroSection = () => {
         <span id="charsLowercase" className="block mt-4"></span>
         <div id="newClass" className="mt-4"></div>
       </div>
-    </div>
+    </SlideUpWrapper>
   );
 };
-export default HeroSection;
+
+export default Description;
