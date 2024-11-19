@@ -1,11 +1,9 @@
-// src/components/Preloader/index.jsx
-
 'use client';
 
 import styles from './style.module.scss';
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { opacity, slideUp } from './anim';
+import { motion, Variants } from 'framer-motion';
+import { opacity, slideUp } from './animation';
 
 const words = [
   'Hello',
@@ -18,10 +16,15 @@ const words = [
   'Hallo',
 ];
 
-export default function Index() {
-  const [index, setIndex] = useState(0);
-  const [dimension, setDimension] = useState({ width: 0, height: 0 });
-  const [showContent, setShowContent] = useState(false);
+export default function Preloader() {
+  const [index, setIndex] = useState<number>(0);
+  const [dimension, setDimension] = useState<{ width: number; height: number }>(
+    {
+      width: 0,
+      height: 0,
+    }
+  );
+  const [showContent, setShowContent] = useState<boolean>(false);
 
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });
@@ -43,10 +46,16 @@ export default function Index() {
     return null; // Render nothing on the server
   }
 
-  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height}  L0 0`;
-  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`;
+  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
+    dimension.height
+  } Q${dimension.width / 2} ${dimension.height + 300} 0 ${
+    dimension.height
+  } L0 0`;
+  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
+    dimension.height
+  } Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`;
 
-  const curve = {
+  const curve: Variants = {
     initial: {
       d: initialPath,
       transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
@@ -61,6 +70,7 @@ export default function Index() {
     <motion.div
       variants={slideUp}
       initial="initial"
+      animate="enter"
       exit="exit"
       className={styles.introduction}
     >
@@ -70,11 +80,7 @@ export default function Index() {
           {words[index]}
         </motion.p>
         <svg>
-          <motion.path
-            variants={curve}
-            initial="initial"
-            exit="exit"
-          ></motion.path>
+          <motion.path variants={curve} initial="initial" exit="exit" />
         </svg>
       </>
     </motion.div>

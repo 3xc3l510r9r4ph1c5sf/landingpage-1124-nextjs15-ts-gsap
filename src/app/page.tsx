@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import { AnimatePresence } from 'framer-motion';
 
-import Preloader from '../components/preloader';
+import Preloader from '../components/preloader/index';
 import Description from '../components/description';
 // Import other components if needed
 

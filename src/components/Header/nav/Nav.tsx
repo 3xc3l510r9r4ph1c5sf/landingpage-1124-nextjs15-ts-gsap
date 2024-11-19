@@ -1,10 +1,8 @@
-// src/components/Header/nav/Nav.tsx
-
 import React, { useState } from 'react';
 import styles from './style.module.scss';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { menuSlide } from '../animation';
+import { menuSlide } from './animation'; // Adjusted import path
 import LinkComponent from './Link';
 import Curve from './Curve';
 import Footer from './Footer';

@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 import { motion } from 'framer-motion';
-import { slide, scale } from '../../animation';
+import { slide, scale } from '../animation'; // Adjusted import path
 
 interface LinkProps {
   data: {
@@ -12,7 +12,11 @@ interface LinkProps {
   setSelectedIndicator: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function LinkComponent({ data, isActive, setSelectedIndicator }: LinkProps) {
+export default function LinkComponent({
+  data,
+  isActive,
+  setSelectedIndicator,
+}: LinkProps) {
   const { title, href, index } = data;
 
   return (
@@ -21,7 +25,7 @@ export default function LinkComponent({ data, isActive, setSelectedIndicator }: 
       onMouseEnter={() => {
         setSelectedIndicator(href);
       }}
-      custom={index}
+      custom={index} // Pass custom prop
       variants={slide}
       initial="initial"
       animate="enter"
