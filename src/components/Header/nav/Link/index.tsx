@@ -1,9 +1,9 @@
 // src/components/Header/nav/Link/index.tsx
+'use client';
 
 import styles from './style.module.scss';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { motion, Variants } from 'framer-motion';
-import { slide, scale } from '../../animation';
 import React from 'react';
 
 // Define the shape of the data prop
@@ -27,25 +27,23 @@ const AnimatedLink: React.FC<LinkProps> = ({
 }) => {
   const { title, href, index } = data;
 
+  // Define animation variants if needed
+  const linkVariants: Variants = {
+    initial: { opacity: 0, x: -20 },
+    enter: { opacity: 1, x: 0, transition: { delay: index * 0.1 } },
+    exit: { opacity: 0, x: 20 },
+  };
+
   return (
-    <motion.div
-      className={styles.link}
-      onMouseEnter={() => setSelectedIndicator(href)}
-      custom={index}
-      variants={slide as Variants}
-      initial="initial"
-      animate="enter"
-      exit="exit"
-    >
-      <motion.div
-        variants={scale as Variants}
-        animate={isActive ? 'open' : 'closed'}
-        className={styles.indicator}
-      />
-      {/* Using Next.js Link component for client-side navigation */}
-      <Link href={href} passHref>
-        <a>{title}</a>
-      </Link>
+    <motion.div variants={linkVariants}>
+      <NextLink href={href} passHref legacyBehavior>
+        <a
+          className={`${styles.link} ${isActive ? styles.active : ''}`}
+          onClick={() => setSelectedIndicator(href)}
+        >
+          {title}
+        </a>
+      </NextLink>
     </motion.div>
   );
 };

@@ -1,5 +1,4 @@
 // src/components/Header/nav/Footer/index.tsx
-
 import styles from './style.module.scss';
 import React from 'react';
 
