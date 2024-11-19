@@ -27,7 +27,7 @@ const AnimatedLink: React.FC<LinkProps> = ({
 }) => {
   const { title, href, index } = data;
 
-  // Define animation variants if needed
+  // Define animation variants
   const linkVariants: Variants = {
     initial: { opacity: 0, x: -20 },
     enter: { opacity: 1, x: 0, transition: { delay: index * 0.1 } },
@@ -36,13 +36,12 @@ const AnimatedLink: React.FC<LinkProps> = ({
 
   return (
     <motion.div variants={linkVariants}>
-      <NextLink href={href} passHref legacyBehavior>
-        <a
-          className={`${styles.link} ${isActive ? styles.active : ''}`}
-          onClick={() => setSelectedIndicator(href)}
-        >
-          {title}
-        </a>
+      <NextLink
+        href={href}
+        className={`${styles.link} ${isActive ? styles.active : ''}`}
+        onClick={() => setSelectedIndicator(href)}
+      >
+        {title}
       </NextLink>
     </motion.div>
   );

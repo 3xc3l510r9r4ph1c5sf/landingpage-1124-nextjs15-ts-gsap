@@ -1,4 +1,4 @@
-// src/components/Header/nav/Index.tsx
+// src/components/Header/Index.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
