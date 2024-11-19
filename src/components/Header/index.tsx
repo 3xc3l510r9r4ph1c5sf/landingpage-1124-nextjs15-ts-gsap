@@ -1,85 +1,100 @@
-// src/components/Header/Index.tsx
+// src/components/Header/index.tsx
+
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './style.module.scss';
-import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { menuSlide } from './animation';
-import Link from './nav/Link';
-import dynamic from 'next/dynamic';
+import { AnimatePresence } from 'framer-motion';
+import Nav from './nav/Nav';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Rounded from '../common/RoundedButton';
+import Magnetic from '../common/Magnetic';
 
-// Dynamically import Curve and Footer to prevent potential SSR issues
-const Curve = dynamic(() => import('./nav/Curve'), { ssr: false });
-const Footer = dynamic(() => import('./nav/Footer'), { ssr: false });
-
-// Define the props interface
-interface IndexProps {
-  onNavClick: (value: boolean) => void;
-}
-
-// Define the nav items
-const navItems = [
-  {
-    title: 'Work',
-    href: '#work',
-  },
-  {
-    title: 'About',
-    href: '#about',
-  },
-  {
-    title: 'Contact',
-    href: '#contact-me',
-  },
-];
-
-// Apply the props type to the component
-const Index: React.FC<IndexProps> = ({ onNavClick }) => {
+export default function Header() {
+  const header = useRef<HTMLDivElement>(null);
+  const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
-  const [selectedIndicator, setSelectedIndicator] = useState<string | null>(
-    null
-  );
+  const button = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setSelectedIndicator(pathname);
+    if (isActive) setIsActive(false);
   }, [pathname]);
 
-  return (
-    <motion.div
-      variants={menuSlide}
-      initial="initial"
-      animate="enter"
-      exit="exit"
-      className={styles.menu}
-    >
-      <div className={styles.body}>
-        <div
-          onMouseLeave={() => {
-            setSelectedIndicator(pathname);
-          }}
-          onClick={() => {
-            onNavClick(false);
-          }}
-          className={styles.nav}
-        >
-          <div className={styles.header}>
-            <p>Navigation</p>
-          </div>
-          {navItems.map((data, index) => (
-            <Link
-              key={index}
-              data={{ ...data, index }}
-              isActive={selectedIndicator === data.href}
-              setSelectedIndicator={setSelectedIndicator}
-            />
-          ))}
-        </div>
-        <Footer />
-      </div>
-      <Curve />
-    </motion.div>
-  );
-};
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(button.current, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: 0,
+        end: window.innerHeight,
+        onLeave: () => {
+          gsap.to(button.current, {
+            scale: 1,
+            duration: 0.25,
+            ease: 'power1.out',
+          });
+        },
+        onEnterBack: () => {
+          setIsActive(false);
+          gsap.to(button.current, {
+            scale: 0,
+            duration: 0.25,
+            ease: 'power1.out',
+          });
+        },
+      },
+    });
+  }, []);
 
-export default Index;
+  const handleNavClick = (value: boolean) => {
+    setIsActive(value);
+  };
+
+  return (
+    <>
+      <div ref={header} className={styles.header}>
+        <div className={styles.logo}>{/* SVG Logo */}</div>
+        <div className={styles.nav}>
+          <Magnetic>
+            <div className={styles.el}>
+              <a href="#work">Work</a>
+              <div className={styles.indicator}></div>
+            </div>
+          </Magnetic>
+          <Magnetic>
+            <div className={styles.el}>
+              <a href="#about">About</a>
+              <div className={styles.indicator}></div>
+            </div>
+          </Magnetic>
+          <Magnetic>
+            <div className={styles.el}>
+              <a href="#contact-me">Contact</a>
+              <div className={styles.indicator}></div>
+            </div>
+          </Magnetic>
+        </div>
+        <div className={styles.marq}></div>
+      </div>
+      <div ref={button} className={styles.headerButtonContainer}>
+        <Rounded
+          onClick={() => {
+            setIsActive(!isActive);
+          }}
+          className={`${styles.button}`}
+        >
+          <div
+            className={`${styles.burger} ${
+              isActive ? styles.burgerActive : ''
+            }`}
+          ></div>
+        </Rounded>
+      </div>
+      <AnimatePresence mode="wait">
+        {isActive && <Nav onNavClick={handleNavClick} />}
+      </AnimatePresence>
+    </>
+  );
+}

@@ -1,45 +1,27 @@
-// src/components/Header/nav/Footer/index.tsx
+//src/components/Header/nav/Footer/index.jsx
+
 import styles from './style.module.scss';
-import React from 'react';
 
-// Define the structure for footer links
-interface FooterLink {
-  href: string;
-  label: string;
-}
-
-// Define the footer links data
-const footerLinks: FooterLink[] = [
-  {
-    href: 'https://app.lamento.in',
-    label: 'Blog',
-  },
-  {
-    href: 'https://www.instagram.com/akilesh_io',
-    label: 'Instagram',
-  },
-  {
-    href: 'https://dribbble.com/Akilesh_io',
-    label: 'Dribble',
-  },
-];
-
-const Footer: React.FC = () => {
+export default function Footer() {
   return (
     <div className={styles.footer}>
-      {footerLinks.map((link) => (
-        <a
-          key={link.href}
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.footerLink}
-        >
-          {link.label}
-        </a>
-      ))}
+      <a href="https://app.lamento.in" target="_blank" rel="noreferrer">
+        Blog
+      </a>
+      <a
+        href="https://www.instagram.com/akilesh_io"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Instagram
+      </a>
+      <a
+        href="https://dribbble.com/Akilesh_io"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Dribble
+      </a>
     </div>
   );
-};
-
-export default Footer;
+}

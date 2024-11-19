@@ -1,21 +1,24 @@
-//src/components/Header/nav/index.tsx
+// src/components/Header/nav/Nav.tsx
 
 import React, { useState } from 'react';
 import styles from './style.module.scss';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { menuSlide } from '../animation';
-import Link from './Link';
+import LinkComponent from './Link';
 import Curve from './Curve';
 import Footer from './Footer';
 
-// Define the props interface
-interface IndexProps {
+interface NavProps {
   onNavClick: (value: boolean) => void;
 }
 
-// Define the nav items
-const navItems = [
+interface NavItem {
+  title: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
   {
     title: 'Work',
     href: '#work',
@@ -30,8 +33,7 @@ const navItems = [
   },
 ];
 
-// Apply the props type to the component
-const Index: React.FC<IndexProps> = ({ onNavClick }) => {
+export default function Nav({ onNavClick }: NavProps) {
   const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
 
@@ -57,7 +59,7 @@ const Index: React.FC<IndexProps> = ({ onNavClick }) => {
             <p>Navigation</p>
           </div>
           {navItems.map((data, index) => (
-            <Link
+            <LinkComponent
               key={index}
               data={{ ...data, index }}
               isActive={selectedIndicator === data.href}
@@ -70,6 +72,4 @@ const Index: React.FC<IndexProps> = ({ onNavClick }) => {
       <Curve />
     </motion.div>
   );
-};
-
-export default Index;
+}

@@ -1,4 +1,4 @@
-//src/app/layout.tsx
+// src/app/layout.tsx
 
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body

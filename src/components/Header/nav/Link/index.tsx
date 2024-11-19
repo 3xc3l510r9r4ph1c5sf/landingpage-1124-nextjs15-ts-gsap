@@ -1,50 +1,38 @@
-// src/components/Header/nav/Link/index.tsx
-'use client';
-
 import styles from './style.module.scss';
-import NextLink from 'next/link';
-import { motion, Variants } from 'framer-motion';
-import React from 'react';
+import { motion } from 'framer-motion';
+import { slide, scale } from '../../animation';
 
-// Define the shape of the data prop
-interface LinkData {
-  title: string;
-  href: string;
-  index: number;
-}
-
-// Define the props for the component
 interface LinkProps {
-  data: LinkData;
+  data: {
+    title: string;
+    href: string;
+    index: number;
+  };
   isActive: boolean;
-  setSelectedIndicator: (href: string) => void;
+  setSelectedIndicator: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const AnimatedLink: React.FC<LinkProps> = ({
-  data,
-  isActive,
-  setSelectedIndicator,
-}) => {
+export default function LinkComponent({ data, isActive, setSelectedIndicator }: LinkProps) {
   const { title, href, index } = data;
 
-  // Define animation variants
-  const linkVariants: Variants = {
-    initial: { opacity: 0, x: -20 },
-    enter: { opacity: 1, x: 0, transition: { delay: index * 0.1 } },
-    exit: { opacity: 0, x: 20 },
-  };
-
   return (
-    <motion.div variants={linkVariants}>
-      <NextLink
-        href={href}
-        className={`${styles.link} ${isActive ? styles.active : ''}`}
-        onClick={() => setSelectedIndicator(href)}
-      >
-        {title}
-      </NextLink>
+    <motion.div
+      className={styles.link}
+      onMouseEnter={() => {
+        setSelectedIndicator(href);
+      }}
+      custom={index}
+      variants={slide}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+    >
+      <motion.div
+        variants={scale}
+        animate={isActive ? 'open' : 'closed'}
+        className={styles.indicator}
+      ></motion.div>
+      <a href={href}>{title}</a>
     </motion.div>
   );
-};
-
-export default AnimatedLink;
+}
