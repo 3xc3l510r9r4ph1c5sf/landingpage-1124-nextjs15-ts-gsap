@@ -6,9 +6,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import { AnimatePresence } from 'framer-motion';
 
-import Preloader from '../components/preloader/index';
+import Preloader from '../components/preloader';
 import Description from '../components/description';
-// Import other components if needed
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -17,22 +16,19 @@ const Home: React.FC = () => {
     // Simulate a loading delay (e.g., fetching data)
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
-      // Optionally, you can perform additional actions here
-    }, 3000); // 2-second delay
+    }, 3000); // Adjust the delay as needed
 
-    // Cleanup the timeout if the component unmounts before the timeout completes
     return () => clearTimeout(loadingTimeout);
   }, []);
 
   return (
     <main className={styles.main}>
-      <AnimatePresence mode="wait">
-        {isLoading && <Preloader />}
+      <AnimatePresence mode="wait" initial={false}>
+        {isLoading && <Preloader key="preloader" />}
       </AnimatePresence>
       {!isLoading && (
         <>
-          {/* Uncomment and include other components as needed */}
-          {/* <Landing /> */}
+          {/* Include other components as needed */}
           <Description />
         </>
       )}

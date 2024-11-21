@@ -1,3 +1,5 @@
+//src/components/description/index.jsx
+
 'use client';
 
 import React, { useEffect } from 'react';
@@ -14,16 +16,16 @@ const Description = () => {
     tl.to('#scramble', {
       duration: 3,
       scrambleText: {
-        text: 'ScrambleText allows you to animate the scrambling of text.',
+        text: 'Animate the scrambling of text.',
         chars: 'lowerCase',
         revealDelay: 0.5,
         tweenLength: false,
       },
     })
       .to('#charsCustom', {
-        duration: 4,
+        duration: 2,
         scrambleText: {
-          text: "Specify a set of characters to scramble like 'XO'",
+          text: "Specify a set'XO'",
           chars: 'XO',
           revealDelay: 1,
           tweenLength: false,
@@ -53,7 +55,7 @@ const Description = () => {
   }, []);
 
   return (
-    <SlideUpWrapper className="demo bg-gray-900 text-white p-10 h-[200px]">
+    <SlideUpWrapper className="demo bg-gray-900 text-white p-10 h-[800px]">
       <div id="textblock" className="text-2xl leading-8">
         <div id="scramble"></div>
         <span id="charsCustom" className="block mt-4">

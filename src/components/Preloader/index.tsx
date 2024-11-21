@@ -1,61 +1,73 @@
 'use client';
 
-import styles from './style.module.scss';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, Variants } from 'framer-motion';
-import { opacity, slideUp } from './animation';
+import gsap from 'gsap';
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
+import styles from './style.module.scss';
 
-const words = [
-  'Hello',
-  'Bonjour',
-  'Ciao',
-  'Olà',
-  'やあ',
-  'Hallå',
-  'Guten tag',
-  'Hallo',
-];
+gsap.registerPlugin(ScrambleTextPlugin);
 
-export default function Preloader() {
-  const [index, setIndex] = useState<number>(0);
-  const [dimension, setDimension] = useState<{ width: number; height: number }>(
-    {
-      width: 0,
-      height: 0,
-    }
-  );
+interface Dimension {
+  width: number;
+  height: number;
+}
+
+const Preloader: React.FC = () => {
+  const [dimension, setDimension] = useState<Dimension>({
+    width: 0,
+    height: 0,
+  });
   const [showContent, setShowContent] = useState<boolean>(false);
 
+  const opacityVariants: Variants = {
+    initial: { opacity: 0 },
+    enter: { opacity: 0.85, transition: { duration: 5, delay: 0.9 } },
+  };
+
+  const slideUpVariants: Variants = {
+    initial: { y: 0 },
+    exit: {
+      y: '-100vh',
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
+    },
+  };
+
   useEffect(() => {
-    setDimension({ width: window.innerWidth, height: window.innerHeight });
+    const updateDimensions = () => {
+      setDimension({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    updateDimensions();
     setShowContent(true);
+
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
   useEffect(() => {
-    if (index === words.length - 1) return;
-    const timer = setTimeout(
-      () => {
-        setIndex(index + 1);
+    const tl = gsap.timeline({ defaults: { duration: 2, ease: 'none' } });
+
+    tl.to('#scrambleText', {
+      duration: 2,
+      scrambleText: {
+        text: 'Animate the scrambling of text.',
+        chars: 'lowerCase',
+        speed: 0.3,
+        revealDelay: 0.8,
+        tweenLength: false,
       },
-      index === 0 ? 1000 : 150
-    );
-    return () => clearTimeout(timer);
-  }, [index]);
+    });
+  }, [showContent]);
 
   if (!showContent) {
-    return null; // Render nothing on the server
+    return null;
   }
 
-  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
-    dimension.height
-  } Q${dimension.width / 2} ${dimension.height + 300} 0 ${
-    dimension.height
-  } L0 0`;
-  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
-    dimension.height
-  } Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`;
+  const initialPath: string = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height} L0 0`;
+  const targetPath: string = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`;
 
-  const curve: Variants = {
+  const curveVariants: Variants = {
     initial: {
       d: initialPath,
       transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
@@ -68,21 +80,59 @@ export default function Preloader() {
 
   return (
     <motion.div
-      variants={slideUp}
+      variants={slideUpVariants}
       initial="initial"
-      animate="enter"
       exit="exit"
       className={styles.introduction}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+        zIndex: 9999,
+        display: 'flex',
+        justifyContent: 'flex-start', // Align to the right
+        alignItems: 'center',
+        backgroundColor: '#141516',
+        paddingRight: '20px', // Add padding to the right
+      }}
+      onAnimationComplete={(definition) => {
+        if (definition === 'exit') {
+          console.log('Exit animation completed');
+        }
+      }}
+      layout
     >
-      <>
-        <motion.p variants={opacity} initial="initial" animate="enter">
-          <span></span>
-          {words[index]}
-        </motion.p>
-        <svg>
-          <motion.path variants={curve} initial="initial" exit="exit" />
-        </svg>
-      </>
+      <motion.p
+        variants={opacityVariants}
+        initial="initial"
+        animate="enter"
+        className={styles.preloaderText}
+        style={{ position: 'relative', zIndex: 1 }}
+      >
+        <span id="scrambleText" className={styles.scrambleText}>
+          xxx33
+        </span>
+      </motion.p>
+      <svg
+        width={dimension.width}
+        height={dimension.height}
+        style={{ position: 'absolute', top: 0, left: 0 }}
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <motion.path
+          variants={curveVariants}
+          initial="initial"
+          animate="initial"
+          exit="exit"
+          fill="currentColor"
+        />
+      </svg>
     </motion.div>
   );
-}
+};
+
+export default Preloader;
