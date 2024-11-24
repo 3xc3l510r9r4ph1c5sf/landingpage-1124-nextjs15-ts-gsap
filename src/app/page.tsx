@@ -28,7 +28,6 @@ const Home: React.FC = () => {
       </AnimatePresence>
       {!isLoading && (
         <>
-          {/* Include other components as needed */}
           <Description />
         </>
       )}
