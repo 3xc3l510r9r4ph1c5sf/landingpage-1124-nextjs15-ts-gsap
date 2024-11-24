@@ -1,4 +1,4 @@
-import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
+//import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 
 gsap.registerPlugin(ScrambleTextPlugin);
 useEffect(() => {
