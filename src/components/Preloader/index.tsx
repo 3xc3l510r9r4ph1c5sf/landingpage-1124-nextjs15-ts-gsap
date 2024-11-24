@@ -6,8 +6,6 @@ import gsap from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import styles from './style.module.scss';
 
-gsap.registerPlugin(ScrambleTextPlugin);
-
 interface Dimension {
   width: number;
   height: number;
