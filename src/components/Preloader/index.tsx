@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, Variants } from 'framer-motion';
 import gsap from 'gsap';
-import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
+
 import styles from './style.module.scss';
 
 interface Dimension {
@@ -42,25 +42,6 @@ const Preloader: React.FC = () => {
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
-
-  useEffect(() => {
-    const tl = gsap.timeline({ defaults: { duration: 2, ease: 'none' } });
-
-    tl.to('#scrambleText', {
-      duration: 2,
-      scrambleText: {
-        text: 'Animate the scrambling of text.',
-        chars: 'lowerCase',
-        speed: 0.3,
-        revealDelay: 0.8,
-        tweenLength: false,
-      },
-    });
-  }, [showContent]);
-
-  if (!showContent) {
-    return null;
-  }
 
   const initialPath: string = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height} L0 0`;
   const targetPath: string = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`;
