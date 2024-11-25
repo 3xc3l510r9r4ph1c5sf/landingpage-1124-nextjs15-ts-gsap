@@ -1,10 +1,9 @@
-// app/page.tsx
-
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import styles from './page.module.scss';
-import { AnimatePresence } from 'framer-motion';
+import { motion } from 'motion/react';
+import { AnimatePresence } from 'motion/react';
 
 import Preloader from '../components/preloader';
 import Description from '../components/description';
@@ -13,18 +12,20 @@ const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // Simulate a loading delay (e.g., fetching data)
-    const loadingTimeout = setTimeout(() => {
+    // Simulate loading process
+    const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Adjust the delay as needed
+      window.scrollTo(0, 0);
+    }, 2000);
 
-    return () => clearTimeout(loadingTimeout);
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <main className={styles.main}>
-      <AnimatePresence mode="wait" initial={false}>
-        {isLoading && <Preloader key="preloader" />}
+      <AnimatePresence mode="wait">
+        {isLoading && <Preloader />}
       </AnimatePresence>
       {!isLoading && (
         <>
