@@ -1,12 +1,12 @@
+// src/app/page.tsx
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import styles from './page.module.scss';
-import { motion } from 'motion/react';
-import { AnimatePresence } from 'motion/react';
-
-import Preloader from '../components/preloader';
-import Description from '../components/description';
+import { AnimatePresence } from 'motion/react'; // Ensure consistent import
+import Preloader from '../components/preloader'; // Corrected import path and casing
+import Description from '../components/Description'; // Adjusted import path if necessary
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
     const timer = setTimeout(() => {
       setIsLoading(false);
       window.scrollTo(0, 0);
-    }, 2000);
+    }, 2050); // Adjusted duration to match word iterations
 
     // Cleanup the timer on component unmount
     return () => clearTimeout(timer);
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
   return (
     <main className={styles.main}>
       <AnimatePresence mode="wait">
-        {isLoading && <Preloader />}
+        {isLoading && <Preloader key="preloader" />}
       </AnimatePresence>
       {!isLoading && (
         <>

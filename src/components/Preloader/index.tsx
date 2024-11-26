@@ -1,115 +1,77 @@
+// src/components/Preloader/index.tsx
+
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
-import { motion, Variants } from 'framer-motion';
-import gsap from 'gsap';
-
+import React, { useEffect, useState } from 'react';
+import { motion } from 'motion/react'; // Ensure consistent import
 import styles from './style.module.scss';
 
-interface Dimension {
-  width: number;
-  height: number;
-}
+// Animation configurations
+const opacity = {
+  initial: {
+    opacity: 0,
+  },
+  enter: {
+    opacity: 0.75,
+    transition: { duration: 1, delay: 0.2 },
+  },
+};
+
+const slideUp = {
+  initial: {
+    top: 0,
+  },
+  enter: {
+    top: 0,
+  },
+  exit: {
+    top: '-100vh',
+    transition: {
+      duration: 0.8,
+      ease: [0.76, 0, 0.24, 1],
+      delay: 0.2,
+    },
+  },
+};
+
+// List of words to display
+const words: string[] = [
+  'Hello',
+  'Bonjour',
+  'Ciao',
+  'Olà',
+  'やあ',
+  'Hallå',
+  'Guten tag',
+  'Hallo',
+];
 
 const Preloader: React.FC = () => {
-  const [dimension, setDimension] = useState<Dimension>({
-    width: 0,
-    height: 0,
-  });
-  const [showContent, setShowContent] = useState<boolean>(false);
-
-  const opacityVariants: Variants = {
-    initial: { opacity: 0 },
-    enter: { opacity: 0.85, transition: { duration: 5, delay: 0.9 } },
-  };
-
-  const slideUpVariants: Variants = {
-    initial: { y: 0 },
-    exit: {
-      y: '-100vh',
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
-    },
-  };
+  const [index, setIndex] = useState<number>(0);
 
   useEffect(() => {
-    const updateDimensions = () => {
-      setDimension({ width: window.innerWidth, height: window.innerHeight });
-    };
-
-    updateDimensions();
-    setShowContent(true);
-
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
-  }, []);
-
-  const initialPath: string = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height} L0 0`;
-  const targetPath: string = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`;
-
-  const curveVariants: Variants = {
-    initial: {
-      d: initialPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
-    },
-    exit: {
-      d: targetPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
-    },
-  };
+    if (index === words.length - 1) return;
+    const timeout = setTimeout(
+      () => {
+        setIndex(index + 1);
+      },
+      index === 0 ? 1000 : 150
+    );
+    return () => clearTimeout(timeout);
+  }, [index]);
 
   return (
     <motion.div
-      variants={slideUpVariants}
+      variants={slideUp}
       initial="initial"
+      animate="enter"
       exit="exit"
       className={styles.introduction}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        overflow: 'hidden',
-        zIndex: 9999,
-        display: 'flex',
-        justifyContent: 'flex-start', // Align to the right
-        alignItems: 'center',
-        backgroundColor: '#141516',
-        paddingRight: '20px', // Add padding to the right
-      }}
-      onAnimationComplete={(definition) => {
-        if (definition === 'exit') {
-          console.log('Exit animation completed');
-        }
-      }}
-      layout
     >
-      <motion.p
-        variants={opacityVariants}
-        initial="initial"
-        animate="enter"
-        className={styles.preloaderText}
-        style={{ position: 'relative', zIndex: 1 }}
-      >
-        <span id="scrambleText" className={styles.scrambleText}>
-          xxx33
-        </span>
+      <motion.p variants={opacity} initial="initial" animate="enter">
+        <span></span>
+        {words[index]}
       </motion.p>
-      <svg
-        width={dimension.width}
-        height={dimension.height}
-        style={{ position: 'absolute', top: 0, left: 0 }}
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <motion.path
-          variants={curveVariants}
-          initial="initial"
-          animate="initial"
-          exit="exit"
-          fill="currentColor"
-        />
-      </svg>
     </motion.div>
   );
 };
