@@ -3,8 +3,9 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'motion/react'; // Ensure consistent import
 import styles from './style.module.scss';
+
+import { motion } from 'motion/react'; // Ensure consistent import
 import gsap from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'; // Adjust the path as necessary
 import SlideUp from '../SlideUp'; // Import the SlideUp component

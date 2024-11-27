@@ -17,9 +17,9 @@ const slideUpVariants = {
     top: 0,
   },
   exit: {
-    top: '-100vh',
+    top: '+80vh',
     transition: {
-      duration: 3.8,
+      duration: 1.2,
       ease: [0.76, 0, 0.24, 1],
       delay: 0.2,
     },
