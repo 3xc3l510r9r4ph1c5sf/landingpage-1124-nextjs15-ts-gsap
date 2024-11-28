@@ -7,6 +7,7 @@ import styles from './page.module.scss';
 import { AnimatePresence } from 'motion/react'; // Ensure consistent import
 import Preloader from '../components/preloader'; // Corrected import path and casing
 import Description from '../components/Description'; // Adjusted import path if necessary
+import Hero from '@/components/Hero/Hero';
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -29,6 +30,7 @@ const Home: React.FC = () => {
       </AnimatePresence>
       {!isLoading && (
         <>
+          <Hero />
           <Description />
         </>
       )}
