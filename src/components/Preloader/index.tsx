@@ -10,19 +10,11 @@ import gsap from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'; // Adjust the path as necessary
 import SlideUp from '../SlideUp'; // Import the SlideUp component
 
+// Import the animation variants
+import { imageAnimation } from '../motion'; // Adjust the path accordingly
+
 // Register the ScrambleTextPlugin
 gsap.registerPlugin(ScrambleTextPlugin);
-
-// Animation configurations
-const opacity = {
-  initial: {
-    opacity: 0,
-  },
-  enter: {
-    opacity: 0.75,
-    transition: { duration: 2, delay: 0.2 },
-  },
-};
 
 const Preloader: React.FC = () => {
   const scrambleRef = useRef<HTMLSpanElement>(null);
@@ -54,7 +46,13 @@ const Preloader: React.FC = () => {
 
   return (
     <SlideUp className={styles.introduction}>
-      <motion.p variants={opacity} initial="initial" animate="enter">
+      <motion.p
+        variants={imageAnimation}
+        initial="initial"
+        whileInView="enter"
+        viewport={{ once: true }}
+        className="xm:hidden sm:hidden"
+      >
         <span ref={scrambleRef}></span>
       </motion.p>
     </SlideUp>
