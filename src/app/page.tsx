@@ -4,10 +4,11 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './page.module.scss';
-import { AnimatePresence } from 'motion/react'; // Ensure consistent import
-import Preloader from '../components/preloader'; // Corrected import path and casing
-import Description from '../components/Description'; // Adjusted import path if necessary
+import { AnimatePresence } from 'framer-motion'; // Correct import path
+import Preloader from '../components/preloader'; // Ensure correct path and casing
+import Description from '../components/description'; // Ensure correct path
 import Hero from '@/components/Hero/Hero';
+import ParallaxContainer from '@/components/ParallaxContainer/ParallaxContainer'; // New component
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -29,10 +30,10 @@ const Home: React.FC = () => {
         {isLoading && <Preloader key="preloader" />}
       </AnimatePresence>
       {!isLoading && (
-        <>
+        <ParallaxContainer>
           <Hero />
           <Description />
-        </>
+        </ParallaxContainer>
       )}
     </main>
   );

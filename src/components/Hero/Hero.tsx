@@ -1,15 +1,21 @@
-// container/home-page/Hero.tsx
+// src/components/Hero/Hero.tsx
 
 'use client';
+
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import ochiside from '../../../public/ochi-side.jpg';
 import styles from './Hero.module.scss';
 
-export default function Hero() {
+const Hero: React.FC = () => {
   return (
-    <section className={styles.heroSection} data-scroll data-scroll-speed="-.3">
+    <section
+      className={styles.heroSection}
+      data-scroll
+      data-scroll-speed="-0.3"
+    >
       <div className={styles.heroContainer}>
         <div />
         <div className={styles.heroContent}>
@@ -32,7 +38,7 @@ export default function Hero() {
                       width={120}
                       height={50}
                       src={ochiside}
-                      alt="img"
+                      alt="Ochi Side Image"
                       className={styles.ochisideImage}
                     />
                   </motion.span>
@@ -41,7 +47,6 @@ export default function Hero() {
                 presentation
               </h1>
             </div>
-            {/* Removed the awwwards Image component as per previous conditions */}
           </div>
           <div className={styles.heroBottom}>
             <div className={styles.bottomContent}>
@@ -52,7 +57,6 @@ export default function Hero() {
                 <div>
                   <p className="paragraph">From the first pitch to IPO</p>
                 </div>
-                {/* Removed the "start the project" link and ArrowUpRight icon as per previous conditions */}
               </div>
             </div>
             <div className={styles.scrollDown}>
@@ -74,4 +78,6 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

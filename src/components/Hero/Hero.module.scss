@@ -1,16 +1,15 @@
-//src/components/Hero/Hero.module.scss
+/* src/components/Hero/Hero.module.scss */
 
 .heroSection {
   width: 100%;
   height: 100vh;
+  position: relative; /* Ensure relative positioning for absolute children */
   margin-bottom: -10px;
 
   /* Responsive margin adjustments */
   @media (max-width: 640px) {
     margin-bottom: -10px;
   }
-
-  /* Scroll attributes can be handled via JavaScript or additional libraries if needed */
 }
 
 .heroContainer {
@@ -50,14 +49,12 @@
 }
 
 .heading {
-  font-size: 2.5rem; /* Adjust as needed */
+  font-size: 2.5rem;
   letter-spacing: -1.3px;
   color: #212121;
   font-weight: 600;
   text-transform: uppercase;
   font-family: 'FoundersGrotesk', sans-serif;
-
-  /* Additional styling as per your design */
 }
 
 .headingInner {
@@ -66,12 +63,15 @@
   gap: 5px;
 }
 
-.presentationText {
-  /* Styles for the presentation text */
+.motionSpan {
+  display: inline-block;
+}
+
+.ochisideImage {
+  /* Additional styling if needed */
 }
 
 .heroBottom {
-  // background-color: #212121;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -99,21 +99,20 @@
   }
 }
 
-.bottomLeft {
+.bottomLeft,
+.bottomRight {
   width: 50%;
+}
 
-  @media (max-width: 640px) {
-    width: 100%;
-  }
-
-  .paragraph {
-    font-family: 'NeueMontreal', sans-serif;
-    color: var(--secondary-color); /* Define this in your global styles */
-  }
+.bottomLeft .paragraph,
+.bottomRight .paragraph {
+  font-family: 'NeueMontreal', sans-serif;
+  color: var(
+    --secondary-color
+  ); /* Ensure this variable is defined in globals.scss */
 }
 
 .bottomRight {
-  width: 50%;
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -122,11 +121,6 @@
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .paragraph {
-    font-family: 'NeueMontreal', sans-serif;
-    color: var(--secondary-color);
   }
 }
 
@@ -138,13 +132,13 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+  }
 
-    .scrollText {
-      font-family: 'NeueMontreal', sans-serif;
-      color: var(--secondary-color);
-      opacity: 0.5;
-      animation: scrollDown 1.8s infinite ease-in-out;
-    }
+  .scrollText {
+    font-family: 'NeueMontreal', sans-serif;
+    color: var(--secondary-color);
+    opacity: 0.5;
+    animation: scrollDown 1.8s infinite ease-in-out;
   }
 }
 
