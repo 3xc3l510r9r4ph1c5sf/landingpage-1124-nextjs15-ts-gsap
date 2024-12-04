@@ -5,10 +5,10 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './style.module.scss';
 
-import { motion } from 'motion/react'; // Ensure consistent import
+import { motion } from 'motion/react';
 import gsap from 'gsap';
-import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'; // Adjust the path as necessary
-import SlideUp from '../SlideUp'; // Import the SlideUp component
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
+import SlideUp from '../SlideUp';
 
 // Import the animation variants
 import { imageAnimation } from '../motion'; // Adjust the path accordingly
