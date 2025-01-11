@@ -1,41 +1,32 @@
-// src/app/page.tsx
+import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/about";
+import Footer from "@/components/footer";
+import HorizentalSection from "@/components/sections/horizentalScroll";
+import Specialization from "@/components/sections/specialization";
+import Process from "@/components/sections/process";
+import Purpose from "@/components/sections/purpose";
+import { Metadata } from "next";
+import Works from "@/components/sections/works";
 
-'use client';
-
-import React, { useEffect, useState } from 'react';
-import styles from './page.module.scss';
-import { AnimatePresence } from 'framer-motion'; // Correct import path
-import Preloader from '../components/preloader'; // Ensure correct path and casing
-import Description from '../components/description'; // Ensure correct path
-import Hero from '@/components/Hero/Hero';
-import ParallaxContainer from '@/components/ParallaxContainer/ParallaxContainer'; // New component
+export const metadata: Metadata = {
+  title: "Harold - Porfolio",
+  description: "...",
+};
 
 const Home: React.FC = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    // Simulate loading process
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      window.scrollTo(0, 0);
-    }, 2050); // Adjusted duration to match word iterations
-
-    // Cleanup the timer on component unmount
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <main className={styles.main}>
-      <AnimatePresence mode="wait">
-        {isLoading && <Preloader key="preloader" />}
-      </AnimatePresence>
-      {!isLoading && (
-        <ParallaxContainer>
-          <Hero />
-          <Description />
-        </ParallaxContainer>
-      )}
-    </main>
+    <>
+      <Hero />
+      <main className="bg-mainbody-weg relative z-20">
+        <About />
+        <HorizentalSection />
+        <Specialization />
+        <Works />
+        <Process />
+        <Purpose />
+      </main>
+      <Footer />
+    </>
   );
 };
 
