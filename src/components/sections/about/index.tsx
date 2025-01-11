@@ -1,7 +1,7 @@
-"use client";
-import { useAppContext } from "@/components/context/AppContext";
-import { useEffect, useState } from "react";
-import { useScramble } from "use-scramble";
+'use client';
+import { useAppContext } from '@/components/context/AppContext';
+import { useEffect, useState } from 'react';
+import { useScramble } from 'use-scramble';
 
 const About = () => {
   const { label, scrollButton } = useAppContext();
@@ -36,7 +36,7 @@ export default About;
 
 const Heading = () => {
   const { startSecondaryHeadingScramble } = useAppContext();
-  const [displayText, setDisplayText] = useState("Harold Cano");
+  const [displayText, setDisplayText] = useState('Harold Cano');
   const { ref } = useScramble({
     text: displayText,
   });
@@ -45,18 +45,18 @@ const Heading = () => {
     if (startSecondaryHeadingScramble) {
       // Remove invisible class to show the heading when scrambling starts
       if (ref.current) {
-        ref.current.classList.remove("invisible");
+        ref.current.classList.remove('invisible');
       }
 
       // Array of sentences to cycle through
-      const texts = ["Harold Cano", "UI/UX Designer", "Web Development"];
+      const texts = ['Harold Cano', 'UI/UX Design', 'Web Development'];
       let currentIndex = 0; // Start from the first sentence
 
       const interval = setInterval(() => {
         // Move to the next sentence in the array
         currentIndex = (currentIndex + 1) % texts.length;
         setDisplayText(texts[currentIndex]);
-      }, 4000); // Change sentence every 6000ms (6 seconds)
+      }, 2000); // Change sentence every 6000ms (6 seconds)
 
       // Cleanup interval on component unmount or when dependency changes
       return () => clearInterval(interval);
