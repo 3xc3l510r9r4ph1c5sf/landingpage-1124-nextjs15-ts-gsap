@@ -1,62 +1,57 @@
-"use client";
+'use client';
 
-import {
-  animate,
-  AnimationControls,
-  delay,
-  useAnimationControls,
-} from "motion/react";
+import { animate, delay, useAnimationControls } from 'motion/react';
 import React, {
   createContext,
   useContext,
   ReactNode,
   useEffect,
   useState,
-} from "react";
-import { useScramble } from "use-scramble";
-import useMedia from "../hooks/useMedia";
+} from 'react';
+import { useScramble } from 'use-scramble';
+import useMedia from '../hooks/useMedia';
 
 // Define the context type
 interface AppContextType {
   scrambleRef: React.RefObject<HTMLParagraphElement>;
   label: React.RefObject<HTMLParagraphElement>;
   scrollButton: React.RefObject<HTMLButtonElement>;
-  heroIconControl: AnimationControls;
   startSecondaryHeadingScramble: boolean;
+  heroIconControl: ReturnType<typeof useAnimationControls>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const isWide = useMedia("(min-width: 390px)");
+  const isWide = useMedia('(min-width: 390px)');
 
   const heroIconControl = useAnimationControls();
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.body.classList.add("lock-scroll");
+    document.body.classList.add('lock-scroll');
   }, []);
   const [startSecondaryHeadingScramble, setStartSecondaryHeadingScramble] =
     useState<boolean>(false);
 
   const { ref: label, replay: replayLabel } = useScramble({
-    text: "DE | EN | ES | CAT | JS",
+    text: 'DE | EN | ES | CAT | JS',
     playOnMount: false,
   });
   const { ref: scrollButton, replay: replayScrollButton } = useScramble({
-    text: "(This Way ↓)",
+    text: '(This Way ↓)',
     playOnMount: false,
   });
 
   const { ref: scrambleRef } = useScramble({
     text: !isWide
-      ? "The way you say it,<br/> is everything"
-      : "The way you say it, is everything",
+      ? 'The way you say it,<br/> is everything'
+      : 'The way you say it, is everything',
     onAnimationEnd() {
       const handlePageLoad = () => {
         animate(
-          "#preloader",
+          '#preloader',
           {
-            clipPath: "inset(100% 0 0 0)",
+            clipPath: 'inset(100% 0 0 0)',
           },
           {
             delay: 2,
@@ -64,26 +59,26 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
             ease: [0.76, 0, 0.24, 1],
 
             async onComplete() {
-              document.getElementById("preloader")!.style.display = "none";
-              await heroIconControl.start("visible");
+              document.getElementById('preloader')!.style.display = 'none';
+              await heroIconControl.start('visible');
               setStartSecondaryHeadingScramble(true);
-              label.current.classList.remove("invisible");
+              label.current.classList.remove('invisible');
               replayLabel();
-              scrollButton.current.classList.remove("invisible");
+              scrollButton.current.classList.remove('invisible');
               replayScrollButton();
-              document.body.classList.remove("lock-scroll");
-              document.body.classList.remove("overflow-y-clip");
+              document.body.classList.remove('lock-scroll');
+              document.body.classList.remove('overflow-y-clip');
             },
-          },
+          }
         );
       };
-      if (document.readyState === "complete") {
+      if (document.readyState === 'complete') {
         handlePageLoad();
       } else {
-        window.addEventListener("load", handlePageLoad);
+        window.addEventListener('load', handlePageLoad);
       }
       return () => {
-        window.removeEventListener("load", handlePageLoad);
+        window.removeEventListener('load', handlePageLoad);
       };
     },
   });
@@ -107,7 +102,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 export const useAppContext = (): AppContextType => {
   const context = useContext(AppContext);
   if (!context) {
-    throw new Error("useAppContext must be used within an AppProvider");
+    throw new Error('useAppContext must be used within an AppProvider');
   }
   return context;
 };

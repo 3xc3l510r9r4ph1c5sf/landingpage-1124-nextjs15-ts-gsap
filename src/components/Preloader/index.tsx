@@ -1,5 +1,5 @@
-"use client";
-import PreLoaderText from "./PreLoaderText";
+'use client';
+import PreLoaderText from './PreLoaderText';
 
 const PreLoader = () => {
   return (
