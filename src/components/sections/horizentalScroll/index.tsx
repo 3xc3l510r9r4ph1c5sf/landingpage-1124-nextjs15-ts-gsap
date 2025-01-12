@@ -1,8 +1,8 @@
-"use client";
-import { useScroll, useSpring, useTransform } from "motion/react";
-import Heading from "../../common/heading/index";
-import { useLayoutEffect, useRef, useState } from "react";
-import Stacks from "./stacks";
+'use client';
+import { useScroll, useSpring, useTransform } from 'motion/react';
+import Heading from '../../common/heading/index';
+import { useLayoutEffect, useRef, useState } from 'react';
+import Stacks from './stacks';
 
 const HorizentalSection = () => {
   const container = useRef<null>(null);
@@ -16,16 +16,16 @@ const HorizentalSection = () => {
   });
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start", "end"],
+    offset: ['start', 'end'],
   });
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    [0, width.windowWidth - width.width - 40],
+    [0, width.windowWidth - width.width - 40]
   );
   const xSpring = useSpring(x, { duration: 1.2, bounce: 0.03 });
   useLayoutEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       setWidth({
         width: stackRef.current?.getBoundingClientRect().width || 0,
         windowWidth: window.innerWidth,
@@ -41,8 +41,9 @@ const HorizentalSection = () => {
       >
         <div className="sticky top-0 h-svh pb-[1.88rem]">
           <Heading className="pt-4">
-            Enjoy user- <br className="block md:hidden" /> friendly
-            <br className="hidden md:block lg:hidden" /> designs
+            Engage your users
+            <br className="block md:hidden" /> with an
+            <br className="hidden md:block lg:hidden" /> attractive design
           </Heading>
           <Stacks ref={stackRef} x={xSpring} />
 

@@ -20,12 +20,13 @@ const About = () => {
       </div>
       <div className="pt-[3.12rem] lg:mb-[400px]">
         <p className="paragraph-1 p-[0.63rem] md:p-[1.25rem]">
-          I am passionate about creating user-friendly designs that enhance user
-          experiences.
+          As a dedicated UX/UI Designer and Web Developer, I merge creative
+          design flair with precise development to offer user-friendly, visually
+          appealing solutions.
         </p>
         <p className="paragraph-1 mb-[40px] p-[0.63rem] md:p-[1.25rem] lg:mb-[300px]">
-          My focus is on intuitive and accessible interfaces that make
-          interacting with digital products enjoyable and straightforward.
+          Explore this work to discover how your company can connect with users
+          in meaningful and impactful ways.
         </p>
       </div>
     </section>
@@ -56,7 +57,7 @@ const Heading = () => {
         // Move to the next sentence in the array
         currentIndex = (currentIndex + 1) % texts.length;
         setDisplayText(texts[currentIndex]);
-      }, 2000); // Change sentence every 6000ms (6 seconds)
+      }, 2800); // Change sentence every 6000ms (6 seconds)
 
       // Cleanup interval on component unmount or when dependency changes
       return () => clearInterval(interval);
