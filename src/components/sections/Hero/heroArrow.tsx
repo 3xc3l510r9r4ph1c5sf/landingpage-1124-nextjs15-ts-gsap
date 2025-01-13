@@ -1,6 +1,6 @@
-"use client";
-import { motion } from "motion/react";
-import { useAppContext } from "../../context/AppContext";
+'use client';
+import { motion } from 'motion/react';
+import { useAppContext } from '../../context/AppContext';
 
 const HeroArrow = () => {
   const { heroIconControl } = useAppContext();
@@ -9,15 +9,15 @@ const HeroArrow = () => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 35 35"
-      className="inline-block [--size:2.188rem] md:[--size:4.6rem] lg:[--size:5.5625rem]"
+      className="inline-block [--size:2.388rem] md:[--size:3.1rem] lg:[--size:5.5625rem]"
       variants={{
         hidden: {
-          width: "0rem",
-          height: "0rem",
+          width: '0rem',
+          height: '0rem',
         },
         visible: {
-          width: "var(--size)",
-          height: "var(--size)",
+          width: 'var(--size)',
+          height: 'var(--size)',
         },
       }}
       initial="hidden"

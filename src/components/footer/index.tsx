@@ -1,7 +1,7 @@
-"use client";
-import { useInView } from "motion/react";
-import HeroArrow from "../sections/Hero/heroArrow";
-import { useEffect, useRef } from "react";
+'use client';
+import { useInView } from 'motion/react';
+import HeroArrow from '../sections/Hero/heroArrow';
+import { useEffect, useRef } from 'react';
 
 const Footer: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -9,9 +9,9 @@ const Footer: React.FC = () => {
 
   useEffect(() => {
     if (inView && ref.current) {
-      const navbar = document.querySelector("nav");
+      const navbar = document.querySelector('nav');
       if (navbar) {
-        navbar.style.zIndex = "-999";
+        navbar.style.zIndex = '-999';
       }
     }
   }, [inView]);
@@ -23,10 +23,9 @@ const Footer: React.FC = () => {
           <HeroArrow />
           <span>Let’s talk</span>
         </h2>
-
-        <div className="mt-auto space-y-2 p-[2.1875rem_0.625rem_1.25rem_2.1875rem] not-italic">
-          <p className="paragraph-2">Berlin, Germany</p>
-          <p className="paragraph-2">
+        <div className="mt-auto space-y-2 p-[2.1875rem_0rem_1.25rem_0rem] mb-[15px] lg:mb-[30px] not-italic">
+          <p className="paragraph-1">Berlin, Germany</p>
+          <p className="paragraph-1">
             Phone: (+49) 17627744274 <br />
             <a
               href="https://www.linkedin.com/in/yourprofile"
@@ -36,7 +35,7 @@ const Footer: React.FC = () => {
             >
               LinkedIn
             </a>
-            ,{" "}
+            ,{' '}
             <a
               href="https://www.xing.com/profile/yourprofile"
               target="_blank"
@@ -46,7 +45,7 @@ const Footer: React.FC = () => {
               Xing
             </a>
           </p>
-          <p className="paragraph-2">
+          <p className="paragraph-1">
             <a
               href="mailto:example@example.com"
               className="font-bold hover:underline"

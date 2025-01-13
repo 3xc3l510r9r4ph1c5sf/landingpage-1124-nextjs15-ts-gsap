@@ -4,10 +4,10 @@
 
 @layer base {
   ::-webkit-scrollbar {
-    display: none; 
+    display: none;
   }
   html {
-    scrollbar-width: none; 
+    scrollbar-width: none;
   }
 
   :root {
@@ -26,28 +26,69 @@
 }
 
 @layer utilities {
-  .main-heading {
-    @apply text-[clamp(3.375rem,0.575rem_+_8.3889vw,8.125rem)] font-normal leading-none tracking-[-0.125rem];
+  .card-paragraph {
+    @apply text-[0.88rem]    /* 14px => 0.88rem */
+           md:text-[1.38rem] /* 22px => 1.38rem */
+           lg:text-[2rem]    /* 32px => 2rem */
+           leading-[0.88rem] /* 14px => 0.88rem */
+           md:leading-[1.38rem] /* 22px => 1.38rem */
+           lg:leading-[2rem]  /* 32px => 2rem */
+           tracking-[-0.02em]; /* Letter-spacing: -2% (-0.02em) */
   }
-  .title {
-    @apply text-[clamp(2.37rem,1.0363rem_+_3.4318vw,4.75rem)] font-normal leading-none tracking-[-0.01875rem];
-  }
+
   .paragraph-1 {
-    @apply text-[clamp(2.375rem,1.0363rem_+_3.4318vw,3.85rem)] font-normal leading-none tracking-[-0.02375rem] lg:leading-[4rem];
+    @apply text-[0.88rem] /* sm: 14px => 0.88rem */
+           md:text-[1.38rem] /* md: 22px => 1.38rem */
+           lg:text-[3.38rem] /* lg: 54px => 3.38rem */
+           leading-[0.88rem] /* sm: 14px => 0.88rem */
+           md:leading-[1.38rem] /* md: 22px => 1.38rem */
+           lg:leading-[3.38rem] /* lg: 54px => 3.38rem */;
   }
+
+  .main-heading {
+    @apply text-[clamp(3.38rem,0.58rem_+_8.39vw,8.13rem)] font-normal leading-none tracking-[-0.13rem];
+  }
+
+  .title {
+    @apply text-[2.38rem] /* sm: 38px => 2.38rem */
+           md:text-[3.38rem] /* md: 54px => 3.38rem */
+           lg:text-[4.75rem] /* lg: 76px => 4.75rem */
+           leading-none tracking-[-0.02rem];
+  }
+
+  .paragraph-1 {
+    @apply text-[1.375rem] /* sm: 22px => 1.375rem */
+    md:text-[2.75rem] /* md: 44px => 2.75rem */
+    lg:text-[3.375rem] /* lg: 54px => 3.375rem */
+    leading-[1.375rem] /* sm: 22px => 1.375rem */
+    md:leading-[2.75rem] /* md: 44px => 2.75rem */
+    lg:leading-[3.375rem] /* lg: 54px => 3.375rem */
+    tracking-[-0.02em]; /* letter spacing -2% */
+  }
+
   .md {
-    @apply text-[clamp(2rem,1.0363rem_+_3.4318vw,3.625rem)] font-normal leading-[clamp(2.125rem,1.0363rem_+_3.4318vw,3.625rem)] tracking-[-0.02375rem];
+    @apply text-[clamp(2rem,1.03rem_+_3.43vw,3.63rem)] font-normal leading-[clamp(2.13rem,1.03rem_+_3.43vw,3.63rem)] tracking-[-0.02rem];
   }
+
   .paragraph-2 {
-    @apply text-[clamp(1.375rem,1.0363rem_+_3.4318vw,2.75rem)] leading-[clamp(1.5rem,1.0363rem_+_3.4318vw,2.875rem)] tracking-[-0.0275rem];
+    @apply text-[clamp(0.88rem, 0.63rem + 2.4vw, 2rem)] 
+      leading-[clamp(0.88rem, 0.63rem + 2.4vw, 2rem)] 
+      tracking-[-0.03em] 
+      md:text-[1.25rem] 
+      md:leading-[1.25rem] 
+      lg:text-[2rem] 
+      lg:leading-[2rem];
   }
+
   .sm {
-    @apply text-[clamp(0.875rem,1.0363rem_+_3.4318vw,1rem)] leading-none tracking-[-0.01875rem];
+    @apply text-[clamp(0.88rem,1.03rem_+_3.43vw,1rem)] leading-none tracking-[-0.02rem];
   }
+
   .xl {
-    @apply text-[0.875rem] leading-none tracking-[-0.01875rem];
+    @apply text-[0.88rem] leading-none tracking-[-0.02rem];
   }
+
   .xs {
-    @apply text-[1rem] leading-none tracking-[-0.01875rem];
+    @apply text-[1rem] leading-none tracking-[-0.02rem];
   }
 }
