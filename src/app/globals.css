@@ -70,14 +70,10 @@
     @apply text-[clamp(2rem,1.03rem_+_3.43vw,3.63rem)] font-normal leading-[clamp(2.13rem,1.03rem_+_3.43vw,3.63rem)] tracking-[-0.02rem];
   }
 
-  .paragraph-2 {
-    @apply text-[clamp(0.88rem, 0.63rem + 2.4vw, 2rem)] 
-      leading-[clamp(0.88rem, 0.63rem + 2.4vw, 2rem)] 
-      tracking-[-0.03em] 
-      md:text-[1.25rem] 
-      md:leading-[1.25rem] 
-      lg:text-[2rem] 
-      lg:leading-[2rem];
+  .text-clamp-paragraph-2 {
+    font-size: clamp(0.88rem, 0.63rem + 2.4vw, 2rem);
+    line-height: clamp(0.88rem, 0.63rem + 2.4vw, 2rem);
+    letter-spacing: -0.03em;
   }
 
   .sm {
