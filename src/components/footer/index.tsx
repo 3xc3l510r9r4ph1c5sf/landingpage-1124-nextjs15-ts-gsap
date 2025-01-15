@@ -24,8 +24,8 @@ const Footer: React.FC = () => {
           <span>Let’s talk</span>
         </h2>
         <div className="mt-auto space-y-2 p-[2.1875rem_0rem_1.25rem_0rem] mb-[15px] lg:mb-[30px] not-italic">
-          <p className="paragraph-1">Berlin, Germany</p>
-          <p className="paragraph-1">
+          <p className="card-paragraph">Berlin, Germany</p>
+          <p className="card-paragraph">
             Phone: (+49) 17627744274 <br />
             <a
               href="https://www.linkedin.com/in/yourprofile"
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
               Xing
             </a>
           </p>
-          <p className="paragraph-1">
+          <p className="card-paragraph">
             <a
               href="mailto:example@example.com"
               className="font-bold hover:underline"
