@@ -47,11 +47,39 @@ const Footer: React.FC = () => {
           </p>
           <p className="card-paragraph">
             <a
-              href="mailto:example@example.com"
+              href="mailto:hcanocardenas@gmail.com"
               className="font-bold hover:underline"
             >
               hcanocardenas@gmail.com
             </a>
+          </p>
+
+          {/* Empty paragraph spacer for one line of space */}
+          <p className="card-paragraph">&nbsp;</p>
+
+          <p className="card-paragraph">
+            The project source code is freely available on{' '}
+            <a
+              href="https://github.com/yourusername/yourrepo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold hover:underline"
+            >
+              GitHub
+            </a>
+            .
+          </p>
+          <p className="card-paragraph">
+            Feel free to visit my{' '}
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold hover:underline"
+            >
+              GitHub profile
+            </a>{' '}
+            to discover more projects.
           </p>
         </div>
       </div>

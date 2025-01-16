@@ -16,7 +16,11 @@ const Heading = ({
       )}
     >
       <div className="">
-        <img src="arrow.svg" alt="Arrow Icon" className="" />
+        <img
+          src="arrow.svg"
+          alt=""
+          className="size-[1.81rem] translate-y-1/4 md:size-10 md:translate-y-0 lg:size-[3.125rem]"
+        />
       </div>
       <span className="block w-full">{children}</span>
     </h2>

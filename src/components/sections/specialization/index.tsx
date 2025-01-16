@@ -5,7 +5,8 @@ const Specialization = () => {
   return (
     <section className="max-w-[84.2rem] px-[0.63rem] pt-20 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] lg:mb-[200px] lg:p-[10rem_1.25rem_0rem_4.5625rem]">
       <div className="lg:flex lg:gap-[3.75rem]">
-        <h2 className="main-heading">Make it Work</h2>
+        {/* Added bottom margin for spacing on default and md screens */}
+        <h2 className="main-heading mb-8 lg:mb-0">Make it Work</h2>
         <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
           <Card
             number={1}
