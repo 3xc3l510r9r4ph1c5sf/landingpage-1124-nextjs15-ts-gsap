@@ -10,7 +10,7 @@ interface ProjectData {
 export const projectData: ProjectData[] = [
   {
     id: '01',
-    companyName: 'WBS AG',
+    companyName: 'WBS Gruppe AG',
     date: '2023-2024',
     imageUrl: '/project-1.png',
     title: 'Trainspot',
@@ -20,7 +20,7 @@ export const projectData: ProjectData[] = [
     id: '02',
     title: 'Kurskonfigurator',
     companyName: 'WBS Gruppe AG',
-    date: '2022',
+    date: '2022-2023',
     imageUrl:
       'https://images.unsplash.com/photo-1676793894040-b6dd72276620?q=80&w=2089&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     color: '#8C8C8C',
@@ -36,10 +36,10 @@ export const projectData: ProjectData[] = [
   },
   {
     id: '04',
-    title: 'Silencio',
+    title: 'Kurskplannung',
     imageUrl: '/project-1.png',
     color: '#706D63',
-    companyName: 'Kurskplannung',
+    companyName: 'WBS Gruppe AG',
     date: '2021-2022',
   },
 ];
