@@ -18,7 +18,7 @@ const About = () => {
           />
         </div>
       </div>
-      <div className="pt-[3.12rem] lg:mb-[400px]">
+      <div className="pt-[3.12rem] mb-[100px] md:mb-[150px] lg:mb-[400px]">
         <p className="paragraph-1 p-[0.63rem] md:p-[1.25rem]">
           As a dedicated UX/UI Designer and Web Developer, I merge creative
           design flair with precise development to offer user-friendly, visually
