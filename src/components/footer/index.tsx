@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           <p className="card-paragraph">
             Phone: (+49) 17627744274 <br />
             <a
-              href="https://www.linkedin.com/in/yourprofile"
+              href="linkedin.com/in/harold-cano-cardenas-3a77a92b3"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold hover:underline"
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
             </a>
             ,{' '}
             <a
-              href="https://www.xing.com/profile/yourprofile"
+              href="https://www.xing.com/profile/Harold_Cano"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold hover:underline"
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
           <p className="card-paragraph">
             The project source code is freely available on{' '}
             <a
-              href="https://github.com/yourusername/yourrepo"
+              href="https://github.com/Kano85/landingpage-1124-nextjs15-ts-gsap"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold hover:underline"
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
           <p className="card-paragraph">
             Feel free to visit my{' '}
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/Kano85"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold hover:underline"
