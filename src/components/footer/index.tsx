@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           <p className="card-paragraph">
             Phone: (+49) 17627744274 <br />
             <a
-              href="linkedin.com/in/harold-cano-cardenas-3a77a92b3"
+              href="https://linkedin.com/in/harold-cano-cardenas-3a77a92b3"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold hover:underline"
