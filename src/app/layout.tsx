@@ -39,7 +39,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         ></meta>
-        <title>Halord Portfolio</title>
+        <title>Harold Portfolio</title>
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} overflow-x-clip overflow-y-clip bg-mainbody-weg antialiased scrollbar-hide`}

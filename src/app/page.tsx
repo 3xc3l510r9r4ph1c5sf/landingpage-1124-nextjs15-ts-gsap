@@ -1,16 +1,16 @@
-import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/about";
-import Footer from "@/components/footer";
-import HorizentalSection from "@/components/sections/horizentalScroll";
-import Specialization from "@/components/sections/specialization";
-import Process from "@/components/sections/process";
-import Purpose from "@/components/sections/purpose";
-import { Metadata } from "next";
-import Works from "@/components/sections/works";
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/about';
+import Footer from '@/components/footer';
+import HorizentalSection from '@/components/sections/horizentalScroll';
+import Specialization from '@/components/sections/specialization';
+import Process from '@/components/sections/process';
+import Purpose from '@/components/sections/purpose';
+import { Metadata } from 'next';
+import Works from '@/components/sections/works';
 
 export const metadata: Metadata = {
-  title: "Harold - Porfolio",
-  description: "...",
+  title: 'Harold - Portfolio',
+  description: '...',
 };
 
 const Home: React.FC = () => {
