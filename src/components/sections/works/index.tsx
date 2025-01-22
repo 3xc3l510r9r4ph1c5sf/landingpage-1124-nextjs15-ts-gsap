@@ -1,12 +1,15 @@
-"use client";
-import styles from "./style.module.scss";
-import { useState, useEffect, useRef } from "react";
-import Project from "./modal";
-import { motion, Variants } from "motion/react";
-import gsap from "gsap";
-import Image from "next/image";
-import { projectData } from "./projetData";
-import Heading from "@/components/common/heading";
+//src/components/sections/works/index.tsx
+
+'use client';
+import Link from 'next/link';
+import styles from './style.module.scss';
+import { useState, useEffect, useRef } from 'react';
+import Project from './modal';
+import { motion, Variants } from 'motion/react';
+import gsap from 'gsap';
+import Image from 'next/image';
+import { projectData } from './projetData';
+import Heading from '@/components/common/heading';
 
 // Define the types for the modal state
 interface ModalState {
@@ -31,33 +34,33 @@ interface ProjectData {
 }
 
 const scaleAnimation: Variants = {
-  initial: { scale: 0, x: "-50%", y: "-50%" },
+  initial: { scale: 0, x: '-50%', y: '-50%' },
   enter: {
     scale: 1,
-    x: "-50%",
-    y: "-50%",
+    x: '-50%',
+    y: '-50%',
     transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
   },
   closed: {
     scale: 0,
-    x: "-50%",
-    y: "-50%",
+    x: '-50%',
+    y: '-50%',
     transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] },
   },
 };
 
 const cursorAnimation: Variants = {
-  initial: { scale: 0, x: "50%", y: "50%" },
+  initial: { scale: 0, x: '50%', y: '50%' },
   enter: {
     scale: 1,
-    x: "30%",
-    y: "30%",
+    x: '30%',
+    y: '30%',
     transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
   },
   closed: {
     scale: 0,
-    x: "30%",
-    y: "30%",
+    x: '30%',
+    y: '30%',
     transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] },
   },
 };
@@ -65,7 +68,7 @@ const cursorAnimation: Variants = {
 export default function Works() {
   const [modal, setModal] = useState<ModalState>({ active: false, index: 0 });
   const { active, index } = modal;
-  
+
   const modalContainer = useRef<HTMLDivElement | null>(null);
   const cursor = useRef<HTMLDivElement | null>(null);
   const cursorLabel = useRef<HTMLSpanElement | null>(null);
@@ -79,33 +82,33 @@ export default function Works() {
 
   useEffect(() => {
     // Move Container
-    xMoveContainer.current = gsap.quickTo(modalContainer.current!, "left", {
+    xMoveContainer.current = gsap.quickTo(modalContainer.current!, 'left', {
       duration: 0.8,
-      ease: "power3",
+      ease: 'power3',
     });
-    yMoveContainer.current = gsap.quickTo(modalContainer.current!, "top", {
+    yMoveContainer.current = gsap.quickTo(modalContainer.current!, 'top', {
       duration: 0.8,
-      ease: "power3",
+      ease: 'power3',
     });
 
     // Move cursor
-    xMoveCursor.current = gsap.quickTo(cursor.current!, "left", {
+    xMoveCursor.current = gsap.quickTo(cursor.current!, 'left', {
       duration: 0.5,
-      ease: "power3",
+      ease: 'power3',
     });
-    yMoveCursor.current = gsap.quickTo(cursor.current!, "top", {
+    yMoveCursor.current = gsap.quickTo(cursor.current!, 'top', {
       duration: 0.5,
-      ease: "power3",
+      ease: 'power3',
     });
 
     // Move cursor label
-    xMoveCursorLabel.current = gsap.quickTo(cursorLabel.current!, "left", {
+    xMoveCursorLabel.current = gsap.quickTo(cursorLabel.current!, 'left', {
       duration: 0.45,
-      ease: "power3",
+      ease: 'power3',
     });
-    yMoveCursorLabel.current = gsap.quickTo(cursorLabel.current!, "top", {
+    yMoveCursorLabel.current = gsap.quickTo(cursorLabel.current!, 'top', {
       duration: 0.45,
-      ease: "power3",
+      ease: 'power3',
     });
   }, []);
 
@@ -118,7 +121,12 @@ export default function Works() {
     yMoveCursorLabel.current(y);
   };
 
-  const manageModal = (active: boolean, index: number, x: number, y: number) => {
+  const manageModal = (
+    active: boolean,
+    index: number,
+    x: number,
+    y: number
+  ) => {
     moveItems(x, y);
     setModal({ active, index });
   };
@@ -153,11 +161,11 @@ export default function Works() {
             ref={modalContainer}
             variants={scaleAnimation}
             initial="initial"
-            animate={active ? "enter" : "closed"}
+            animate={active ? 'enter' : 'closed'}
             className={styles.modalContainer}
           >
             <div
-              style={{ top: index * -100 + "%" }}
+              style={{ top: index * -100 + '%' }}
               className={styles.modalSlider}
             >
               {projectData.map((project, index) => {
@@ -182,10 +190,11 @@ export default function Works() {
           {/* cursor  */}
           <motion.div
             ref={cursor}
+            style={{ pointerEvents: 'auto' }}
             className={`${styles.cursor} flex items-center justify-center space-x-1 text-[12px] font-medium`}
             variants={cursorAnimation}
             initial="initial"
-            animate={active ? "enter" : "closed"}
+            animate={active ? 'enter' : 'closed'}
           >
             <span
               className="inline-block rounded-sm bg-[#bebeb0] p-1 text-center font-bold"

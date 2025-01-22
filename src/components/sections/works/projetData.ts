@@ -1,3 +1,5 @@
+//src/components/sections/works/projetData.ts
+
 interface ProjectData {
   id: string;
   title: string;
