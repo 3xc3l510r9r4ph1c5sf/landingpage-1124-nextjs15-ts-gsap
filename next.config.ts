@@ -1,24 +1,21 @@
-// next.config.ts
-import type { NextConfig } from "next";
+// next.config.js
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "images.unsplash.com",
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
       },
     ],
   },
   sassOptions: {
-    // Silence the deprecation warnings
-    silenceDeprecations: ["legacy-js-api"],
-    // You can add other Sass options here if needed
+    silenceDeprecations: ['legacy-js-api'],
   },
-  // You can include other Next.js config options here
   eslint: {
     ignoreDuringBuilds: true,
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

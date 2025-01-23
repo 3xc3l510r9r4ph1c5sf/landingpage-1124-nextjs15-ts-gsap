@@ -1,3 +1,5 @@
+//tsconfig.json
+
 {
   "compilerOptions": {
     "target": "ES2017",
@@ -28,7 +30,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/sections/Hero",
+    "src/components/sections/**/*",
     "src/components/common/heading"
   ],
   "exclude": ["node_modules"]

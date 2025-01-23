@@ -1,4 +1,4 @@
-//src/components/sections/works/projetData.ts
+//src/components/sections/works/projectData.ts
 
 interface ProjectData {
   id: string;
@@ -15,7 +15,7 @@ export const projectData: ProjectData[] = [
     id: '01',
     companyName: 'WBS Gruppe AG',
     date: '2023-2024',
-    imageUrl: '/project-1.png',
+    imageUrl: '/project1-hero.png',
     title: 'Trainspot',
     color: '#000000',
     slug: 'trainspot',

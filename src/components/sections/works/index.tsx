@@ -8,7 +8,7 @@ import Project from './modal';
 import { motion, Variants } from 'motion/react';
 import gsap from 'gsap';
 import Image from 'next/image';
-import { projectData } from './projetData';
+import { projectData } from './projectData';
 import Heading from '@/components/common/heading';
 
 // Define the types for the modal state

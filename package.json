@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "NEXT_PRIVATE_NO_TURBO=1 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -31,8 +31,8 @@
     "use-scramble": "^2.2.15"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
-    "@types/react": "^18.2.14",
+    "@types/node": "^22.10.9",
+    "@types/react": "^18.3.18",
     "@types/react-dom": "^18.2.7",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",

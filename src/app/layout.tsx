@@ -7,7 +7,6 @@ import Navbar from '@/components/Navbar';
 import PreLoader from '@/components/Preloader';
 import { TailwindIndicator } from '@/components/debugger/tailwindIndicator';
 import { AppProvider } from '../components/context/AppContext';
-import Head from 'next/head';
 import { Providers } from './provider';
 
 const geistSans = localFont({
@@ -33,25 +32,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        <meta name="viewport" content="viewport-fit=cover" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
-        <title>Harold Portfolio</title>
-      </Head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} overflow-x-clip overflow-y-clip bg-mainbody-weg antialiased scrollbar-hide`}
-      >
-        <Providers>
-          <AppProvider>
-            <TailwindIndicator />
-            <PreLoader />
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <AppProvider>
+          <Providers>
             <Navbar />
+            <PreLoader />
             {children}
-          </AppProvider>
-        </Providers>
+            <TailwindIndicator />
+          </Providers>
+        </AppProvider>
       </body>
     </html>
   );
