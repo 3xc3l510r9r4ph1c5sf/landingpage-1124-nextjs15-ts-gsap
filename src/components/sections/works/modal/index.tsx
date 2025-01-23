@@ -5,7 +5,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-interface ProjectData {
+interface ModalProjectData {
   id: string;
   title: string;
   date: string;
@@ -16,7 +16,7 @@ interface ProjectData {
 // Only valid if the *parent* component is also 'use client'
 interface ModalProps {
   index: number;
-  projectsData: ProjectData;
+  projectsData: ModalProjectData;
   manageModal: (active: boolean, index: number, x: number, y: number) => void;
 }
 
@@ -81,7 +81,7 @@ export default function Modal({
 
   // Wrap the entire “content” in a Link to `/projects/${slug}`
   return (
-    <Link href={` /${slug}`} className="block">
+    <Link href={`/${slug}`} className="block">
       {content}
     </Link>
   );

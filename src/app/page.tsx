@@ -10,11 +10,6 @@ import Purpose from '@/components/sections/purpose';
 import { Metadata } from 'next';
 import Works from '@/components/sections/works';
 
-export const metadata: Metadata = {
-  title: 'Harold - Portfolio',
-  description: '...',
-};
-
 const Home: React.FC = () => {
   return (
     <>

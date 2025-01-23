@@ -1,10 +1,9 @@
 //src/components/sections/works/index.tsx
-
 'use client';
-import Link from 'next/link';
+
 import styles from './style.module.scss';
-import { useState, useEffect, useRef } from 'react';
-import Project from './modal';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import Modal from './modal/index';
 import { motion, Variants } from 'motion/react';
 import gsap from 'gsap';
 import Image from 'next/image';
@@ -17,21 +16,9 @@ interface ModalState {
   index: number;
 }
 
-// Define the types for the cursor refs
-interface CursorRefs {
-  current: HTMLElement | null;
-}
-
-// Define the props for the Project component
-interface ProjectData {
-  index: number;
-  projectsData: {
-    imageUrl: string;
-    color: string;
-    [key: string]: any; // You can add more specific fields if known
-  };
-  manageModal: (active: boolean, index: number, x: number, y: number) => void;
-}
+// Removed unused interfaces
+// interface CursorRefs { ... }
+// interface WorksProjectProps { ... }
 
 const scaleAnimation: Variants = {
   initial: { scale: 0, x: '-50%', y: '-50%' },
@@ -73,12 +60,12 @@ export default function Works() {
   const cursor = useRef<HTMLDivElement | null>(null);
   const cursorLabel = useRef<HTMLSpanElement | null>(null);
 
-  let xMoveContainer = useRef<(x: number) => void>(() => {});
-  let yMoveContainer = useRef<(y: number) => void>(() => {});
-  let xMoveCursor = useRef<(x: number) => void>(() => {});
-  let yMoveCursor = useRef<(y: number) => void>(() => {});
-  let xMoveCursorLabel = useRef<(x: number) => void>(() => {});
-  let yMoveCursorLabel = useRef<(y: number) => void>(() => {});
+  const xMoveContainer = useRef<(x: number) => void>(() => {});
+  const yMoveContainer = useRef<(y: number) => void>(() => {});
+  const xMoveCursor = useRef<(x: number) => void>(() => {});
+  const yMoveCursor = useRef<(y: number) => void>(() => {});
+  const xMoveCursorLabel = useRef<(x: number) => void>(() => {});
+  const yMoveCursorLabel = useRef<(y: number) => void>(() => {});
 
   useEffect(() => {
     // Move Container
@@ -112,24 +99,22 @@ export default function Works() {
     });
   }, []);
 
-  const moveItems = (x: number, y: number) => {
+  const moveItems = useCallback((x: number, y: number) => {
     xMoveContainer.current(x);
     yMoveContainer.current(y);
     xMoveCursor.current(x);
     yMoveCursor.current(y);
     xMoveCursorLabel.current(x);
     yMoveCursorLabel.current(y);
-  };
+  }, []);
 
-  const manageModal = (
-    active: boolean,
-    index: number,
-    x: number,
-    y: number
-  ) => {
-    moveItems(x, y);
-    setModal({ active, index });
-  };
+  const manageModal = useCallback(
+    (active: boolean, index: number, x: number, y: number) => {
+      moveItems(x, y);
+      setModal({ active, index });
+    },
+    [moveItems]
+  );
 
   return (
     <section className="relative pt-20 md:pt-[7.12rem] lg:pt-40">
@@ -148,11 +133,11 @@ export default function Works() {
       >
         <div className={styles.body}>
           {projectData.map((data, index) => (
-            <Project
+            <Modal
               index={index}
               projectsData={data}
               manageModal={manageModal}
-              key={index}
+              key={data.id} // Use a unique key, preferably `data.id` instead of `index`
             />
           ))}
         </div>
@@ -168,13 +153,13 @@ export default function Works() {
               style={{ top: index * -100 + '%' }}
               className={styles.modalSlider}
             >
-              {projectData.map((project, index) => {
+              {projectData.map((project, idx) => {
                 const { imageUrl, color } = project;
                 return (
                   <div
                     className={styles.modal}
                     style={{ backgroundColor: color }}
-                    key={`modal_${index}`}
+                    key={`modal_${idx}`}
                   >
                     <Image
                       src={`${imageUrl}`}
