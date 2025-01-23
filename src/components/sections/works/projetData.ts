@@ -6,6 +6,7 @@ interface ProjectData {
   companyName: string;
   date: string;
   imageUrl: string;
+  slug: string;
   color: string;
 }
 
@@ -17,6 +18,7 @@ export const projectData: ProjectData[] = [
     imageUrl: '/project-1.png',
     title: 'Trainspot',
     color: '#000000',
+    slug: 'trainspot',
   },
   {
     id: '02',
@@ -26,6 +28,7 @@ export const projectData: ProjectData[] = [
     imageUrl:
       'https://images.unsplash.com/photo-1676793894040-b6dd72276620?q=80&w=2089&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     color: '#8C8C8C',
+    slug: 'kurskonfigurator',
   },
   {
     id: '03',
@@ -35,6 +38,7 @@ export const projectData: ProjectData[] = [
     imageUrl:
       'https://images.unsplash.com/photo-1503551723145-6c040742065b-v2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     color: '#EFE8D3',
+    slug: 'designsystem',
   },
   {
     id: '04',
@@ -43,5 +47,6 @@ export const projectData: ProjectData[] = [
     color: '#706D63',
     companyName: 'WBS Gruppe AG',
     date: '2021-2022',
+    slug: 'kurskplannung',
   },
 ];

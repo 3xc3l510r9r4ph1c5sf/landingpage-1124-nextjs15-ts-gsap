@@ -1,6 +1,5 @@
 // src/components/sections/works/modal/index.tsx
-
-'use client'; // Ensures this file is a client component
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -11,6 +10,7 @@ interface ProjectData {
   title: string;
   date: string;
   companyName: string;
+  slug: string;
 }
 
 // Only valid if the *parent* component is also 'use client'
@@ -25,7 +25,7 @@ export default function Modal({
   projectsData,
   manageModal,
 }: ModalProps) {
-  const { id, title, date, companyName } = projectsData;
+  const { id, title, date, companyName, slug } = projectsData;
 
   // This is the main content for each project row.
   const content = (
@@ -79,16 +79,10 @@ export default function Modal({
     </div>
   );
 
-  // If this project is Trainspot (id === '01'), wrap entire content in a link
-  // so the user can click anywhere to navigate to /project-1
-  if (id === '01') {
-    return (
-      <Link href="/project-1" className="block">
-        {content}
-      </Link>
-    );
-  }
-
-  // Otherwise, just return the normal content
-  return content;
+  // Wrap the entire “content” in a Link to `/projects/${slug}`
+  return (
+    <Link href={` /${slug}`} className="block">
+      {content}
+    </Link>
+  );
 }

@@ -1,8 +1,10 @@
-"use client";
+//src/app/provider.tsx
 
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { TransitionRouter } from "next-transition-router";
+'use client';
+
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import { TransitionRouter } from 'next-transition-router';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const firstLayer = useRef<HTMLDivElement | null>(null);
@@ -20,24 +22,24 @@ export function Providers({ children }: { children: React.ReactNode }) {
           })
           .fromTo(
             firstLayer.current,
-            { y: "100%" },
+            { y: '100%' },
             {
               y: 0,
               duration: 0.5,
-              ease: "circ.inOut",
-            },
+              ease: 'circ.inOut',
+            }
           )
           .fromTo(
             secondLayer.current,
             {
-              y: "100%",
+              y: '100%',
             },
             {
               y: 0,
               duration: 0.5,
-              ease: "circ.inOut",
+              ease: 'circ.inOut',
             },
-            "<50%",
+            '<50%'
           );
 
         return () => {
@@ -51,22 +53,22 @@ export function Providers({ children }: { children: React.ReactNode }) {
             secondLayer.current,
             { y: 0 },
             {
-              y: "-100%",
+              y: '-100%',
               duration: 0.5,
-              ease: "circ.inOut",
-            },
+              ease: 'circ.inOut',
+            }
           )
           .fromTo(
             firstLayer.current,
             { y: 0 },
             {
-              y: "-100%",
+              y: '-100%',
               duration: 0.5,
-              ease: "circ.inOut",
+              ease: 'circ.inOut',
             },
-            "<50%",
+            '<50%'
           )
-          .call(next, undefined, "<50%");
+          .call(next, undefined, '<50%');
 
         return () => {
           tl.kill();
