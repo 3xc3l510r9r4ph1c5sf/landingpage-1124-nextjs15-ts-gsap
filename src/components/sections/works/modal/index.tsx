@@ -1,5 +1,4 @@
 // src/components/sections/works/modal/index.tsx
-'use client';
 
 import React from 'react';
 import Link from 'next/link';

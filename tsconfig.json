@@ -31,7 +31,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/sections/**/*",
-    "src/components/common/heading"
+    "src/components/common/heading",
+    "src/components/projects/**/*" // Add this line
   ],
   "exclude": ["node_modules"]
 }
