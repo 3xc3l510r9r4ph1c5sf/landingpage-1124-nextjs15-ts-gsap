@@ -42,11 +42,11 @@ export const projectData: ProjectData[] = [
   },
   {
     id: '04',
-    title: 'Kurskplannung',
+    title: 'Kursplannung',
     imageUrl: '/project-1.png',
     color: '#706D63',
     companyName: 'WBS Gruppe AG',
     date: '2021-2022',
-    slug: 'kurskplannung',
+    slug: 'kursplannung',
   },
 ];

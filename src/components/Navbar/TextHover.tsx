@@ -1,3 +1,5 @@
+//src/components/Navbar/TextHover.tsx
+
 'use client';
 
 interface TextHoverProps {

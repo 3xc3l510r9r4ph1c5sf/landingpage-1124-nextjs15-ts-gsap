@@ -13,7 +13,7 @@ import {
   // Uncomment when other content components are available
   // KurskonfiguratorContent,
   // DesignSystemContent,
-  // KurskplannungContent,
+  // kursplannungContent,
 } from '@/components/projects'; // Import the content components
 
 type SlugPromise = Promise<{ slug: string }>;
@@ -44,7 +44,7 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
     trainspot: <TrainspotContent />,
     // kurskonfigurator: <KurskonfiguratorContent />,
     // designsystem: <DesignSystemContent />,
-    // kurskplannung: <KurskplannungContent />,
+    // kursplannung: <kursplannungContent />,
     // Add more mappings as you add new projects
   };
 
