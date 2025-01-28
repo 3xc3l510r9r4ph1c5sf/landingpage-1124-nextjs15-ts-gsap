@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base Layer */
 @layer base {
+  /* Hide Scrollbars */
   ::-webkit-scrollbar {
     display: none;
   }
@@ -10,81 +12,116 @@
     scrollbar-width: none;
   }
 
+  /* CSS Variables */
   :root {
-    @apply [--about-heading--height:10.25rem] [--hero-section--height:calc(100svh-var(--navbar-height)-var(--about-heading--height))] [--navbar-height:3.38rem];
+    --about-heading--height: 10.25rem;
+    --hero-section--height: calc(
+      100svh - var(--navbar-height) - var(--about-heading--height)
+    );
+    --navbar-height: 3.38rem;
   }
+
+  /* Global Typography */
   body {
     font-family: Arial, Helvetica, sans-serif;
   }
+
+  /* Prevent Scrolling */
   body.lock-scroll {
     position: fixed;
     clip-path: inset(0);
   }
+
+  /* List Items */
   li {
     @apply text-sm;
   }
 }
 
+/* Components Layer */
+@layer components {
+  /* You can add component-specific styles here */
+}
+
+/* Utilities Layer */
 @layer utilities {
+  /* Card Paragraph */
   .card-paragraph {
-    @apply text-[0.88rem]    /* 14px => 0.88rem */
-           md:text-[1.38rem] /* 22px => 1.38rem */
-           lg:text-[2rem]    /* 32px => 2rem */
-           leading-[0.88rem] /* 14px => 0.88rem */
-           md:leading-[1.38rem] /* 22px => 1.38rem */
-           lg:leading-[2rem]  /* 32px => 2rem */
-           tracking-[-0.02em]; /* Letter-spacing: -2% (-0.02em) */
+    @apply text-[0.88rem]       /* 14px */
+      md:text-[1.38rem]    /* 22px */
+      lg:text-[2rem]       /* 32px */
+      leading-[0.88rem]
+      md:leading-[1.38rem]
+      lg:leading-[2rem]
+      tracking-[-0.02em]; /* -2% letter-spacing */
   }
 
+  /* Paragraph 1 */
   .paragraph-1 {
-    @apply text-[0.88rem] /* sm: 14px => 0.88rem */
-           md:text-[1.38rem] /* md: 22px => 1.38rem */
-           lg:text-[3.38rem] /* lg: 54px => 3.38rem */
-           leading-[0.88rem] /* sm: 14px => 0.88rem */
-           md:leading-[1.38rem] /* md: 22px => 1.38rem */
-           lg:leading-[3.38rem] /* lg: 54px => 3.38rem */;
+    @apply text-[0.88rem]       /* Small: 14px */
+      md:text-[1.375rem]   /* Medium: 22px */
+      lg:text-[3.375rem]   /* Large: 54px */
+      leading-[0.88rem]
+      md:leading-[1.375rem]
+      lg:leading-[3.375rem]
+      tracking-[-0.02em]; /* -2% letter-spacing */
   }
 
+  /* Main Heading */
   .main-heading {
-    @apply text-[clamp(3.38rem,0.58rem_+_8.39vw,8.13rem)] font-normal leading-none tracking-[-0.13rem];
+    /* Define styles directly without @apply */
+    font-size: clamp(3.38rem, 0.58rem + 8.39vw, 8.13rem);
+    font-weight: 400; /* Equivalent to font-normal */
+    line-height: 1; /* Equivalent to leading-none */
+    letter-spacing: -0.13rem;
   }
 
+  /* Title */
   .title {
-    @apply text-[2.38rem] /* sm: 38px => 2.38rem */
-           md:text-[3.38rem] /* md: 54px => 3.38rem */
-           lg:text-[4.75rem] /* lg: 76px => 4.75rem */
-           leading-none tracking-[-0.02rem];
+    @apply text-[2.38rem]        /* Small: 38px */
+      md:text-[3.38rem]     /* Medium: 54px */
+      lg:text-[4.75rem]     /* Large: 76px */
+      leading-none
+      tracking-[-0.02rem];
   }
 
-  .paragraph-1 {
-    @apply text-[1.375rem] /* sm: 22px => 1.375rem */
-    md:text-[2.75rem] /* md: 44px => 2.75rem */
-    lg:text-[3.375rem] /* lg: 54px => 3.375rem */
-    leading-[1.375rem] /* sm: 22px => 1.375rem */
-    md:leading-[2.75rem] /* md: 44px => 2.75rem */
-    lg:leading-[3.375rem] /* lg: 54px => 3.375rem */
-    tracking-[-0.02em]; /* letter spacing -2% */
+  /* Medium Text */
+  .md-text {
+    /* Renamed to avoid conflict with Tailwind's md: prefix */
+    font-size: clamp(2rem, 1.03rem + 3.43vw, 3.63rem);
+    font-weight: 400; /* Equivalent to font-normal */
+    line-height: clamp(2.13rem, 1.03rem + 3.43vw, 3.63rem);
+    letter-spacing: -0.02rem;
   }
 
-  .md {
-    @apply text-[clamp(2rem,1.03rem_+_3.43vw,3.63rem)] font-normal leading-[clamp(2.13rem,1.03rem_+_3.43vw,3.63rem)] tracking-[-0.02rem];
-  }
-
+  /* Clamp Paragraph 2 */
   .text-clamp-paragraph-2 {
+    /* Define styles directly without @apply */
     font-size: clamp(0.88rem, 0.63rem + 2.4vw, 2rem);
     line-height: clamp(0.88rem, 0.63rem + 2.4vw, 2rem);
     letter-spacing: -0.03em;
   }
 
-  .sm {
-    @apply text-[clamp(0.88rem,1.03rem_+_3.43vw,1rem)] leading-none tracking-[-0.02rem];
+  /* Small Text */
+  .sm-text {
+    /* Renamed to avoid conflict with Tailwind's sm: prefix */
+    /* Define styles directly without @apply */
+    font-size: clamp(0.88rem, 1.03rem + 3.43vw, 1rem);
+    line-height: 1; /* Equivalent to leading-none */
+    letter-spacing: -0.02rem;
   }
 
+  /* Extra Large Text */
   .xl {
-    @apply text-[0.88rem] leading-none tracking-[-0.02rem];
+    @apply text-[0.88rem]
+      leading-none
+      tracking-[-0.02rem];
   }
 
+  /* Extra Small Text */
   .xs {
-    @apply text-[1rem] leading-none tracking-[-0.02rem];
+    @apply text-[1rem]
+      leading-none
+      tracking-[-0.02rem];
   }
 }

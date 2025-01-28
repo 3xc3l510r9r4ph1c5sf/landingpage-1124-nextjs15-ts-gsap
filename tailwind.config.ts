@@ -9,7 +9,7 @@ export default {
   theme: {
     screens: {
       md: {
-        min: '500px',
+        min: '520px',
       },
       lg: {
         min: '750px',
