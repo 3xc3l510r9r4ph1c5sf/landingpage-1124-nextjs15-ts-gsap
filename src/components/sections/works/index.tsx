@@ -1,24 +1,18 @@
-//src/components/sections/works/index.tsx
 'use client';
 
 import styles from './style.module.scss';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Modal from './modal/index';
-import { motion, Variants } from 'motion/react';
+import { motion, Variants } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
 import { projectData } from './projectData';
 import Heading from '@/components/common/heading';
 
-// Define the types for the modal state
 interface ModalState {
   active: boolean;
   index: number;
 }
-
-// Removed unused interfaces
-// interface CursorRefs { ... }
-// interface WorksProjectProps { ... }
 
 const scaleAnimation: Variants = {
   initial: { scale: 0, x: '-50%', y: '-50%' },
@@ -137,7 +131,7 @@ export default function Works() {
               index={index}
               projectsData={data}
               manageModal={manageModal}
-              key={data.id} // Use a unique key, preferably `data.id` instead of `index`
+              key={data.id}
             />
           ))}
         </div>
@@ -161,12 +155,7 @@ export default function Works() {
                     style={{ backgroundColor: color }}
                     key={`modal_${idx}`}
                   >
-                    <Image
-                      src={`${imageUrl}`}
-                      width={300}
-                      height={0}
-                      alt="image"
-                    />
+                    <Image src={imageUrl} width={300} height={0} alt="image" />
                   </div>
                 );
               })}

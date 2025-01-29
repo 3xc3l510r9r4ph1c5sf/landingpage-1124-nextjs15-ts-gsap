@@ -12,7 +12,7 @@ export default {
         min: '520px',
       },
       lg: {
-        min: '750px',
+        min: '800px',
       },
     },
     fontSize: {

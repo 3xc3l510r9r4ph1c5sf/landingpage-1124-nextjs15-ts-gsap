@@ -64,7 +64,7 @@ const TrainspotContent: React.FC = () => {
             <div className="flex gap-[0.625rem] max-w-[55rem]">
               <div className="active-number md text-details-red">01</div>
               <div className="flex flex-col gap-[0.625rem]">
-                <h3 className="md text-balance">
+                <h3 className="paragraph-1">
                   <strong>Fragmented Learning Landscape:</strong>
                 </h3>
                 <p className="card-paragraph">
@@ -77,7 +77,7 @@ const TrainspotContent: React.FC = () => {
             <div className="flex gap-[0.625rem] max-w-[55rem]">
               <div className="active-number md text-details-red">02</div>
               <div className="flex flex-col gap-[0.625rem]">
-                <h3 className="md text-balance">
+                <h3 className="paragraph-1">
                   <strong>Lack of Seamless Integration:</strong>
                 </h3>
                 <p className="card-paragraph">
@@ -90,7 +90,7 @@ const TrainspotContent: React.FC = () => {
             <div className="flex gap-[0.625rem] max-w-[55rem]">
               <div className="active-number md text-details-red">03</div>
               <div className="flex flex-col gap-[0.625rem]">
-                <h3 className="md text-balance">
+                <h3 className="paragraph-1">
                   <strong>User Adoption:</strong>
                 </h3>
                 <p className="card-paragraph">

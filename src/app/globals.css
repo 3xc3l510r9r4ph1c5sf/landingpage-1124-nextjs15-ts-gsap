@@ -45,60 +45,91 @@
 
 /* Utilities Layer */
 @layer utilities {
-  /* Card Paragraph */
+  /* Card Paragraph, Text-2 style in Figma */
   .card-paragraph {
-    @apply text-[0.88rem]       /* 14px */
-      md:text-[1.38rem]    /* 22px */
-      lg:text-[2rem]       /* 32px */
-      leading-[0.88rem]
-      md:leading-[1.38rem]
-      lg:leading-[2rem]
-      tracking-[-0.02em]; /* -2% letter-spacing */
+    @apply text-[0.88rem]  /* Small/default: 14px */
+           md:text-[1.25rem] /* Medium: 20px */
+           lg:text-[2rem]    /* Large: 32px */
+           leading-[0.88rem] /* Small/default: 14px */
+           md:leading-[1.25rem] /* Medium: 20px */
+           lg:leading-[2rem] /* Large: 32px */
+           tracking-[-0.02em]; /* -2% letter-spacing */
   }
 
-  /* Paragraph 1 */
+  /* Paragraph 1, Text-1 style in Figma */
   .paragraph-1 {
-    @apply text-[0.88rem]       /* Small: 14px */
-      md:text-[1.375rem]   /* Medium: 22px */
-      lg:text-[3.375rem]   /* Large: 54px */
-      leading-[0.88rem]
-      md:leading-[1.375rem]
-      lg:leading-[3.375rem]
-      tracking-[-0.02em]; /* -2% letter-spacing */
+    /* Added the dot prefix */
+    @apply text-[2rem]          /* Small/default: 32px */
+           md:text-[2.75rem]    /* Medium: 44px */
+           lg:text-[3.375rem]   /* Large: 54px */
+           leading-[2.125rem]   /* Small/default: 34px */
+           md:leading-[2.875rem] /* Medium: 46px */
+           lg:leading-[3.5rem]  /* Large: 56px */
+           tracking-[-0.02em]; /* -2% letter-spacing */
   }
 
-  /* Main Heading */
+  /* Main Heading, H1 in Figma */
   .main-heading {
-    /* Define styles directly without @apply */
-    font-size: clamp(3.38rem, 0.58rem + 8.39vw, 8.13rem);
+    /* Font Sizes */
+    font-size: clamp(
+      3.38rem,
+      /* Small/default: 54px */ 0.58rem + 8.39vw,
+      /* Fluid scaling for medium screens */ 8.13rem /* Large: 130px */
+    );
+
+    /* Line Heights */
+    line-height: clamp(
+      3.38rem,
+      /* Small/default: 54px */ 0.58rem + 8.39vw,
+      /* Fluid scaling for medium screens */ 8.13rem /* Large: 130px */
+    );
+
+    /* Other Styles */
     font-weight: 400; /* Equivalent to font-normal */
-    line-height: 1; /* Equivalent to leading-none */
-    letter-spacing: -0.13rem;
+    letter-spacing: -0.13rem; /* Adjust as needed */
   }
 
-  /* Title */
+  /* Title, H2 in Figma */
   .title {
-    @apply text-[2.38rem]        /* Small: 38px */
-      md:text-[3.38rem]     /* Medium: 54px */
-      lg:text-[4.75rem]     /* Large: 76px */
-      leading-none
-      tracking-[-0.02rem];
+    @apply text-[2.38rem]        /* Small/default: 38px */
+         md:text-[3.38rem]     /* Medium: 54px */
+         lg:text-[4.75rem]     /* Large: 76px */
+         leading-[2.38rem]     /* Small/default: 38px */
+         md:leading-[3.38rem]  /* Medium: 54px */
+         lg:leading-[4.75rem]  /* Large: 76px */
+         tracking-[-0.02rem]; /* Letter spacing */
   }
 
   /* Medium Text */
   .md-text {
     /* Renamed to avoid conflict with Tailwind's md: prefix */
-    font-size: clamp(2rem, 1.03rem + 3.43vw, 3.63rem);
+    font-size: clamp(
+      2rem /* 32px */,
+      1.03rem + 3.43vw /* 16.48px + 3.43vw */,
+      3.63rem /* 58.08px */
+    );
     font-weight: 400; /* Equivalent to font-normal */
-    line-height: clamp(2.13rem, 1.03rem + 3.43vw, 3.63rem);
+    line-height: clamp(
+      2.13rem /* 34.08px */,
+      1.03rem + 3.43vw /* 16.48px + 3.43vw */,
+      3.63rem /* 58.08px */
+    );
     letter-spacing: -0.02rem;
   }
 
   /* Clamp Paragraph 2 */
   .text-clamp-paragraph-2 {
     /* Define styles directly without @apply */
-    font-size: clamp(0.88rem, 0.63rem + 2.4vw, 2rem);
-    line-height: clamp(0.88rem, 0.63rem + 2.4vw, 2rem);
+    font-size: clamp(
+      0.88rem /* 14.08px */,
+      0.63rem + 2.4vw /* 10.08px + 2.4vw */,
+      2rem /* 32px */
+    );
+    line-height: clamp(
+      0.88rem /* 14.08px */,
+      0.63rem + 2.4vw /* 10.08px + 2.4vw */,
+      2rem /* 32px */
+    );
     letter-spacing: -0.03em;
   }
 
@@ -106,7 +137,11 @@
   .sm-text {
     /* Renamed to avoid conflict with Tailwind's sm: prefix */
     /* Define styles directly without @apply */
-    font-size: clamp(0.88rem, 1.03rem + 3.43vw, 1rem);
+    font-size: clamp(
+      0.88rem /* 14.08px */,
+      1.03rem + 3.43vw /* 16.48px + 3.43vw */,
+      1rem /* 16px */
+    );
     line-height: 1; /* Equivalent to leading-none */
     letter-spacing: -0.02rem;
   }

@@ -12,7 +12,6 @@ interface ModalProjectData {
   slug: string;
 }
 
-// Only valid if the *parent* component is also 'use client'
 interface ModalProps {
   index: number;
   projectsData: ModalProjectData;
@@ -26,7 +25,7 @@ export default function Modal({
 }: ModalProps) {
   const { id, title, date, companyName, slug } = projectsData;
 
-  // This is the main content for each project row.
+  // Main content for each project row
   const content = (
     <div
       onMouseEnter={(e) => manageModal(true, index, e.clientX, e.clientY)}
@@ -38,23 +37,46 @@ export default function Modal({
       "
     >
       <div className="grid grid-cols-2 md:grid-cols-4">
+        {/* ID */}
         <h2 className="number title md:order-1">{id}</h2>
-        <h3 className="name md flex justify-end md:order-3 md:col-span-2 md:inline-flex md:justify-end">
+
+        {/* TITLE with paragraph-1 */}
+        <h3
+          className="
+            name paragraph-1 
+            flex justify-end 
+            md:order-3 md:col-span-2 
+            md:inline-flex md:justify-end
+          "
+        >
           <span className="transition-colors duration-200 ease-out">
             {title}
           </span>
           <img
             src="arrow-up.svg"
             className="size-[1.63rem] md:size-[2.625rem] md:group-hover:invert"
+            alt="arrow icon"
           />
         </h3>
-        <h3 className="date md md:order-2 md:ml-4 md:-translate-x-3/4 md:text-nowrap lg:ml-8">
-          {date}
-        </h3>
+
+        {/* DATE with paragraph-1 */}
         <h3
           className="
-            company-name md col-start-2 row-start-2 text-nowrap
-            text-[#9D9B94] transition-colors duration-200 ease-out
+            date paragraph-1
+            md:order-2 md:ml-4 md:-translate-x-3/4 
+            md:text-nowrap lg:ml-8
+          "
+        >
+          {date}
+        </h3>
+
+        {/* COMPANY NAME */}
+        <h3
+          className="
+            company-name
+            col-start-2 row-start-2
+            text-[#9D9B94] text-nowrap
+            transition-colors duration-200 ease-out
             md:order-4 md:ml-4 md:-translate-x-3/4
             md:text-[1.3125rem] md:text-hero-dark md:group-hover:text-mainbody-weg
             lg:ml-8
@@ -78,7 +100,7 @@ export default function Modal({
     </div>
   );
 
-  // Wrap the entire “content” in a Link to `/projects/${slug}`
+  // Wrap content in a Link
   return (
     <Link href={`/${slug}`} className="block">
       {content}
