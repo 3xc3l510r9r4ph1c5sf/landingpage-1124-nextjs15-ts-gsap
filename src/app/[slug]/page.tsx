@@ -51,8 +51,8 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
   // Get the corresponding content component based on the slug
   const ProjectContent = contentComponents[slug] || (
     <section className="max-w-[84.2rem] px-[0.63rem] pt-20 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] lg:mb-[200px] lg:p-[10rem_1.25rem_0rem_4.5625rem]">
-      <h2 className="main-heading mb-8">Content Coming Soon</h2>
-      <p className="card-paragraph">
+      <h2 className="display-heading mb-8">Content Coming Soon</h2>
+      <p className="text-medium">
         We are working on adding more detailed content for this project. Stay
         tuned!
       </p>
@@ -95,7 +95,7 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
             {project.title} <br />
             Case Study
           </h2>
-          <p className="card-paragraph">
+          <p className="text-medium">
             <strong>Project Name:</strong> {project.title}
             <br />
             <strong>Client:</strong> {project.companyName}
@@ -103,7 +103,7 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
             <strong>Sector:</strong> Digital Education, Technology, Community
             Building
           </p>
-          <p className="card-paragraph">
+          <p className="text-medium">
             <strong>Timeframe:</strong> {project.date}
             <br />
             <strong>Team Composition:</strong> [Briefly mention roles—Product

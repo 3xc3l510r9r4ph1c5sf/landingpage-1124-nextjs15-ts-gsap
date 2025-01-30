@@ -26,16 +26,16 @@ const Process = () => {
         />
       </div>
       <div className="flex flex-col gap-[2.5rem] lg:mb-[500px]">
-        <h2 className="main-heading pt-12 md:pt-0">
+        <h2 className="display-heading pt-12 md:pt-0">
           Explain <br /> better <br /> stories
         </h2>
-        <p className="card-paragraph">
+        <p className="text-medium">
           Elevate your projects with a focus on{' '}
           <b>User-Centered Design and the design thinking process.</b> I
           specialize in creating solutions that prioritize user needs and drive
           results.
         </p>
-        <p className="card-paragraph">
+        <p className="text-medium">
           <b>Through an agile design process</b> grounded in empathy and
           collaboration, I guide projects from ideation to iteration, ensuring
           each step brings us closer to a solution that truly resonates.

@@ -1,10 +1,15 @@
+/* src/styles/global.css */
+
+/* 1) Import Tailwind Layers First */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Base Layer */
+/* 2) Base Layer Overrides & Global Elements */
 @layer base {
-  /* Hide Scrollbars */
+  /************************************
+   * Scrollbar Hiding & Global HTML
+   ************************************/
   ::-webkit-scrollbar {
     display: none;
   }
@@ -12,151 +17,134 @@
     scrollbar-width: none;
   }
 
-  /* CSS Variables */
+  /************************************
+   * CSS Variables
+   ************************************/
   :root {
+    --navbar-height: 3.38rem;
     --about-heading--height: 10.25rem;
     --hero-section--height: calc(
       100svh - var(--navbar-height) - var(--about-heading--height)
     );
-    --navbar-height: 3.38rem;
   }
 
-  /* Global Typography */
+  /************************************
+   * Body & Utility Classes
+   ************************************/
   body {
     font-family: Arial, Helvetica, sans-serif;
   }
 
-  /* Prevent Scrolling */
+  /* Prevent Scrolling on .lock-scroll */
   body.lock-scroll {
     position: fixed;
     clip-path: inset(0);
   }
 
-  /* List Items */
+  /* Base list items */
   li {
-    @apply text-sm;
+    @apply text-sm; /* From your tailwind.config 'sm': 0.875rem */
   }
 }
 
-/* Components Layer */
+/* 3) Components Layer */
 @layer components {
-  /* You can add component-specific styles here */
 }
 
-/* Utilities Layer */
+/* 4) Utilities Layer - Additional Classes */
 @layer utilities {
-  /* Card Paragraph, Text-2 style in Figma */
-  .card-paragraph {
-    @apply text-[0.88rem]  /* Small/default: 14px */
-           md:text-[1.25rem] /* Medium: 20px */
-           lg:text-[2rem]    /* Large: 32px */
-           leading-[0.88rem] /* Small/default: 14px */
-           md:leading-[1.25rem] /* Medium: 20px */
-           lg:leading-[2rem] /* Large: 32px */
-           tracking-[-0.02em]; /* -2% letter-spacing */
+  /************************************
+   * Display Heading (H1 in Figma)
+   ************************************/
+  .display-heading {
+    /* 
+      - Min ~65px (below 520px)
+      - ~100px at 520px (md)
+      - Up to ~130px (above 800px)
+    */
+    font-size: clamp(4.0625rem, 10vw + 2.5rem, 8.125rem);
+    line-height: clamp(4.0625rem, 10vw + 2.5rem, 8.125rem);
+    font-weight: 400; /* Normal */
+    letter-spacing: -0.13rem;
   }
 
-  /* Paragraph 1, Text-1 style in Figma */
-  .paragraph-1 {
-    /* Added the dot prefix */
-    @apply text-[2rem]          /* Small/default: 32px */
-           md:text-[2.75rem]    /* Medium: 44px */
-           lg:text-[3.375rem]   /* Large: 54px */
-           leading-[2.125rem]   /* Small/default: 34px */
-           md:leading-[2.875rem] /* Medium: 46px */
-           lg:leading-[3.5rem]  /* Large: 56px */
-           tracking-[-0.02em]; /* -2% letter-spacing */
-  }
-
-  /* Main Heading, H1 in Figma */
-  .main-heading {
-    /* Font Sizes */
-    font-size: clamp(
-      3.38rem,
-      /* Small/default: 54px */ 0.58rem + 8.39vw,
-      /* Fluid scaling for medium screens */ 8.13rem /* Large: 130px */
-    );
-
-    /* Line Heights */
-    line-height: clamp(
-      3.38rem,
-      /* Small/default: 54px */ 0.58rem + 8.39vw,
-      /* Fluid scaling for medium screens */ 8.13rem /* Large: 130px */
-    );
-
-    /* Other Styles */
-    font-weight: 400; /* Equivalent to font-normal */
-    letter-spacing: -0.13rem; /* Adjust as needed */
-  }
-
-  /* Title, H2 in Figma */
-  .title {
-    @apply text-[2.38rem]        /* Small/default: 38px */
-         md:text-[3.38rem]     /* Medium: 54px */
-         lg:text-[4.75rem]     /* Large: 76px */
-         leading-[2.38rem]     /* Small/default: 38px */
-         md:leading-[3.38rem]  /* Medium: 54px */
-         lg:leading-[4.75rem]  /* Large: 76px */
-         tracking-[-0.02rem]; /* Letter spacing */
-  }
-
-  /* Medium Text */
-  .md-text {
-    /* Renamed to avoid conflict with Tailwind's md: prefix */
-    font-size: clamp(
-      2rem /* 32px */,
-      1.03rem + 3.43vw /* 16.48px + 3.43vw */,
-      3.63rem /* 58.08px */
-    );
-    font-weight: 400; /* Equivalent to font-normal */
-    line-height: clamp(
-      2.13rem /* 34.08px */,
-      1.03rem + 3.43vw /* 16.48px + 3.43vw */,
-      3.63rem /* 58.08px */
-    );
+  /************************************
+   * Section Heading (H2 in Figma)
+   ************************************/
+  .section-heading {
+    /* 
+      - Min ~38px (below 520px)
+      - ~54px at 520px (md)
+      - Up to ~76px (above 800px)
+    */
+    font-size: clamp(2.375rem, 6vw + 1.5rem, 4.75rem);
+    line-height: clamp(2.375rem, 6vw + 1.5rem, 4.75rem);
     letter-spacing: -0.02rem;
   }
 
-  /* Clamp Paragraph 2 */
-  .text-clamp-paragraph-2 {
-    /* Define styles directly without @apply */
-    font-size: clamp(
-      0.88rem /* 14.08px */,
-      0.63rem + 2.4vw /* 10.08px + 2.4vw */,
-      2rem /* 32px */
-    );
-    line-height: clamp(
-      0.88rem /* 14.08px */,
-      0.63rem + 2.4vw /* 10.08px + 2.4vw */,
-      2rem /* 32px */
-    );
+  /************************************
+   * Subheading (H6 in Figma)
+   ************************************/
+  .subheading {
+    /* 
+      - Min ~14px (below 520px)
+      - ~18px at 520px (md)
+      - Up to ~24px (above 800px)
+    */
+    font-size: clamp(0.875rem, 2vw + 0.5rem, 1.5rem);
+    line-height: clamp(0.875rem, 2vw + 0.5rem, 1.5rem);
     letter-spacing: -0.03em;
   }
 
-  /* Small Text */
-  .sm-text {
-    /* Renamed to avoid conflict with Tailwind's sm: prefix */
-    /* Define styles directly without @apply */
-    font-size: clamp(
-      0.88rem /* 14.08px */,
-      1.03rem + 3.43vw /* 16.48px + 3.43vw */,
-      1rem /* 16px */
-    );
-    line-height: 1; /* Equivalent to leading-none */
+  /************************************
+   * Large Body Text (Text-1 in Figma)
+   ************************************/
+  .text-large {
+    /* 
+      - Min ~26px (below 520px)
+      - ~40px at 520px (md)
+      - Up to ~54px (above 800px)
+    */
+    font-size: clamp(1.625rem, 5vw + 1rem, 3.375rem);
+    line-height: clamp(1.75rem, 5vw + 1rem, 3.5rem);
+    letter-spacing: -0.02em;
+  }
+
+  /************************************
+   * Medium Body Text (Text-2 in Figma)
+   ************************************/
+  .text-medium {
+    /* 
+      - Min ~14px (below 520px)
+      - ~20px at 520px (md)
+      - Up to ~32px (above 800px)
+    */
+    font-size: clamp(0.875rem, 2.5vw + 0.5rem, 2rem);
+    line-height: clamp(0.875rem, 2.5vw + 0.5rem, 2rem);
+    letter-spacing: -0.02em;
+  }
+
+  /************************************
+   * Small Body Text (Text-3 in Figma)
+   ************************************/
+  .text-small {
+    /* 
+      - Min ~12px (below 520px)
+      - ~14px at 520px (md)
+      - Up to ~16px (above 800px)
+    */
+    font-size: clamp(0.75rem, 1.5vw + 0.5rem, 1rem);
+    line-height: clamp(0.75rem, 1.5vw + 0.5rem, 1rem);
     letter-spacing: -0.02rem;
   }
 
-  /* Extra Large Text */
-  .xl {
-    @apply text-[0.88rem]
-      leading-none
-      tracking-[-0.02rem];
-  }
-
-  /* Extra Small Text */
-  .xs {
-    @apply text-[1rem]
-      leading-none
-      tracking-[-0.02rem];
+  /************************************
+   * Search SVG Background
+   ************************************/
+  .bg-search-svg {
+    background-image: url('/search.svg'); /* Ensure the path is correct */
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 1rem; /* Adjust size as needed */
   }
 }

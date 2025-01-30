@@ -11,7 +11,7 @@ const Heading = ({
   return (
     <h2
       className={twMerge(
-        'title flex gap-[1.88rem] md:gap-[5.94rem] lg:items-center lg:gap-[7.5rem]',
+        'section-heading flex gap-[1.88rem] md:gap-[5.94rem] lg:items-center lg:gap-[7.5rem]',
         className
       )}
     >

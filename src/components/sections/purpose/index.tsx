@@ -7,7 +7,7 @@ const Purpose = () => {
           alt=""
           className="size-[1.81rem] translate-y-1/4 md:size-10 md:translate-y-0 lg:size-[3.125rem]"
         />
-        <p className="title">Let's craft experiences that matter</p>
+        <p className="section-heading">Let's craft experiences that matter</p>
       </div>
       <div className="flex gap-[1.875rem] px-[0.625rem] lg:mt-[2.5rem] mt-[1.25rem]">
         <img
@@ -15,7 +15,7 @@ const Purpose = () => {
           alt=""
           className="size-[1.81rem] invisible pointer-events-none opacity-0 translate-y-1/4 md:size-10 md:translate-y-0 lg:size-[3.125rem]"
         />
-        <p className="title">Let's design with purpose</p>
+        <p className="section-heading">Let's design with purpose</p>
       </div>
     </section>
   );

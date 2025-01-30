@@ -38,12 +38,12 @@ export default function Modal({
     >
       <div className="grid grid-cols-2 md:grid-cols-4">
         {/* ID */}
-        <h2 className="number title md:order-1">{id}</h2>
+        <h2 className="number section-heading md:order-1">{id}</h2>
 
-        {/* TITLE with paragraph-1 */}
+        {/* section-heading with text-large */}
         <h3
           className="
-            name paragraph-1 
+            name text-large 
             flex justify-end 
             md:order-3 md:col-span-2 
             md:inline-flex md:justify-end
@@ -59,10 +59,10 @@ export default function Modal({
           />
         </h3>
 
-        {/* DATE with paragraph-1 */}
+        {/* DATE with text-large */}
         <h3
           className="
-            date paragraph-1
+            date text-large
             md:order-2 md:ml-4 md:-translate-x-3/4 
             md:text-nowrap lg:ml-8
           "

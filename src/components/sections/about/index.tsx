@@ -19,12 +19,12 @@ const About = () => {
         </div>
       </div>
       <div className="pt-[3.12rem] mb-[100px] md:mb-[150px] lg:mb-[400px]">
-        <p className="paragraph-1 p-[0.63rem] md:p-[1.25rem]">
+        <p className="text-large p-[0.63rem] md:p-[1.25rem]">
           As a dedicated UX/UI Designer and Web Developer, I merge creative
           design flair with precise development to offer user-friendly, visually
           appealing solutions.
         </p>
-        <p className="paragraph-1 mb-[40px] p-[0.63rem] md:p-[1.25rem] lg:mb-[300px]">
+        <p className="text-large mb-[40px] p-[0.63rem] md:p-[1.25rem] lg:mb-[300px]">
           Explore this work to discover how your company can connect with users
           in meaningful and impactful ways.
         </p>
@@ -64,5 +64,5 @@ const Heading = () => {
     }
   }, [startSecondaryHeadingScramble, ref]);
 
-  return <h2 className="title invisible" ref={ref} />;
+  return <h2 className="section-heading invisible" ref={ref} />;
 };

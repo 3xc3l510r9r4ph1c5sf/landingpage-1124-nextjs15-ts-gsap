@@ -9,16 +9,16 @@ const TrainspotContent: React.FC = () => {
       {/* 2. CONTEXT & VISION SECTION */}
       <section className="max-w-[84.2rem] px-[0.63rem] pt-20 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] lg:mb-[200px] lg:p-[10rem_1.25rem_0rem_4.5625rem]">
         <div className="lg:flex lg:gap-[3.75rem]">
-          <h2 className="main-heading mb-8 lg:mb-0">Context &amp; Vision</h2>
+          <h2 className="display-heading mb-8 lg:mb-0">Context &amp; Vision</h2>
           <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
-            <p className="card-paragraph">
+            <p className="text-medium">
               <strong>Mein Bildungsraum</strong> is a nationwide digital
               learning initiative aimed at bridging the gap between education
               and technology. Its mission is to create an inclusive digital
               learning environment that connects learners, educators, and
               educational services—all within one interconnected platform.
             </p>
-            <p className="card-paragraph">
+            <p className="text-medium">
               <b>Trainspot</b> is a specialized tool within this broader
               initiative. It enhances the digital learning ecosystem by
               providing functionalities that help both education providers and
@@ -64,10 +64,10 @@ const TrainspotContent: React.FC = () => {
             <div className="flex gap-[0.625rem] max-w-[55rem]">
               <div className="active-number md text-details-red">01</div>
               <div className="flex flex-col gap-[0.625rem]">
-                <h3 className="paragraph-1">
+                <h3 className="text-large">
                   <strong>Fragmented Learning Landscape:</strong>
                 </h3>
-                <p className="card-paragraph">
+                <p className="text-medium">
                   Institutions and learners struggled to consolidate multiple
                   courses, resources, and tracking in one place.
                 </p>
@@ -77,10 +77,10 @@ const TrainspotContent: React.FC = () => {
             <div className="flex gap-[0.625rem] max-w-[55rem]">
               <div className="active-number md text-details-red">02</div>
               <div className="flex flex-col gap-[0.625rem]">
-                <h3 className="paragraph-1">
+                <h3 className="text-large">
                   <strong>Lack of Seamless Integration:</strong>
                 </h3>
-                <p className="card-paragraph">
+                <p className="text-medium">
                   Existing systems were siloed, complicating collaboration
                   between educators.
                 </p>
@@ -90,10 +90,10 @@ const TrainspotContent: React.FC = () => {
             <div className="flex gap-[0.625rem] max-w-[55rem]">
               <div className="active-number md text-details-red">03</div>
               <div className="flex flex-col gap-[0.625rem]">
-                <h3 className="paragraph-1">
+                <h3 className="text-large">
                   <strong>User Adoption:</strong>
                 </h3>
-                <p className="card-paragraph">
+                <p className="text-medium">
                   Less tech-savvy educators needed an easy-to-use platform to
                   stay motivated.
                 </p>
@@ -105,21 +105,21 @@ const TrainspotContent: React.FC = () => {
 
       {/* 4. PROJECT GOALS & OBJECTIVES SECTION */}
       <section className="max-w-[84.2rem] px-[0.63rem] pt-20 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] lg:mb-[200px] lg:p-[10rem_1.25rem_0rem_4.5625rem]">
-        <h2 className="main-heading mb-8">Project Goals &amp; Objectives</h2>
+        <h2 className="display-heading mb-8">Project Goals &amp; Objectives</h2>
         <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
-          <p className="card-paragraph">
+          <p className="text-medium">
             <strong>Develop an Inclusive Digital Tool:</strong> Ensure
             educators, learners, and service providers have equal access.
           </p>
-          <p className="card-paragraph">
+          <p className="text-medium">
             <strong>Improve User Experience:</strong> Create an intuitive
             interface for scheduling, content access, and progress tracking.
           </p>
-          <p className="card-paragraph">
+          <p className="text-medium">
             <strong>Seamless Integration:</strong> Sync courses and resources
             with minimal setup.
           </p>
-          <p className="card-paragraph">
+          <p className="text-medium">
             <strong>Foster Collaboration:</strong> Promote communication and
             knowledge-sharing via a unified community space.
           </p>
@@ -136,13 +136,15 @@ const TrainspotContent: React.FC = () => {
         "
       >
         <div className="max-w-[84.2rem] mx-auto">
-          <h2 className="main-heading mb-8">My Role &amp; Responsibilities</h2>
-          <p className="card-paragraph mb-6">
+          <h2 className="display-heading mb-8">
+            My Role &amp; Responsibilities
+          </h2>
+          <p className="text-medium mb-6">
             I led the UX/UI design stream, focusing on empathizing with user
             needs and delivering iterative designs in line with our agile
             workflow. Specifically, I:
           </p>
-          <ul className="list-disc ml-4 card-paragraph space-y-3">
+          <ul className="list-disc ml-4 text-medium space-y-3">
             <li>Defined design objectives (accessibility, clarity, etc.).</li>
             <li>Conducted user interviews for insights.</li>
             <li>Led user testing &amp; documented findings.</li>
@@ -153,15 +155,17 @@ const TrainspotContent: React.FC = () => {
 
       {/* 6. Closing / Next Steps Section */}
       <section className="max-w-[84.2rem] mx-auto px-[0.63rem] py-16 md:px-[1.25rem] lg:p-[10rem_4.5625rem_4rem_4.5625rem]">
-        <h2 className="main-heading mb-8">Final Thoughts &amp; Next Steps</h2>
-        <p className="card-paragraph mb-4">
+        <h2 className="display-heading mb-8">
+          Final Thoughts &amp; Next Steps
+        </h2>
+        <p className="text-medium mb-4">
           With Trainspot, we aim to revolutionize digital education by unifying
           learners and educators on one platform. We continue to iterate,
           refining the user journey through frequent feedback and agile
           sprints—building a robust foundation for more seamless, inclusive
           learning experiences.
         </p>
-        <p className="card-paragraph">
+        <p className="text-medium">
           [Add any final metrics, a roadmap for future features, or reflection
           on lessons learned.]
         </p>

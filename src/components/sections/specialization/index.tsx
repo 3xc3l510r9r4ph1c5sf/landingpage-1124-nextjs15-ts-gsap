@@ -6,7 +6,7 @@ const Specialization = () => {
     <section className="w-full pr-5 pt-20 md:pt-28 lg:pt-40 lg:mb-48">
       <div className="flex flex-col lg:flex-row lg:gap-16 w-full">
         {/* Main Heading */}
-        <h2 className="main-heading mb-8 lg:ml-20">Make it Work</h2>
+        <h2 className="display-heading mb-8 lg:ml-20">Make it Work</h2>
         <div className="flex flex-col gap-8 md:gap-12 w-full">
           <Card
             number={1}

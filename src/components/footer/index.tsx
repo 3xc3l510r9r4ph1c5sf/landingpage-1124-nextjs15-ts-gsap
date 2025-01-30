@@ -19,13 +19,13 @@ const Footer: React.FC = () => {
   return (
     <footer className="-z-2 relative -mt-[100vh] h-[200vh]" ref={ref}>
       <div className="sticky top-0 flex h-svh flex-col bg-hero-dark p-[1.875rem_0_0_4.4375rem] text-mainbody-weg [clip-path:_inset(0_0_0_0)]">
-        <h2 className="main-heading flex items-center space-x-2">
+        <h2 className="display-heading flex items-center space-x-2">
           <HeroArrow />
           <span>Let’s talk</span>
         </h2>
         <div className="mt-auto space-y-2 p-[2.1875rem_0rem_1.25rem_0rem] mb-[15px] lg:mb-[30px] not-italic">
-          <p className="card-paragraph">Berlin, Germany</p>
-          <p className="card-paragraph">
+          <p className="text-medium">Berlin, Germany</p>
+          <p className="text-medium">
             Phone: (+49) 17627744274 <br />
             <a
               href="https://linkedin.com/in/harold-cano-cardenas-3a77a92b3"
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
               Xing
             </a>
           </p>
-          <p className="card-paragraph">
+          <p className="text-medium">
             <a
               href="mailto:hcanocardenas@gmail.com"
               className="font-bold hover:underline"
@@ -55,9 +55,9 @@ const Footer: React.FC = () => {
           </p>
 
           {/* Empty paragraph spacer for one line of space */}
-          <p className="card-paragraph">&nbsp;</p>
+          <p className="text-medium">&nbsp;</p>
 
-          <p className="card-paragraph">
+          <p className="text-medium">
             The project source code is freely available on{' '}
             <a
               href="https://github.com/Kano85/landingpage-1124-nextjs15-ts-gsap"
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
             </a>
             .
           </p>
-          <p className="card-paragraph">
+          <p className="text-medium">
             Feel free to visit my{' '}
             <a
               href="https://github.com/Kano85"
