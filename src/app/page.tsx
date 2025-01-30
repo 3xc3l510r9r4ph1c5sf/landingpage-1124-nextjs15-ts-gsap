@@ -3,7 +3,7 @@
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/about';
 import Footer from '@/components/footer';
-import HorizentalSection from '@/components/sections/horizentalScroll';
+import HorizontalSection from '@/components/sections/horizontalScroll';
 import Specialization from '@/components/sections/specialization';
 import Process from '@/components/sections/process';
 import Purpose from '@/components/sections/purpose';
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
       <Hero />
       <main className="bg-mainbody-weg relative z-20">
         <About />
-        <HorizentalSection />
+        <HorizontalSection />
         <Specialization />
         <Works />
         <Process />

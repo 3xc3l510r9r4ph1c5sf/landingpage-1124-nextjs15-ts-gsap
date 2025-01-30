@@ -1,4 +1,7 @@
+//src/components/sections/about/index.tsx
+
 'use client';
+
 import { useAppContext } from '@/components/context/AppContext';
 import { useEffect, useState } from 'react';
 import { useScramble } from 'use-scramble';
@@ -8,14 +11,17 @@ const About = () => {
 
   return (
     <section>
-      <div className="relative flex h-[--about-heading--height] flex-col justify-center pl-[2.29rem] md:pl-[4.38rem]">
+      <div className="relative flex h-[--about-heading--height] flex-col justify-center pl-[2.29rem] md:pl-[4.38rem] pr-2.5 md:pr-5 lg:pr-5">
         <Heading />
-        <div className="mt-[0.62rem] flex justify-between pb-5">
-          <p className="sm invisible" ref={label} />
+        <div className="mt-[0.62rem] flex justify-between items-center pb-5">
+          <p className="text-small invisible" ref={label} />
           <button
-            className="invisible absolute bottom-10 right-6 text-sm"
+            className="text-small invisible"
             ref={scrollButton}
-          />
+            aria-label="Scroll Down"
+          >
+            (This Way ↓)
+          </button>
         </div>
       </div>
       <div className="pt-[3.12rem] mb-[100px] md:mb-[150px] lg:mb-[400px]">

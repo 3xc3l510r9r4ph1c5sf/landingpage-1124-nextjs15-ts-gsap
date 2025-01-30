@@ -111,12 +111,8 @@ export default function Works() {
   );
 
   return (
-    <section className="relative pt-20 md:pt-[7.12rem] lg:pt-40">
+    <section className="relative pt-[40px] md:pt-[60px] lg:pt-[100px]">
       <Heading className="mb-10 px-[0.63rem]">
-        <span className="md:hidden">
-          Enjoy user- <br className="block md:hidden" /> friendly
-          <br className="hidden md:block lg:hidden" /> designs
-        </span>
         <span className="hidden md:inline">Recent projects</span>
       </Heading>
       <div

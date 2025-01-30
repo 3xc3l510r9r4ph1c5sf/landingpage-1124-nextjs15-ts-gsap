@@ -1,3 +1,5 @@
+//src/components/hooks/useMedia.tsx
+
 import { useState, useEffect } from 'react';
 
 const useMedia = (query: string): boolean => {

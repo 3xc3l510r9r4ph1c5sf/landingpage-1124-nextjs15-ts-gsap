@@ -1,10 +1,13 @@
+//src/components/sections/horizontalScroll/index.tsx
+
 'use client';
+
 import { useScroll, useSpring, useTransform } from 'motion/react';
 import Heading from '../../common/heading/index';
 import { useLayoutEffect, useRef, useState } from 'react';
 import Stacks from './stacks';
 
-const HorizentalSection = () => {
+const HorizontalSection = () => {
   const container = useRef<null>(null);
   const stackRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState<{
@@ -56,4 +59,4 @@ const HorizentalSection = () => {
   );
 };
 
-export default HorizentalSection;
+export default HorizontalSection;

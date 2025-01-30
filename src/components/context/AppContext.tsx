@@ -1,4 +1,5 @@
 // src/components/context/AppContext.tsx
+
 'use client';
 
 import { animate, useAnimationControls } from 'motion/react';
