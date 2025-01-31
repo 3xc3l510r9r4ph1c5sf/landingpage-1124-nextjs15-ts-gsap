@@ -17,7 +17,7 @@ export const projectData: ProjectData[] = [
     date: '2023-2024',
     imageUrl: '/project1-hero.png',
     title: 'Trainspot',
-    color: 'hero-dark',
+    color: '#0C0C0C',
     slug: 'trainspot',
   },
   {

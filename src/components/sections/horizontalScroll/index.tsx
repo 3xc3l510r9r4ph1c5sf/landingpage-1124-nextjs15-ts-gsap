@@ -50,7 +50,7 @@ const HorizontalSection = () => {
           </Heading>
           <Stacks ref={stackRef} x={xSpring} />
 
-          <button className="xs absolute bottom-[0.64rem] right-[0.64rem] p-4">
+          <button className="xs absolute bottom-[0.64rem] right-[0.64rem] py-4 px-0">
             (Keep going ↓ )
           </button>
         </div>

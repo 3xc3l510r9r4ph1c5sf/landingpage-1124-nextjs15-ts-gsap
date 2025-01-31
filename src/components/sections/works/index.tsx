@@ -1,3 +1,5 @@
+// src/components/sections/works/index.tsx
+
 'use client';
 
 import styles from './style.module.scss';
@@ -111,9 +113,9 @@ export default function Works() {
   );
 
   return (
-    <section className="relative pt-[40px] md:pt-[60px] lg:pt-[100px]">
-      <Heading className="mb-10 px-[0.63rem]">
-        <span className="hidden md:inline">Recent projects</span>
+    <section className="relative pt-[170px] md:pt-[170px] lg:pt-[250px] w-full">
+      <Heading className="mb-[20px] md:mb-[30px] lg:mb-[40px] px-[0.63rem]">
+        <span>Recent projects</span>
       </Heading>
       <div
         onMouseMove={(e) => {
@@ -131,6 +133,7 @@ export default function Works() {
             />
           ))}
         </div>
+        {/* Modal and Cursor Components */}
         <>
           <motion.div
             ref={modalContainer}
@@ -157,7 +160,7 @@ export default function Works() {
               })}
             </div>
           </motion.div>
-          {/* cursor  */}
+          {/* Custom Cursor */}
           <motion.div
             ref={cursor}
             style={{ pointerEvents: 'auto' }}

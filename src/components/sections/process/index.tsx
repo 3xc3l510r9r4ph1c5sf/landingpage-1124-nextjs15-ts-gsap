@@ -3,29 +3,45 @@ import Image from 'next/image';
 const Process = () => {
   return (
     <section
-      className="bg-mainbody-weg
-                   p-[5rem_0.625rem_0.625rem_0.625rem] 
-                   sm:p-[4rem_0.5rem] 
-                   md:grid md:grid-cols-2 md:gap-[1.578rem] 
-                   md:p-[7.125rem_1.25rem_0.625rem_1.25rem] 
-                   md:pl-[clamp(0.4453125rem,_-10.4222rem_+_23.3397vw,_10rem)]"
+      className="
+        bg-mainbody-weg
+        flex flex-col            
+        p-4                  
+        md:gap-[30px]          
+        lg:flex lg:flex-row    
+        lg:gap-[60px]         
+        lg:py-20                
+        lg:justify-center       
+      "
     >
+      {/* IMAGE BLOCK */}
       <div
-        className="img relative
-                  h-[30.3125rem] 
-                  w-full 
-                  md:sticky md:top-[3.75rem] 
-                  md:w-11/12 lg:w-[clamp(19rem,6.4885rem+26.8702vw,30rem)]"
+        className="
+          relative
+          h-[30.3125rem]
+          w-full
+          md:sticky md:top-[3.75rem] 
+          lg:max-w-[380px]            
+          lg:flex-shrink-0            
+        "
       >
         <Image
           fill
           src="/design-process.png"
           alt="design process"
-          className="object-cover object-center 
-                 md:sticky md:top-[3.75rem]"
+          className="object-cover object-center"
         />
       </div>
-      <div className="flex flex-col gap-[2.5rem] lg:mb-[500px]">
+
+      {/* TEXT BLOCK */}
+      <div
+        className="
+          flex flex-col
+          gap-10
+          lg:max-w-[500px]  
+          lg:mb-[500px]   
+        "
+      >
         <h2 className="display-heading pt-12 md:pt-0">
           Explain <br /> better <br /> stories
         </h2>

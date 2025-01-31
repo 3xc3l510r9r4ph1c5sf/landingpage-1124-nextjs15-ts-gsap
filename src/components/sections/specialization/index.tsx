@@ -1,9 +1,11 @@
+//src/components/sections/specialization/index.tsx
+
 import React from 'react';
 import { Card } from './card';
 
 const Specialization = () => {
   return (
-    <section className="w-full pr-5 pt-20 md:pt-28 lg:pt-40 lg:mb-48">
+    <section className="w-full pl-2.5 pr-2.5 pt-20 md:pl-5 md:pr-5 md:pt-[60px] lg:pl-5 lg:pr-5 lg:pt-[100px] ">
       <div className="flex flex-col lg:flex-row lg:gap-16 w-full">
         {/* Main Heading */}
         <h2 className="display-heading mb-8 lg:ml-20">Make it Work</h2>
@@ -23,7 +25,7 @@ const Specialization = () => {
             heading="Design Excellence"
             paragraph="With a college degree and experience in large companies, I create visually appealing and intuitive user interfaces that maintain brand consistency and resonate with target audiences."
           />
-          <button className="relative self-start before:absolute before:-bottom-1 before:left-0 before:right-0 before:h-px before:w-full before:bg-hero-dark">
+          <button className="relative self-end text-right  before:absolute before:-bottom-1 before:left-0 before:right-0 before:h-px before:w-full before:bg-hero-dark">
             Let's work together
           </button>
         </div>

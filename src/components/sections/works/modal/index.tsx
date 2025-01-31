@@ -1,5 +1,4 @@
 // src/components/sections/works/modal/index.tsx
-
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -25,27 +24,64 @@ export default function Modal({
 }: ModalProps) {
   const { id, title, date, companyName, slug } = projectsData;
 
+  // Function to handle hover events only on md screens and larger
+  const handleHover = (e: React.MouseEvent, active: boolean) => {
+    if (window.innerWidth >= 768) {
+      // 768px is the default breakpoint for `md` in Tailwind
+      manageModal(active, index, e.clientX, e.clientY);
+    }
+  };
+
   // Main content for each project row
   const content = (
     <div
-      onMouseEnter={(e) => manageModal(true, index, e.clientX, e.clientY)}
-      onMouseLeave={(e) => manageModal(false, index, e.clientX, e.clientY)}
+      onMouseEnter={(e) => handleHover(e, true)}
+      onMouseLeave={(e) => handleHover(e, false)}
       className="
-        group cursor-pointer border-t-[3px] p-[0.63rem]
+        group cursor-pointer border-t-[3px] 
         transition-colors duration-300 ease-in
         md:hover:bg-hero-dark md:hover:text-white
+        w-full px-[10px] pt-[10px] md:px-0 md:pt-0
       "
     >
-      <div className="grid grid-cols-2 md:grid-cols-4">
-        {/* ID */}
-        <h2 className="number section-heading md:order-1">{id}</h2>
+      <div className="flex flex-row sm:flex-row p-5 justify-between items-center w-full">
+        {/* Container for ID and DATE + COMPANY NAME */}
+        <div className="flex flex-col gap-[10px] md:flex-row md:items-center md:gap-4 lg:gap-8">
+          {/* ID */}
+          <h2 className="number section-heading">{id}</h2>
 
-        {/* section-heading with text-large */}
+          {/* Container for DATE and COMPANY NAME */}
+          <div className="flex flex-col items-start">
+            {/* COMPANY NAME with .text-small style */}
+            <h3
+              className="
+                company-name
+                text-small
+                transition-colors duration-200 ease-out
+                md:text-hero-dark md:group-hover:text-mainbody-weg
+              "
+            >
+              {companyName}
+            </h3>
+
+            {/* DATE with .subheading class */}
+            <h3
+              className="
+                date subheading
+                mt-[4px] md:mt-[4px] lg:mt-[4px]
+              "
+            >
+              {date}
+            </h3>
+          </div>
+        </div>
+
+        {/* Title with arrow icon */}
         <h3
           className="
-            name text-large 
+            name  text-medium 
+    md:text-large lg:text-large
             flex justify-end 
-            md:order-3 md:col-span-2 
             md:inline-flex md:justify-end
           "
         >
@@ -58,36 +94,10 @@ export default function Modal({
             alt="arrow icon"
           />
         </h3>
-
-        {/* DATE with text-large */}
-        <h3
-          className="
-            date text-large
-            md:order-2 md:ml-4 md:-translate-x-3/4 
-            md:text-nowrap lg:ml-8
-          "
-        >
-          {date}
-        </h3>
-
-        {/* COMPANY NAME */}
-        <h3
-          className="
-            company-name
-            col-start-2 row-start-2
-            text-[#9D9B94] text-nowrap
-            transition-colors duration-200 ease-out
-            md:order-4 md:ml-4 md:-translate-x-3/4
-            md:text-[1.3125rem] md:text-hero-dark md:group-hover:text-mainbody-weg
-            lg:ml-8
-          "
-        >
-          {companyName}
-        </h3>
       </div>
 
       {/* Mobile-only image block */}
-      <div className="relative my-[0.63rem] h-72 w-full bg-hero-dark p-[1.41rem_3.1rem] md:hidden">
+      <div className="relative my-[0.63rem] h-72 w-[calc(100%-20px)] mx-[10px] bg-hero-dark p-[1.41rem_3.1rem] md:hidden">
         <div className="relative size-full">
           <Image
             src="/project-1.png"
@@ -102,7 +112,7 @@ export default function Modal({
 
   // Wrap content in a Link
   return (
-    <Link href={`/${slug}`} className="block">
+    <Link href={`/${slug}`} className="block w-full">
       {content}
     </Link>
   );
