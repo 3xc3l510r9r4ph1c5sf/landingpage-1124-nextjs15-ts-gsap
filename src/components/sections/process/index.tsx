@@ -8,10 +8,10 @@ const Process = () => {
         flex flex-col            
         p-4                  
         md:gap-[30px]          
-        lg:flex lg:flex-row    
+        md:flex md:flex-row    
         lg:gap-[60px]         
-        lg:py-20                
-        lg:justify-center       
+        md:py-20                
+        md:justify-center       
       "
     >
       {/* IMAGE BLOCK */}
@@ -37,8 +37,13 @@ const Process = () => {
       <div
         className="
           flex flex-col
-          gap-10
-          lg:max-w-[500px]  
+          gap-5
+          md:gap-10
+          lg:gap-10
+          md:max-w-[380px]  
+          lg:max-w-[500px]
+           mb-[200px]    
+          md:mb-[350px]   
           lg:mb-[500px]   
         "
       >
