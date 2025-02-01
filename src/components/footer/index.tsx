@@ -19,10 +19,12 @@ const Footer: React.FC = () => {
   return (
     <footer className="-z-2 relative -mt-[100vh] h-[200vh]" ref={ref}>
       <div className="sticky top-0 flex h-svh flex-col bg-hero-dark p-[1.875rem_0_0_4.4375rem] text-mainbody-weg [clip-path:_inset(0_0_0_0)]">
-        <h2 className="display-heading flex items-center space-x-2">
-          <HeroArrow />
-          <span>Let’s talk</span>
-        </h2>
+        {/* <h1 className="display-heading absolute bottom-9 left-[2.29rem] md:left-[4.38rem]">
+        <HeroArrow /> <span>Create an Impact</span>
+      </h1> */}
+        <h1 className="display-heading  absolute left-[2.29rem] md:left-[4.38rem]">
+          <HeroArrow /> <span>Let’s talk</span>
+        </h1>
         <div className="mt-auto space-y-2 p-[2.1875rem_0rem_1.25rem_0rem] mb-[15px] lg:mb-[30px] not-italic">
           <p className="text-medium">Berlin, Germany</p>
           <p className="text-medium">
@@ -58,7 +60,7 @@ const Footer: React.FC = () => {
           <p className="text-medium">&nbsp;</p>
 
           <p className="text-medium">
-            The project source code is freely available on{' '}
+            Open source project available in{' '}
             <a
               href="https://github.com/Kano85/landingpage-1124-nextjs15-ts-gsap"
               target="_blank"
@@ -67,7 +69,6 @@ const Footer: React.FC = () => {
             >
               GitHub
             </a>
-            .
           </p>
           <p className="text-medium">
             Feel free to visit my{' '}
@@ -77,9 +78,9 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
               className="font-bold hover:underline"
             >
-              GitHub profile
+              Profile
             </a>{' '}
-            to discover more projects.
+            to discover more
           </p>
         </div>
       </div>

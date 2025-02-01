@@ -12,7 +12,7 @@ const Heading = ({
   return (
     <h2
       className={twMerge(
-        'section-heading flex items-center gap-[5px] md:gap-[10px] lg:gap-[10px] ml-[35px] mr-[10px] md:ml-[50px] md:mr-[20px] lg:ml-[50px] lg:mr-[20px]',
+        'section-heading flex items-center ml-[50px] mr-[10px] md:ml-[65px] md:mr-[10px] lg:ml-[90px] lg:mr-[20px]',
         className
       )}
     >

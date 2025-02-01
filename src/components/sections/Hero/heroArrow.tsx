@@ -1,5 +1,8 @@
+// src/components/sections/Hero/heroArrow.tsx
+
 'use client';
-import { motion } from 'motion/react';
+
+import { motion } from 'framer-motion'; // Ensure you import from 'framer-motion'
 import { useAppContext } from '../../context/AppContext';
 
 const HeroArrow = () => {
@@ -9,7 +12,8 @@ const HeroArrow = () => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 35 35"
-      className="inline-block [--size:2.388rem] md:[--size:3.1rem] lg:[--size:5.5625rem]"
+      className="inline-block [--size:3.6rem] md:[--size:4.1rem] lg:[--size:5.56rem] -mt-[10px] md:-mt-[12px] lg:-mt-[20px]" // Add negative margin-top
+      style={{ verticalAlign: 'middle' }} // Ensure the arrow aligns with the text
       variants={{
         hidden: {
           width: '0rem',
