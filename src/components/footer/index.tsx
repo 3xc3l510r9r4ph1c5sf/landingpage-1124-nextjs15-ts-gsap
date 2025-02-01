@@ -1,9 +1,16 @@
+// src/components/footer/index.tsx
+
 'use client';
+
 import { useInView } from 'motion/react';
 import HeroArrow from '../sections/Hero/heroArrow';
 import { useEffect, useRef } from 'react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  id?: string;
+}
+
+const Footer: React.FC<FooterProps> = ({ id }) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref);
 
@@ -17,12 +24,9 @@ const Footer: React.FC = () => {
   }, [inView]);
 
   return (
-    <footer className="-z-2 relative -mt-[100vh] h-[200vh]" ref={ref}>
+    <footer id={id} className="-z-2 relative -mt-[100vh] h-[200vh]" ref={ref}>
       <div className="sticky top-0 flex h-svh flex-col bg-hero-dark p-[1.875rem_0_0_4.4375rem] text-mainbody-weg [clip-path:_inset(0_0_0_0)]">
-        {/* <h1 className="display-heading absolute bottom-9 left-[2.29rem] md:left-[4.38rem]">
-        <HeroArrow /> <span>Create an Impact</span>
-      </h1> */}
-        <h1 className="display-heading  absolute left-[2.29rem] md:left-[4.38rem]">
+        <h1 className="display-heading absolute left-[2.29rem] md:left-[4.38rem]">
           <HeroArrow /> <span>Let’s talk</span>
         </h1>
         <div className="mt-auto space-y-2 p-[2.1875rem_0rem_1.25rem_0rem] mb-[15px] lg:mb-[30px] not-italic">
@@ -55,10 +59,8 @@ const Footer: React.FC = () => {
               hcanocardenas@gmail.com
             </a>
           </p>
-
           {/* Empty paragraph spacer for one line of space */}
           <p className="text-medium">&nbsp;</p>
-
           <p className="text-medium">
             Open source project available in{' '}
             <a

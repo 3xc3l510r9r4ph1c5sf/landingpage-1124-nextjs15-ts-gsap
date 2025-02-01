@@ -2,7 +2,6 @@
 
 import { use } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { projectData } from '@/components/sections/works/projectData';
 import RelatedProjectsSection from '@/components/projects/RelatedProjectsSection'; // Import the new component
 import { getRandomItems } from '@/utils/randomSelection'; // Import the utility function

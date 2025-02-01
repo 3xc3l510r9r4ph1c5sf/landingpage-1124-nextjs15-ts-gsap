@@ -16,6 +16,11 @@ interface ModalState {
   index: number;
 }
 
+// Add a props interface that includes the optional id
+interface WorksProps {
+  id?: string;
+}
+
 const scaleAnimation: Variants = {
   initial: { scale: 0, x: '-50%', y: '-50%' },
   enter: {
@@ -48,7 +53,7 @@ const cursorAnimation: Variants = {
   },
 };
 
-export default function Works() {
+export default function Works({ id }: WorksProps) {
   const [modal, setModal] = useState<ModalState>({ active: false, index: 0 });
   const { active, index } = modal;
 
@@ -113,7 +118,10 @@ export default function Works() {
   );
 
   return (
-    <section className="relative pt-[170px] md:pt-[170px] lg:pt-[250px] w-full">
+    <section
+      id={id}
+      className="relative pt-[170px] md:pt-[170px] lg:pt-[250px] w-full"
+    >
       <Heading className="mb-[20px] md:mb-[30px] lg:mb-[40px] px-[0.63rem]">
         <span>Recent projects</span>
       </Heading>

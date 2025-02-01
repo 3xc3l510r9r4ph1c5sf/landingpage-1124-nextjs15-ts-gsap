@@ -1,4 +1,4 @@
-//src/app/page.tsx
+// src/app/page.tsx
 
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/about';
@@ -7,10 +7,9 @@ import HorizontalSection from '@/components/sections/horizontalScroll';
 import Specialization from '@/components/sections/specialization';
 import Process from '@/components/sections/process';
 import Purpose from '@/components/sections/purpose';
-import { Metadata } from 'next';
 import Works from '@/components/sections/works';
 
-const Home: React.FC = () => {
+export default function Home() {
   return (
     <>
       <Hero />
@@ -18,13 +17,14 @@ const Home: React.FC = () => {
         <About />
         <HorizontalSection />
         <Specialization />
-        <Works />
+        {/* Add this "id" */}
+        <Works id="projects" />
         <Process />
         <Purpose />
       </main>
-      <Footer />
+
+      {/* If you want the entire footer to be the target, add "id" here */}
+      <Footer id="contact" />
     </>
   );
-};
-
-export default Home;
+}

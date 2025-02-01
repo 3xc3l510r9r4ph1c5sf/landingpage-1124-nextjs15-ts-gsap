@@ -1,34 +1,24 @@
-//src/components/Navbar/TextHover.tsx
+// src/components/Navbar/TextHover.tsx
 
 'use client';
 
-interface TextHoverProps {
-  title1: string;
-  title2: string;
+interface TtextHoverProps {
+  titile1: string;
+  titile2: string;
 }
 
-const TextHover: React.FC<TextHoverProps> = ({ title1, title2 }) => {
+export default function TextHover({ titile1, titile2 }: TtextHoverProps) {
   return (
-    <div className="group overflow-hidden cursor-pointer transition-all ease-in-out duration-200 inline-block">
-      <div className="relative transition-all ease-in-out duration-500">
-        <div>
-          {/* First line slides up on hover */}
-          <h1 className="translate-y-[0%] group-hover:translate-y-[-100%] absolute left-0 transition-all ease-in-out duration-500">
-            <div className="translate-y-[0%] group-hover:translate-y-[-100%] transition-all ease-in-out duration-500">
-              {title1}
-            </div>
-          </h1>
-
-          {/* Second line slides in from below on hover */}
-          <h1 className="relative transition-all ease-in-out duration-500">
-            <div className="translate-y-[100%] group-hover:translate-y-[0%] transition-all ease-in-out duration-500">
-              {title2}
-            </div>
-          </h1>
-        </div>
+    <div className="group relative inline-block overflow-hidden cursor-pointer">
+      <div className="relative">
+        <span className="block transition-transform duration-500 ease-in-out group-hover:-translate-y-full">
+          {titile1}
+        </span>
+        <span className="block absolute left-0 top-0 transition-transform duration-500 ease-in-out translate-y-full group-hover:translate-y-0">
+          {titile2}
+        </span>
       </div>
+      <div className="mt-1 h-0.5 bg-current w-0 group-hover:w-full transition-all duration-500 ease-in-out"></div>
     </div>
   );
-};
-
-export default TextHover;
+}
