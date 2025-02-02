@@ -37,8 +37,7 @@ export default function RootLayout({
           <Providers>
             <Navbar />
             <PreLoader />
-            {children}
-            <TailwindIndicator />
+            {children} <TailwindIndicator />
           </Providers>
         </AppProvider>
       </body>

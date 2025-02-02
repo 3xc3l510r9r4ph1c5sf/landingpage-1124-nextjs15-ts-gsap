@@ -10,7 +10,7 @@ const About = () => {
   const { label, scrollButton } = useAppContext();
 
   return (
-    <section>
+    <section className="lg:mt-[3.38rem]">
       <div className="relative flex h-[--about-heading--height] flex-col justify-center pl-[2.29rem] md:pl-[4.38rem] pr-2.5 md:pr-5 lg:pr-5">
         <Heading />
         <div className="mt-[0.62rem] flex justify-between items-center pb-5">

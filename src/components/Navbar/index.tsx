@@ -1,11 +1,12 @@
+// src/components/Navbar/index.tsx
 'use client';
 
 import { useState } from 'react';
 import { useScroll, useMotionValueEvent, motion } from 'framer-motion';
 import { usePathname, useRouter } from 'next/navigation';
 import MobileNav from './MobileNav';
-import NavLink from './Navlink'; // For links with text hover & transition routing
-import TextHover from './TextHover'; // Reused for custom Home markup
+import NavLink from './Navlink';
+import TextHover from './TextHover';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
@@ -77,6 +78,13 @@ export default function Navbar() {
 
   return (
     <>
+      {/* 
+        Placeholder Spacer: This div sits in the document flow and has 
+        the same height as your nav and the bg-hero-dark color. 
+        It ensures that even when the fixed nav slides out, the spacing f the rest component remains
+      */}
+      {/* <div className="hidden lg:block h-[var(--navbar-height)]"></div> */}
+
       {/* Desktop Navigation for lg screens */}
       <motion.nav
         variants={navVariants}
@@ -84,10 +92,10 @@ export default function Navbar() {
         className="
           fixed top-0 left-0 z-50 w-full 
           h-[var(--navbar-height)] backdrop-blur-md bg-hero-dark/70 
-          px-6 py-4 hidden lg:flex items-center justify-between
+          px-6 py-4 hidden lg:flex items-center justify-between text-details-white
         "
       >
-        <ul className="flex gap-8">
+        <ul className="flex gap-8 ">
           {navItems.map((item) => {
             if (item.href === '/#contact') {
               return (
@@ -95,9 +103,9 @@ export default function Navbar() {
                   <a
                     href={item.href}
                     onClick={handleContactClick}
-                    className="text-lg"
+                    className="group relative inline-block overflow-hidden cursor-pointer z-10 text-lg"
                   >
-                    {item.title}
+                    <TextHover titile1={item.title} titile2={item.title} />
                   </a>
                 </li>
               );
@@ -107,23 +115,23 @@ export default function Navbar() {
                   <a
                     href={item.href}
                     onClick={handleProjectsClick}
-                    className="text-lg"
+                    className="group relative inline-block overflow-hidden cursor-pointer z-10 text-lg"
                   >
-                    {item.title}
+                    <TextHover titile1={item.title} titile2={item.title} />
                   </a>
                 </li>
               );
             } else if (item.href === '#hero') {
               // Special handling for Home:
               // If you're already on the home page, trigger a smooth scroll.
-              // Otherwise, use the NavLink (which navigates to home).
+              // Otherwise, use NavLink to navigate to home.
               if (pathname === '/') {
                 return (
                   <li key={item.id} className="relative">
                     <a
                       href={item.href}
                       onClick={handleHomeClick}
-                      className="group relative inline-block overflow-hidden cursor-pointer z-10 text-lg"
+                      className="group relative inline-block overflow-hidden cursor-pointer z-10 text-lg "
                     >
                       <TextHover titile1={item.title} titile2={item.title} />
                     </a>
@@ -132,7 +140,7 @@ export default function Navbar() {
               } else {
                 return (
                   <NavLink key={item.id} href={item.href}>
-                    {item.title}
+                    <TextHover titile1={item.title} titile2={item.title} />
                   </NavLink>
                 );
               }
@@ -140,7 +148,7 @@ export default function Navbar() {
               // Fallback: use NavLink for any other links.
               return (
                 <NavLink key={item.id} href={item.href}>
-                  {item.title}
+                  <TextHover titile1={item.title} titile2={item.title} />
                 </NavLink>
               );
             }

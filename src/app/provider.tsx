@@ -75,7 +75,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         };
       }}
     >
-      <main className="">{children}</main>
+      <main className="bg-hero-dark">{children}</main>
 
       <div
         ref={firstLayer}
