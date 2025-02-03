@@ -3,7 +3,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/Navbar/Navbar';
 import PreLoader from '@/components/Preloader';
 import { TailwindIndicator } from '@/components/debugger/tailwindIndicator';
 import { AppProvider } from '../components/context/AppContext';

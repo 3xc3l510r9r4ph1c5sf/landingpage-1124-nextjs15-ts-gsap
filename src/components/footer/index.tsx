@@ -1,5 +1,4 @@
 // src/components/footer/index.tsx
-
 'use client';
 
 import { useInView } from 'motion/react';
@@ -14,14 +13,7 @@ const Footer: React.FC<FooterProps> = ({ id }) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref);
 
-  useEffect(() => {
-    if (inView && ref.current) {
-      const navbar = document.querySelector('nav');
-      if (navbar) {
-        navbar.style.zIndex = '-999';
-      }
-    }
-  }, [inView]);
+  useEffect(() => {}, [inView]);
 
   return (
     <footer id={id} className="-z-2 relative -mt-[100vh] h-[200vh]" ref={ref}>
