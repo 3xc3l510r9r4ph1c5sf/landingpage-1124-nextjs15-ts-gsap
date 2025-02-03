@@ -62,9 +62,13 @@ const TrainspotContent: React.FC = () => {
           <div className="flex flex-col gap-4">
             {/* Example Items */}
             <div className="flex gap-[0.625rem] max-w-[55rem]">
-              <div className="active-number md text-details-red">01</div>
+              <div className=" text-medium active-number md text-details-red">
+                <strong>01</strong>
+              </div>
               <div className="flex flex-col gap-[0.625rem]">
-                <h3 className="text-large">Fragmented Learning Landscape:</h3>
+                <h3 className="text-medium">
+                  <strong>Fragmented Learning Landscape:</strong>
+                </h3>
                 <p className="text-medium">
                   Institutions and learners struggled to consolidate multiple
                   courses, resources, and tracking in one place.
@@ -73,9 +77,11 @@ const TrainspotContent: React.FC = () => {
             </div>
 
             <div className="flex gap-[0.625rem] max-w-[55rem]">
-              <div className="active-number md text-details-red">02</div>
+              <div className=" text-medium active-number md text-details-red">
+                <strong>02</strong>
+              </div>
               <div className="flex flex-col gap-[0.625rem]">
-                <h3 className="text-large">
+                <h3 className="text-medium">
                   <strong>Lack of Seamless Integration:</strong>
                 </h3>
                 <p className="text-medium">
@@ -86,9 +92,11 @@ const TrainspotContent: React.FC = () => {
             </div>
 
             <div className="flex gap-[0.625rem] max-w-[55rem]">
-              <div className="active-number md text-details-red">03</div>
+              <div className=" text-medium active-number md text-details-red">
+                <strong>03</strong>
+              </div>
               <div className="flex flex-col gap-[0.625rem]">
-                <h3 className="text-large">
+                <h3 className="text-medium">
                   <strong>User Adoption:</strong>
                 </h3>
                 <p className="text-medium">

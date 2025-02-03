@@ -90,7 +90,7 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
         </div>
 
         <div className="flex flex-col gap-[2.5rem] pt-12 md:pt-0 lg:mb-[500px]">
-          <h2 className="main-heading">
+          <h2 className="display-heading">
             {project.title} <br />
             Case Study
           </h2>

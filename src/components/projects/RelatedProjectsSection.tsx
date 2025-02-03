@@ -23,7 +23,7 @@ const RelatedProjectsSection: React.FC<RelatedProjectsSectionProps> = ({
     <section className="w-full bg-hero-dark text-mainbody-weg py-16 px-[0.63rem] sm:px-[4rem_0.5rem] md:px-[1.25rem] lg:px-[10rem_4.5625rem_4rem_4.5625rem]">
       <div className="max-w-[84.2rem] mx-auto">
         {/* Section Heading */}
-        <h2 className="display-heading mb-8">Other Projects You Might Like</h2>
+        <h2 className="section-heading mb-8">Other Projects You Might Like</h2>
 
         {/* Card Container */}
         <div className="w-full flex flex-wrap gap-6">

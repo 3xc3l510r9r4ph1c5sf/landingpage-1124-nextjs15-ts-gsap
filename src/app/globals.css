@@ -40,11 +40,6 @@
     position: fixed;
     clip-path: inset(0);
   }
-
-  /* Base list items */
-  li {
-    @apply text-sm; /* From your tailwind.config 'sm': 0.875rem */
-  }
 }
 
 /* 3) Components Layer */
