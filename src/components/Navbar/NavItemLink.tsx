@@ -58,6 +58,7 @@ export const NavItemLink: React.FC<NavItemLinkProps> = ({ item }) => {
   return (
     <Link
       href={item.href}
+      scroll={false} // Disable Next.js's auto-scroll
       className="group relative inline-block overflow-hidden cursor-pointer z-10 text-lg"
     >
       <TextHover titile1={item.label} titile2={item.label} />

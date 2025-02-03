@@ -1,10 +1,26 @@
 // src/components/Navbar/MobileNav.tsx
 'use client';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from 'framer-motion';
 import { navItems } from '@/config/navItems';
 import { NavItemLink } from './NavItemLink';
+
+const navVariants = {
+  hidden: {
+    y: '-100%',
+    transition: { ease: [0.76, 0, 0.24, 1], duration: 0.7 },
+  },
+  visible: {
+    y: 0,
+    transition: { ease: [0.76, 0, 0.24, 1], duration: 0.7 },
+  },
+};
 
 const menuVariants = {
   initial: { y: '-100%' },
@@ -20,12 +36,38 @@ const menuVariants = {
 
 export function MobileNav() {
   const [toggle, setToggle] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  // Evitar scroll en el fondo cuando el menú móvil está abierto
+  useEffect(() => {
+    if (toggle) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    // Cleanup para restaurar el scroll si el componente se desmonta
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [toggle]);
+
+  // Ocultar/mostrar header según scroll
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const prev = scrollY.getPrevious();
+    if (prev && latest > prev) setHidden(true);
+    else setHidden(false);
+  });
 
   return (
     <>
-      {/* "Hamburger" button (only visible on small screens) */}
-      <div className="lg:hidden h-[var(--navbar-height)] px-4 sticky top-0 z-50 bg-hero-dark backdrop-blur-md flex items-center justify-end">
-        <button onClick={() => setToggle(true)} aria-label="Open mobile menu">
+      {/* Header móvil */}
+      <motion.div
+        variants={navVariants}
+        animate={hidden ? 'hidden' : 'visible'}
+        className="lg:hidden fixed top-0 left-0 w-full h-[var(--navbar-height)] px-4 bg-hero-dark/70 backdrop-blur-md flex items-center justify-end z-50"
+      >
+        <button onClick={() => setToggle(true)} aria-label="Abrir menú móvil">
           <svg
             fill="none"
             stroke="currentColor"
@@ -40,9 +82,9 @@ export function MobileNav() {
             />
           </svg>
         </button>
-      </div>
+      </motion.div>
 
-      {/* Slide-down mobile menu */}
+      {/* Menú móvil deslizante */}
       <AnimatePresence>
         {toggle && (
           <motion.div
@@ -51,13 +93,13 @@ export function MobileNav() {
             animate="animate"
             exit="exit"
             variants={menuVariants}
-            className="fixed top-0 left-0 right-0 bottom-0 z-50 bg-hero-dark flex flex-col"
+            className="fixed top-0 left-0 right-0 bottom-0 bg-hero-dark flex flex-col z-[60]"
           >
-            {/* Close button */}
+            {/* Botón de cierre */}
             <div className="flex items-center justify-end h-[var(--navbar-height)] px-4 border-b border-gray-200/25">
               <button
                 onClick={() => setToggle(false)}
-                aria-label="Close mobile menu"
+                aria-label="Cerrar menú móvil"
               >
                 <svg
                   fill="none"
@@ -77,11 +119,7 @@ export function MobileNav() {
 
             <ul className="flex flex-col gap-6 mt-8 ml-4 text-mainbody-weg">
               {navItems.map((item) => (
-                <li
-                  key={item.id}
-                  // close the menu upon clicking any link
-                  onClick={() => setToggle(false)}
-                >
+                <li key={item.id} onClick={() => setToggle(false)}>
                   <NavItemLink item={item} />
                 </li>
               ))}

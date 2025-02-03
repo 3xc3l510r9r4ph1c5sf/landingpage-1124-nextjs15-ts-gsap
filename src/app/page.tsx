@@ -4,6 +4,7 @@
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { navItems } from '@/config/navItems';
 
 // Import all your sections/components
 import Hero from '@/components/sections/Hero';
@@ -19,14 +20,20 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export default function HomePage() {
   useEffect(() => {
-    // If there's a #hash in the URL (e.g. #projects), auto smooth-scroll on mount
-    const hash = window.location.hash; // e.g. "#projects"
+    const hash = window.location.hash; // e.g. "#hero"
     if (hash) {
-      gsap.to(window, {
-        duration: 1.5,
-        scrollTo: hash,
-        ease: 'power2.out',
-      });
+      setTimeout(() => {
+        const navItem = navItems.find((item) => item.href.endsWith(hash));
+        const offset = navItem?.offset ?? 0;
+        gsap.to(window, {
+          duration: 1.5,
+          scrollTo: {
+            y: hash,
+            offsetY: offset,
+          },
+          ease: 'power2.out',
+        });
+      }, 100); // delay of 100ms (adjust as needed)
     }
   }, []);
 

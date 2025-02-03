@@ -1,23 +1,17 @@
 // tailwind.config.ts
-
 import type { Config } from 'tailwindcss';
 
 export default {
-  // 1) Content Paths
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-
   theme: {
-    // 2) Responsive Breakpoints
     screens: {
       md: { min: '520px' },
       lg: { min: '800px' },
     },
-
-    // 3) Core Color Palette
     colors: {
       'mainbody-weg': '#F8F7F3',
       'details-red': '#E44021',
@@ -29,19 +23,21 @@ export default {
       green: '#00A76F',
       primary: '#212B36',
     },
-
-    // 5) Extend for Additional Utilities
     extend: {
-      // c) Filters & Shadows
-      filter: {
-        'custom-drop-shadow':
-          'drop-shadow(-20px 20px 40px rgba(0, 0, 0, 0.24)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-        'shadow-green': '2px 2px 4px 0px rgba(0, 167, 111, 0.24)',
+      // Ejemplo de escala de z-index centralizada:
+      zIndex: {
+        '-10': '-10', // para fondos que deben quedar detrás
+        '0': '0', // capa base
+        '10': '10', // contenido principal o secciones
+        '20': '20', // otro contenido (por ejemplo, imágenes o bloques intermedios)
+        '50': '50', // navegación
+        '70': '70', // overlays o transiciones
+        '80': '80', // preloader
+        '999': '999', // indicador de Tailwind u otros elementos de debug
       },
+      // Otras extensiones...
     },
   },
-
-  // 6) Plugins
   plugins: [
     require('tailwind-scrollbar-hide'),
     function ({

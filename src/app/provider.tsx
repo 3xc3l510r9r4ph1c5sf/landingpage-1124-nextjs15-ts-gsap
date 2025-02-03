@@ -79,11 +79,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
       <div
         ref={firstLayer}
-        className="fixed inset-0 z-50 translate-y-full bg-[#ff6347]"
+        className="fixed inset-0 z-70 translate-y-full bg-[#ff6347]"
       />
       <div
         ref={secondLayer}
-        className="bg-hero-dark fixed inset-0 z-50 translate-y-full"
+        className="fixed inset-0 z-70 translate-y-full bg-hero-dark"
       />
     </TransitionRouter>
   );
