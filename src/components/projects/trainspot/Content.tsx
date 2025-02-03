@@ -9,7 +9,7 @@ const TrainspotContent: React.FC = () => {
       {/* 2. CONTEXT & VISION SECTION */}
       <section className="max-w-[84.2rem] px-[0.63rem] pt-20 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] lg:mb-[200px] lg:p-[10rem_1.25rem_0rem_4.5625rem]">
         <div className="lg:flex lg:gap-[3.75rem]">
-          <h2 className="display-heading mb-8 lg:mb-0">Context &amp; Vision</h2>
+          <h2 className="section-heading mb-8 lg:mb-0">Context &amp; Vision</h2>
           <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
             <p className="text-medium">
               <strong>Mein Bildungsraum</strong> is a nationwide digital
@@ -58,15 +58,13 @@ const TrainspotContent: React.FC = () => {
           />
         </div>
         <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
-          <h2 className="main-heading">The Challenge</h2>
+          <h2 className="section-heading">The Challenge</h2>
           <div className="flex flex-col gap-4">
             {/* Example Items */}
             <div className="flex gap-[0.625rem] max-w-[55rem]">
               <div className="active-number md text-details-red">01</div>
               <div className="flex flex-col gap-[0.625rem]">
-                <h3 className="text-large">
-                  <strong>Fragmented Learning Landscape:</strong>
-                </h3>
+                <h3 className="text-large">Fragmented Learning Landscape:</h3>
                 <p className="text-medium">
                   Institutions and learners struggled to consolidate multiple
                   courses, resources, and tracking in one place.
@@ -105,7 +103,7 @@ const TrainspotContent: React.FC = () => {
 
       {/* 4. PROJECT GOALS & OBJECTIVES SECTION */}
       <section className="max-w-[84.2rem] px-[0.63rem] pt-20 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] lg:mb-[200px] lg:p-[10rem_1.25rem_0rem_4.5625rem]">
-        <h2 className="display-heading mb-8">Project Goals &amp; Objectives</h2>
+        <h2 className="section-heading mb-8">Project Goals &amp; Objectives</h2>
         <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
           <p className="text-medium">
             <strong>Develop an Inclusive Digital Tool:</strong> Ensure
@@ -136,7 +134,7 @@ const TrainspotContent: React.FC = () => {
         "
       >
         <div className="max-w-[84.2rem] mx-auto">
-          <h2 className="display-heading mb-8">
+          <h2 className="section-heading mb-8">
             My Role &amp; Responsibilities
           </h2>
           <p className="text-medium mb-6">
@@ -144,7 +142,7 @@ const TrainspotContent: React.FC = () => {
             needs and delivering iterative designs in line with our agile
             workflow. Specifically, I:
           </p>
-          <ul className="list-disc ml-4 text-medium space-y-3">
+          <ul className="text-medium list-disc ml-4 space-y-3">
             <li>Defined design objectives (accessibility, clarity, etc.).</li>
             <li>Conducted user interviews for insights.</li>
             <li>Led user testing &amp; documented findings.</li>
@@ -155,7 +153,7 @@ const TrainspotContent: React.FC = () => {
 
       {/* 6. Closing / Next Steps Section */}
       <section className="max-w-[84.2rem] mx-auto px-[0.63rem] py-16 md:px-[1.25rem] lg:p-[10rem_4.5625rem_4rem_4.5625rem]">
-        <h2 className="display-heading mb-8">
+        <h2 className="section-heading mb-8">
           Final Thoughts &amp; Next Steps
         </h2>
         <p className="text-medium mb-4">
