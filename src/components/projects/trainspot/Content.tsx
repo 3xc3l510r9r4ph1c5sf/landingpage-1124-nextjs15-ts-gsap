@@ -1,32 +1,15 @@
 // src/components/projects/trainspot/Content.tsx
 
+'use client';
+import ContextVisionSectionParallax from './ContextVisionSectionParallax';
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const TrainspotContent: React.FC = () => {
   return (
     <>
-      {/* 2. CONTEXT & VISION SECTION */}
-      <section className="max-w-[84.2rem] px-[0.63rem] pt-20 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] lg:mb-[200px] lg:p-[10rem_1.25rem_0rem_4.5625rem]">
-        <div className="lg:flex lg:gap-[3.75rem]">
-          <h2 className="section-heading mb-8 lg:mb-0">Context &amp; Vision</h2>
-          <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
-            <p className="text-medium">
-              <strong>Mein Bildungsraum</strong> is a nationwide digital
-              learning initiative aimed at bridging the gap between education
-              and technology. Its mission is to create an inclusive digital
-              learning environment that connects learners, educators, and
-              educational services—all within one interconnected platform.
-            </p>
-            <p className="text-medium">
-              <b>Trainspot</b> is a specialized tool within this broader
-              initiative. It enhances the digital learning ecosystem by
-              providing functionalities that help both education providers and
-              learners optimize their training pathways.
-            </p>
-          </div>
-        </div>
-      </section>
+      <ContextVisionSectionParallax />
 
       {/* 3. THE CHALLENGE SECTION */}
       <section
@@ -51,18 +34,19 @@ const TrainspotContent: React.FC = () => {
           "
         >
           <Image
-            fill
             src="/challenge-placeholder.png"
             alt="Key Challenges Infographic"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover object-center"
           />
         </div>
         <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
           <h2 className="section-heading">The Challenge</h2>
           <div className="flex flex-col gap-4">
-            {/* Example Items */}
+            {/* Example Item 1 */}
             <div className="flex gap-[0.625rem] max-w-[55rem]">
-              <div className=" text-medium active-number md text-details-red">
+              <div className="text-medium active-number md text-details-red">
                 <strong>01</strong>
               </div>
               <div className="flex flex-col gap-[0.625rem]">
@@ -76,8 +60,9 @@ const TrainspotContent: React.FC = () => {
               </div>
             </div>
 
+            {/* Example Item 2 */}
             <div className="flex gap-[0.625rem] max-w-[55rem]">
-              <div className=" text-medium active-number md text-details-red">
+              <div className="text-medium active-number md text-details-red">
                 <strong>02</strong>
               </div>
               <div className="flex flex-col gap-[0.625rem]">
@@ -91,8 +76,9 @@ const TrainspotContent: React.FC = () => {
               </div>
             </div>
 
+            {/* Example Item 3 */}
             <div className="flex gap-[0.625rem] max-w-[55rem]">
-              <div className=" text-medium active-number md text-details-red">
+              <div className="text-medium active-number md text-details-red">
                 <strong>03</strong>
               </div>
               <div className="flex flex-col gap-[0.625rem]">
@@ -159,7 +145,7 @@ const TrainspotContent: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. Closing / Next Steps Section */}
+      {/* 6. CLOSING / NEXT STEPS SECTION */}
       <section className="max-w-[84.2rem] mx-auto px-[0.63rem] py-16 md:px-[1.25rem] lg:p-[10rem_4.5625rem_4rem_4.5625rem]">
         <h2 className="section-heading mb-8">
           Final Thoughts &amp; Next Steps
@@ -175,6 +161,43 @@ const TrainspotContent: React.FC = () => {
           [Add any final metrics, a roadmap for future features, or reflection
           on lessons learned.]
         </p>
+      </section>
+
+      {/* 7. NEW SECTION: Animated Buttons Linking to Figma Mockups */}
+      <section className="max-w-[84.2rem] mx-auto px-[0.63rem] py-16 md:px-[1.25rem]">
+        <h2 className="section-heading mb-8">Explore More</h2>
+        <div className="flex gap-4">
+          <motion.a
+            href="https://www.figma.com/your-mockup-link-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-blue-600 text-white py-2 px-4 rounded"
+          >
+            Figma Mockup 1
+          </motion.a>
+          <motion.a
+            href="https://www.figma.com/your-mockup-link-2"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-green-600 text-white py-2 px-4 rounded"
+          >
+            Figma Mockup 2
+          </motion.a>
+          <motion.a
+            href="https://www.figma.com/your-mockup-link-3"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-purple-600 text-white py-2 px-4 rounded"
+          >
+            Figma Mockup 3
+          </motion.a>
+        </div>
       </section>
     </>
   );

@@ -1,13 +1,16 @@
-//src/components/sections/works/projectData.ts
+// src/components/sections/works/projectData.ts
 
-interface ProjectData {
+export interface ProjectData {
   id: string;
   title: string;
   companyName: string;
-  date: string;
+  date: string; // used as the timeframe
   imageUrl: string;
   slug: string;
   color: string;
+  sector: string;
+  myRole: string;
+  gallery?: string[]; // array of photo URLs for the “under the role” section
 }
 
 export const projectData: ProjectData[] = [
@@ -19,6 +22,9 @@ export const projectData: ProjectData[] = [
     title: 'Trainspot',
     color: '#0C0C0C',
     slug: 'trainspot',
+    sector: 'Digital Education & Technology',
+    myRole: 'UX/UI Designer & Agile Team Member',
+    gallery: ['/trainspot2s.svg', '/trainspot3s.svg', '/trainspot1s.svg'],
   },
   {
     id: '02',
@@ -26,9 +32,15 @@ export const projectData: ProjectData[] = [
     companyName: 'WBS Gruppe AG',
     date: '2022-2023',
     imageUrl:
-      'https://images.unsplash.com/photo-1676793894040-b6dd72276620?q=80&w=2089&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1676793894040-b6dd72276620?q=80&w=2089&auto=format&fit=crop&ixlib=rb-4.0.3',
     color: '#8C8C8C',
     slug: 'kurskonfigurator',
+    sector: 'E-Learning Solutions',
+    myRole: 'Product Designer & Researcher',
+    gallery: [
+      '/kurskonfigurator-gallery1.jpg',
+      '/kurskonfigurator-gallery2.jpg',
+    ],
   },
   {
     id: '03',
@@ -36,9 +48,12 @@ export const projectData: ProjectData[] = [
     companyName: 'WBS Gruppe AG',
     date: '2020-2023',
     imageUrl:
-      'https://images.unsplash.com/photo-1503551723145-6c040742065b-v2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1503551723145-6c040742065b-v2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3',
     color: '#EFE8D3',
     slug: 'designsystem',
+    sector: 'Digital Product Design',
+    myRole: 'Lead Visual Designer',
+    gallery: ['/trainspot1.png', '/trainspot2.png', '/trainspot3.png'],
   },
   {
     id: '04',
@@ -48,5 +63,9 @@ export const projectData: ProjectData[] = [
     companyName: 'WBS Gruppe AG',
     date: '2021-2022',
     slug: 'kursplannung',
+    sector: 'Learning Management',
+    myRole: 'UX Strategist & Planner',
+    // You may include a gallery array even if it has just one image:
+    gallery: ['/kursplannung-gallery1.jpg'],
   },
 ];

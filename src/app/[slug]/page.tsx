@@ -3,25 +3,19 @@
 import { use } from 'react';
 import Image from 'next/image';
 import { projectData } from '@/components/sections/works/projectData';
-import RelatedProjectsSection from '@/components/projects/RelatedProjectsSection'; // Import the new component
-import { getRandomItems } from '@/utils/randomSelection'; // Import the utility function
+import RelatedProjectsSection from '@/components/projects/RelatedProjectsSection'; // existing related projects component
+import { getRandomItems } from '@/utils/randomSelection';
 
 // Import all content components
 import {
   TrainspotContent,
-  // Uncomment when other content components are available
   // KurskonfiguratorContent,
   // DesignSystemContent,
   // kursplannungContent,
-} from '@/components/projects'; // Import the content components
+} from '@/components/projects';
 
 type SlugPromise = Promise<{ slug: string }>;
 
-/**
- * Next.js 15 sometimes expects dynamic route params to be a Promise, which
- * can be "unwrapped" with the React use() hook. This is a hacky solution
- * but satisfies the build step because it matches the 'PageProps' constraint.
- */
 export default function ProjectPage({ params }: { params: SlugPromise }) {
   const { slug } = use(params);
   const project = projectData.find((p) => p.slug === slug);
@@ -34,7 +28,7 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
     );
   }
 
-  // Filter out the current project and randomly select 3 related projects
+  // Prepare related projects
   const filteredProjects = projectData.filter((p) => p.slug !== slug);
   const relatedProjects = getRandomItems(filteredProjects, 3);
 
@@ -44,7 +38,6 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
     // kurskonfigurator: <KurskonfiguratorContent />,
     // designsystem: <DesignSystemContent />,
     // kursplannung: <kursplannungContent />,
-    // Add more mappings as you add new projects
   };
 
   // Get the corresponding content component based on the slug
@@ -71,9 +64,34 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
           bg-hero-dark text-mainbody-weg
         "
       >
+        <div className="flex flex-col gap-[2.5rem] pt-12 md:pt-0 lg:mb-[500px]">
+          <h2 className="display-heading">
+            {project.title} <br />
+            Case Study
+          </h2>
+          <p className="text-medium">
+            <strong>Project Name:</strong> {project.title} <br />
+            <strong>Client:</strong> {project.companyName} <br />
+            <strong>Sector:</strong> {project.sector}
+          </p>
+          <p className="text-medium">
+            <strong>Timeframe:</strong> {project.date} <br />
+            <strong>My Role:</strong> {project.myRole}
+          </p>
+          <div className="flex flex-wrap gap-4 items-start">
+            {project.gallery?.map((photo, index) => (
+              <img
+                key={index}
+                src={photo}
+                alt={`${project.title} gallery image ${index + 1}`}
+                className="h-[60px] w-auto"
+              />
+            ))}
+          </div>
+        </div>
         <div
           className="
-            img relative 
+            relative 
             h-[30.3125rem] 
             w-full 
             md:sticky md:top-[3.75rem] 
@@ -82,38 +100,16 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
           "
         >
           <Image
+            src="/project1-hero.png"
+            alt="Project Hero"
             fill
-            src={project.imageUrl || '/project1-hero.png'}
-            alt={`${project.title} Hero Mockup`}
-            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
           />
-        </div>
-
-        <div className="flex flex-col gap-[2.5rem] pt-12 md:pt-0 lg:mb-[500px]">
-          <h2 className="display-heading">
-            {project.title} <br />
-            Case Study
-          </h2>
-          <p className="text-medium">
-            <strong>Project Name:</strong> {project.title}
-            <br />
-            <strong>Client:</strong> {project.companyName}
-            <br />
-            <strong>Sector:</strong> Digital Education, Technology, Community
-            Building
-          </p>
-          <p className="text-medium">
-            <strong>Timeframe:</strong> {project.date}
-            <br />
-            <strong>Team Composition:</strong> [Briefly mention roles—Product
-            Owner, Developers, etc.]
-            <br />
-            <strong>My Role:</strong> UX/UI Designer &amp; Agile Team Member
-          </p>
         </div>
       </section>
 
-      {/* 2. CONTENT SECTIONS */}
+      {/* 2. CONTENT SECTIONS (Project-specific content) */}
       {ProjectContent}
 
       {/* 7. OTHER PROJECTS YOU MIGHT LIKE (Cards) */}
