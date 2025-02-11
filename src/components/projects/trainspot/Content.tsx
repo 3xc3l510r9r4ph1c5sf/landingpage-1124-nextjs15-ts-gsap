@@ -1,11 +1,102 @@
 // src/components/projects/trainspot/Content.tsx
 
 'use client';
-import ContextVisionSectionParallax from './ContextVisionSectionParallax';
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 
+import React, { useRef } from 'react';
+import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ProjectHeroParallax } from '@/components/projects/trainspot/ProjectHeroParallax';
+
+//
+// 1. Helper Component: ParallaxImage
+//
+interface ParallaxImageProps {
+  src: string;
+  alt: string;
+  start?: number;
+  end?: number;
+  className?: string;
+}
+
+const ParallaxImage: React.FC<ParallaxImageProps> = ({
+  src,
+  alt,
+  start = 0,
+  end = 0,
+  className = '',
+}) => {
+  // Create a ref for the image container.
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Track the scroll progress of this image container.
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  // Map scroll progress (0–1) to a vertical offset.
+  const y = useTransform(scrollYProgress, [0, 1], [start, end]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ y }}
+      className={`relative overflow-hidden ${className}`}
+    >
+      <Image src={src} alt={alt} fill className="object-cover" />
+    </motion.div>
+  );
+};
+
+//
+// 2. Component: ContextVisionSectionParallax
+//
+const ContextVisionSectionParallax: React.FC = () => {
+  return (
+    <section
+      className="relative w-full text-center px-[0.63rem] pt-20 
+                 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] 
+                 lg:p-[10rem_1.25rem_0rem_4.5625rem]"
+    >
+      {/* Foreground text container */}
+      <div className="relative z-10 lg:flex lg:gap-[3.75rem]">
+        <h2 className="section-heading mb-8 lg:mb-0">Context &amp; Vision</h2>
+        <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
+          <p className="text-medium">
+            <strong>Mein Bildungsraum</strong> is a nationwide digital learning
+            initiative aimed at bridging the gap between education and
+            technology. Its mission is to create an inclusive digital learning
+            environment that connects learners, educators, and educational
+            services—all within one interconnected platform.
+          </p>
+          <a
+            href="https://www.meinbildungsraum.de/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 underline text-medium mb-4"
+          >
+            Visit Mein Bildungsraum
+          </a>
+          <p className="text-medium">
+            <strong>Trainspot</strong> is a specialized tool within this broader
+            initiative. It enhances the digital learning ecosystem by providing
+            functionalities that help both education providers and learners
+            optimize their training pathways.
+          </p>
+        </div>
+      </div>
+
+      {/* Parallax Images behind the text */}
+      <div className="relative">
+        <ProjectHeroParallax />
+      </div>
+    </section>
+  );
+};
+
+//
+// 3. Main Component: TrainspotContent
+//
 const TrainspotContent: React.FC = () => {
   return (
     <>
@@ -44,7 +135,7 @@ const TrainspotContent: React.FC = () => {
         <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
           <h2 className="section-heading">The Challenge</h2>
           <div className="flex flex-col gap-4">
-            {/* Example Item 1 */}
+            {/* Challenge Item 1 */}
             <div className="flex gap-[0.625rem] max-w-[55rem]">
               <div className="text-medium active-number md text-details-red">
                 <strong>01</strong>
@@ -60,7 +151,7 @@ const TrainspotContent: React.FC = () => {
               </div>
             </div>
 
-            {/* Example Item 2 */}
+            {/* Challenge Item 2 */}
             <div className="flex gap-[0.625rem] max-w-[55rem]">
               <div className="text-medium active-number md text-details-red">
                 <strong>02</strong>
@@ -76,7 +167,7 @@ const TrainspotContent: React.FC = () => {
               </div>
             </div>
 
-            {/* Example Item 3 */}
+            {/* Challenge Item 3 */}
             <div className="flex gap-[0.625rem] max-w-[55rem]">
               <div className="text-medium active-number md text-details-red">
                 <strong>03</strong>
