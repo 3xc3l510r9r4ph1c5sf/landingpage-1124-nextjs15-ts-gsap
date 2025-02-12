@@ -1,14 +1,39 @@
 // src/app/projects/ProjectLayout.tsx
 
 import Image from 'next/image';
-import { projectData } from '@/components/sections/works/projectData';
+import {
+  projectData,
+  ProjectData,
+} from '@/components/sections/works/projectData';
 import RelatedProjectsSection from '@/app/projects/RelatedProjectsSection';
-import { getRandomItems } from '@/utils/randomSelection';
 import { ReactNode } from 'react';
 
 interface ProjectLayoutProps {
   slug: string;
   children: ReactNode;
+}
+
+// 1. Our stable helper function (same as above or imported from a utility file)
+function getNextProjects(
+  allProjects: ProjectData[],
+  currentSlug: string
+): ProjectData[] {
+  const total = allProjects.length;
+  if (total < 2) return [];
+  const currentIndex = allProjects.findIndex((p) => p.slug === currentSlug);
+  if (currentIndex === -1) {
+    return allProjects.slice(0, 3);
+  }
+  const results: ProjectData[] = [];
+  for (let i = 1; i < total; i++) {
+    const nextIndex = (currentIndex + i) % total;
+    const candidate = allProjects[nextIndex];
+    if (candidate.slug !== currentSlug) {
+      results.push(candidate);
+      if (results.length === 3) break;
+    }
+  }
+  return results;
 }
 
 export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
@@ -23,9 +48,8 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
     );
   }
 
-  // Get related projects
-  const filteredProjects = projectData.filter((p) => p.slug !== slug);
-  const relatedProjects = getRandomItems(filteredProjects, 3);
+  // 2. Instead of random, pick the next 3 in a stable, wrap-around manner
+  const relatedProjects = getNextProjects(projectData, slug);
 
   return (
     <main className="bg-mainbody-weg text-hero-dark">

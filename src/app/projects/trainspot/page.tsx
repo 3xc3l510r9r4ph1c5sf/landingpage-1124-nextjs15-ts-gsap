@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 import ProjectLayout from '@/app/projects/ProjectLayout';
-import { ProjectHeroParallax } from './ProjectHeroParallax';
+import { TrainspotParallax } from './TrainspotParallax';
 
 //
 // A small helper component for parallax images, if you still need it:
@@ -86,7 +86,7 @@ function ContextVisionSectionParallax() {
 
       <div className="relative">
         {/* If you want parallax images behind the text */}
-        <ProjectHeroParallax />
+        <TrainspotParallax />
       </div>
     </section>
   );
