@@ -1,14 +1,16 @@
-// src/components/projects/trainspot/Content.tsx
+// src/app/projects/trainspot/page.tsx
 
 'use client';
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ProjectHeroParallax } from '@/components/projects/trainspot/ProjectHeroParallax';
+
+import ProjectLayout from '@/app/projects/ProjectLayout';
+import { ProjectHeroParallax } from './ProjectHeroParallax';
 
 //
-// 1. Helper Component: ParallaxImage
+// A small helper component for parallax images, if you still need it:
 //
 interface ParallaxImageProps {
   src: string;
@@ -18,23 +20,20 @@ interface ParallaxImageProps {
   className?: string;
 }
 
-const ParallaxImage: React.FC<ParallaxImageProps> = ({
+function ParallaxImage({
   src,
   alt,
   start = 0,
   end = 0,
   className = '',
-}) => {
-  // Create a ref for the image container.
+}: ParallaxImageProps) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // Track the scroll progress of this image container.
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
   });
 
-  // Map scroll progress (0–1) to a vertical offset.
   const y = useTransform(scrollYProgress, [0, 1], [start, end]);
 
   return (
@@ -46,19 +45,18 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({
       <Image src={src} alt={alt} fill className="object-cover" />
     </motion.div>
   );
-};
+}
 
 //
-// 2. Component: ContextVisionSectionParallax
+// 1. Context & Vision Section
 //
-const ContextVisionSectionParallax: React.FC = () => {
+function ContextVisionSectionParallax() {
   return (
     <section
       className="relative w-full text-center px-[0.63rem] pt-20 
                  md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] 
                  lg:p-[10rem_1.25rem_0rem_4.5625rem]"
     >
-      {/* Foreground text container */}
       <div className="relative z-10 lg:flex lg:gap-[3.75rem]">
         <h2 className="section-heading mb-8 lg:mb-0">Context &amp; Vision</h2>
         <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
@@ -86,20 +84,26 @@ const ContextVisionSectionParallax: React.FC = () => {
         </div>
       </div>
 
-      {/* Parallax Images behind the text */}
       <div className="relative">
+        {/* If you want parallax images behind the text */}
         <ProjectHeroParallax />
       </div>
     </section>
   );
-};
+}
 
 //
-// 3. Main Component: TrainspotContent
+// 2. TrainspotPage Component – the default export
+//    This uses your shared ProjectLayout with slug="trainspot".
 //
-const TrainspotContent: React.FC = () => {
+export default function TrainspotPage() {
   return (
-    <>
+    <ProjectLayout slug="trainspot">
+      {/* ———————————————— 
+          Everything below is the unique content for Trainspot
+          that was previously in "TrainspotContent".
+          ———————————————— */}
+
       <ContextVisionSectionParallax />
 
       {/* 3. THE CHALLENGE SECTION */}
@@ -290,8 +294,6 @@ const TrainspotContent: React.FC = () => {
           </motion.a>
         </div>
       </section>
-    </>
+    </ProjectLayout>
   );
-};
-
-export default TrainspotContent;
+}

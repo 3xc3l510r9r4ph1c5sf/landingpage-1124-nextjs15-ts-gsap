@@ -112,7 +112,7 @@ export default function Modal({
 
   // Wrap content in a Link
   return (
-    <Link href={`/${slug}`} className="block w-full">
+    <Link href={`/projects/${slug}`} className="block w-full">
       {content}
     </Link>
   );

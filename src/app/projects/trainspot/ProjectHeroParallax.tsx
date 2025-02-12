@@ -1,3 +1,5 @@
+//src/app/projects/trainspot/ProjectHeroParallax.tsx
+
 'use client';
 
 import { useRef } from 'react';

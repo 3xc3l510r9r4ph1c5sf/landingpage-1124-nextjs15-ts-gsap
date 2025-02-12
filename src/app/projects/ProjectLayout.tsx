@@ -1,26 +1,21 @@
-// src/app/[slug]/page.tsx
+// src/app/projects/ProjectLayout.tsx
 
-import { use } from 'react';
 import Image from 'next/image';
 import { projectData } from '@/components/sections/works/projectData';
-import RelatedProjectsSection from '@/components/projects/RelatedProjectsSection'; // existing related projects component
+import RelatedProjectsSection from '@/app/projects/RelatedProjectsSection';
 import { getRandomItems } from '@/utils/randomSelection';
+import { ReactNode } from 'react';
 
-// Import all content components
-import {
-  TrainspotContent,
-  // KurskonfiguratorContent,
-  // DesignSystemContent,
-  // kursplannungContent,
-} from '@/components/projects';
+interface ProjectLayoutProps {
+  slug: string;
+  children: ReactNode;
+}
 
-type SlugPromise = Promise<{ slug: string }>;
-
-export default function ProjectPage({ params }: { params: SlugPromise }) {
-  const { slug } = use(params);
+export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
   const project = projectData.find((p) => p.slug === slug);
 
   if (!project) {
+    // fallback if the project was not found
     return (
       <main className="flex items-center justify-center h-screen">
         <h1 className="text-2xl">Project Not Found</h1>
@@ -28,32 +23,13 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
     );
   }
 
-  // Prepare related projects
+  // Get related projects
   const filteredProjects = projectData.filter((p) => p.slug !== slug);
   const relatedProjects = getRandomItems(filteredProjects, 3);
 
-  // Mapping slugs to their respective content components
-  const contentComponents: { [key: string]: React.ReactNode } = {
-    trainspot: <TrainspotContent />,
-    // kurskonfigurator: <KurskonfiguratorContent />,
-    // designsystem: <DesignSystemContent />,
-    // kursplannung: <kursplannungContent />,
-  };
-
-  // Get the corresponding content component based on the slug
-  const ProjectContent = contentComponents[slug] || (
-    <section className="max-w-[84.2rem] px-[0.63rem] pt-20 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] lg:mb-[200px] lg:p-[10rem_1.25rem_0rem_4.5625rem]">
-      <h2 className="display-heading mb-8">Content Coming Soon</h2>
-      <p className="text-medium">
-        We are working on adding more detailed content for this project. Stay
-        tuned!
-      </p>
-    </section>
-  );
-
   return (
     <main className="bg-mainbody-weg text-hero-dark">
-      {/* 1. HERO / PROJECT OVERVIEW SECTION */}
+      {/* 1. HERO / PROJECT OVERVIEW */}
       <section
         className="
           p-[5rem_0.625rem_0.625rem_0.625rem] 
@@ -100,7 +76,7 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
           "
         >
           <Image
-            src="/project1-hero.png"
+            src={project.imageUrl}
             alt="Project Hero"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -109,10 +85,10 @@ export default function ProjectPage({ params }: { params: SlugPromise }) {
         </div>
       </section>
 
-      {/* 2. CONTENT SECTIONS (Project-specific content) */}
-      {ProjectContent}
+      {/* 2. Children: the unique content (Trainspot sections, etc.) */}
+      {children}
 
-      {/* 7. OTHER PROJECTS YOU MIGHT LIKE (Cards) */}
+      {/* 3. Other Projects (cards) */}
       <RelatedProjectsSection relatedProjects={relatedProjects} />
     </main>
   );

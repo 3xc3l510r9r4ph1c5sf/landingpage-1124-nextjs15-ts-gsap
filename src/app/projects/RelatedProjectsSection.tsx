@@ -1,4 +1,4 @@
-// src/components/projects/RelatedProjectsSection.tsx
+// src/app/projects/RelatedProjectsSection.tsx
 
 import React from 'react';
 import Image from 'next/image';
