@@ -22,7 +22,18 @@ export const NavItemLink: React.FC<NavItemLinkProps> = ({ item }) => {
    */
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const [_, hash] = item.href.split('#'); // "/#hero" => ["", "hero"]
+    if (!item.href.includes('#')) {
+      gsap.to(window, {
+        duration: 1.5,
+        scrollTo: {
+          y: 0,
+          offsetY: item.offset ?? 0,
+        },
+        ease: 'power2.out',
+      });
+      return;
+    }
+    const [, hash] = item.href.split('#');
     const target = `#${hash}`;
 
     gsap.to(window, {
