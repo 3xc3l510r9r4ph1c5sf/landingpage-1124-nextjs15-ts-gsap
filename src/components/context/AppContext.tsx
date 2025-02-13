@@ -1,8 +1,7 @@
 // src/components/context/AppContext.tsx
 
-'use client';
+'use client'; // <-- Make sure this is here!
 
-import { animate, useAnimationControls } from 'motion/react';
 import React, {
   createContext,
   useContext,
@@ -10,24 +9,26 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { animate, useAnimationControls } from 'motion/react';
+import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { useScramble } from 'use-scramble';
 import useMedia from '../hooks/useMedia';
+import { navItems } from '@/config/navItems';
+
+// Register the ScrollToPlugin once:
+gsap.registerPlugin(ScrollToPlugin);
 
 // Define the context type
 interface AppContextType {
-  scrambleRef: React.RefObject<HTMLParagraphElement>;
-  label: React.RefObject<HTMLParagraphElement>;
-  scrollButton: React.RefObject<HTMLButtonElement>;
-  startSecondaryHeadingScramble: boolean;
-  heroIconControl: ReturnType<typeof useAnimationControls>;
+  // ...
+  // (your existing types)
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const isWide = useMedia('(min-width: 390px)');
-
-  // Controls for the Hero Icon animation
   const heroIconControl = useAnimationControls();
 
   // On mount, reset scroll & lock body scrolling
@@ -45,7 +46,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     text: 'DE | EN | ES | CAT | JS',
     playOnMount: false,
   });
-
   const { ref: scrollButton, replay: replayScrollButton } = useScramble({
     text: '(This Way ↓)',
     playOnMount: false,
@@ -73,13 +73,13 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                 preloader.style.display = 'none';
               }
 
-              // 2. Show the hero icon
+              // 2. Show the hero icon (assuming you have a variant with 'visible')
               await heroIconControl.start('visible');
 
-              // 3. Trigger the next scramble
+              // 3. Trigger next scramble
               setStartSecondaryHeadingScramble(true);
 
-              // 4. Reveal label & scroll button if they exist
+              // 4. Reveal label & scroll button
               if (label.current) {
                 label.current.classList.remove('invisible');
                 replayLabel();
@@ -92,20 +92,41 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
               // 5. Unlock body scroll
               document.body.classList.remove('lock-scroll');
               document.body.classList.remove('overflow-y-clip');
+
+              // 6. NOW do the offset scrolling if there's a hash:
+              const hash = window.location.hash; // "#hero", "#projects", "#contact", etc.
+              if (hash) {
+                const navItem = navItems.find((item) =>
+                  item.href.endsWith(hash)
+                );
+                const offset = navItem?.offset ?? 0;
+
+                // Just for debugging:
+                console.log('Scrolling to', hash, 'with offset', offset);
+
+                gsap.to(window, {
+                  duration: 1.5,
+                  scrollTo: {
+                    y: hash,
+                    offsetY: offset,
+                    autoKill: false, // optional, can try toggling this
+                  },
+                  ease: 'power2.out',
+                });
+              }
             },
           }
         );
       };
 
-      // If the page is already loaded, run immediately
+      // If already loaded, call immediately. Else wait for "load".
       if (document.readyState === 'complete') {
         handlePageLoad();
       } else {
-        // Otherwise, wait for window 'load'
         window.addEventListener('load', handlePageLoad);
       }
 
-      // Cleanup the event listener if unmounted
+      // Cleanup
       return () => {
         window.removeEventListener('load', handlePageLoad);
       };
@@ -115,6 +136,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   return (
     <AppContext.Provider
       value={{
+        // ...
         scrambleRef,
         label,
         scrollButton,
