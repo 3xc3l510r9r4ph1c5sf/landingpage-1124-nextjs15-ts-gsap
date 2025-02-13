@@ -1,6 +1,5 @@
 // src/components/context/AppContext.tsx
-
-'use client'; // <-- Make sure this is here!
+'use client';
 
 import React, {
   createContext,
@@ -19,10 +18,13 @@ import { navItems } from '@/config/navItems';
 // Register the ScrollToPlugin once:
 gsap.registerPlugin(ScrollToPlugin);
 
-// Define the context type
+// Define the context type including the missing properties:
 interface AppContextType {
-  // ...
-  // (your existing types)
+  scrambleRef: React.RefObject<HTMLElement>;
+  label: React.RefObject<HTMLParagraphElement>;
+  scrollButton: React.RefObject<HTMLButtonElement>;
+  heroIconControl: ReturnType<typeof useAnimationControls>;
+  startSecondaryHeadingScramble: boolean;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -101,7 +103,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                 );
                 const offset = navItem?.offset ?? 0;
 
-                // Just for debugging:
                 console.log('Scrolling to', hash, 'with offset', offset);
 
                 gsap.to(window, {
@@ -109,7 +110,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                   scrollTo: {
                     y: hash,
                     offsetY: offset,
-                    autoKill: false, // optional, can try toggling this
+                    autoKill: false,
                   },
                   ease: 'power2.out',
                 });
@@ -119,14 +120,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         );
       };
 
-      // If already loaded, call immediately. Else wait for "load".
       if (document.readyState === 'complete') {
         handlePageLoad();
       } else {
         window.addEventListener('load', handlePageLoad);
       }
 
-      // Cleanup
       return () => {
         window.removeEventListener('load', handlePageLoad);
       };
@@ -136,7 +135,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   return (
     <AppContext.Provider
       value={{
-        // ...
         scrambleRef,
         label,
         scrollButton,
