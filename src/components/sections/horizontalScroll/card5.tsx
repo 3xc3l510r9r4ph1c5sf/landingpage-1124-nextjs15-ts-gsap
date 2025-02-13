@@ -1,12 +1,12 @@
-import React from "react";
-import CardWrapper from "./cardWrapper";
+import React from 'react';
+import CardWrapper from './cardWrapper';
 
 const Card5 = () => {
   return (
     <CardWrapper className="relative">
       <div className="flex w-60 flex-col items-center justify-center rounded-lg bg-white pt-5 filter-custom-drop-shadow">
         <div className="flex w-48 flex-col items-center justify-center gap-2">
-          <img className="size-10" src="ic-chat.png" alt="" />
+          <img className="size-10" src="/ic-chat.png" alt="" />
           <h4 className="text-[0.75rem]">Advertising</h4>
           <p className="text-center text-[0.5rem] text-[#637381]">
             In today’s net-savvy world it has become common for any business to

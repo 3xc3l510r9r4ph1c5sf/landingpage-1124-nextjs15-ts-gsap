@@ -1,7 +1,7 @@
-import React from "react";
-import CardWrapper from "./cardWrapper";
-import Image from "next/image";
-import ToggleButton from "@/components/common/toggle";
+import React from 'react';
+import CardWrapper from './cardWrapper';
+import Image from 'next/image';
+import ToggleButton from '@/components/common/toggle';
 
 const Card7 = () => {
   return (
@@ -33,7 +33,7 @@ const Card7 = () => {
             <span className="relative inline-block size-[0.435rem] rounded-full bg-[#00A76F] shadow-green">
               <img
                 className="absolute left-1/2 top-1/2 inline-block -translate-x-1/2 -translate-y-1/2"
-                src="check.svg"
+                src="/check.svg"
                 alt=""
               />
             </span>

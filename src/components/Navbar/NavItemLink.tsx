@@ -1,13 +1,12 @@
-//src/components/Navbar/NavItemLink.tsx
+// src/components/Navbar/NavItemLink.tsx
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // Next.js 13-15
+import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { NavItem } from '@/config/navItems';
-import TextHover from './TextHover'; // or wherever you import your fancy text
+import TextHover from './TextHover';
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -19,29 +18,24 @@ export const NavItemLink: React.FC<NavItemLinkProps> = ({ item }) => {
   const pathname = usePathname();
 
   /**
-   * Smooth scrolling handler (GSAP).
-   * Splits `"/#hero"` into `["/", "hero"]` so we can scroll to `"#hero"`.
+   * Smooth scrolling for anchor links if we are already on '/'.
    */
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-
-    // e.g. "/#hero" => ["","hero"] if we split on '#'
-    const [_, hash] = item.href.split('#');
-    const target = `#${hash}`; // => "#hero", "#projects", etc.
+    const [_, hash] = item.href.split('#'); // "/#hero" => ["", "hero"]
+    const target = `#${hash}`;
 
     gsap.to(window, {
       duration: 1.5,
       scrollTo: {
         y: target,
-        // optional: apply an offset if needed
         offsetY: item.offset ?? 0,
-        autoKill: true,
       },
       ease: 'power2.out',
     });
   };
 
-  // 1) If this link is "anchor" type, and we're on '/', do local smooth scroll:
+  // 1. If it's an anchor link AND we're ALREADY on "/", do local GSAP scroll:
   if (item.type === 'anchor' && pathname === '/') {
     return (
       <a
@@ -54,14 +48,31 @@ export const NavItemLink: React.FC<NavItemLinkProps> = ({ item }) => {
     );
   }
 
-  // 2) Otherwise, let Next.js handle route navigation:
+  // 2. If it's an anchor link, but we are on SOME OTHER PAGE (e.g. "/projects/…"):
+  //    => Force a FULL page reload by using window.location.href
+  if (item.type === 'anchor' && pathname !== '/') {
+    return (
+      <a
+        href={item.href}
+        onClick={(e) => {
+          e.preventDefault();
+          // Force the browser to reload the entire page:
+          window.location.href = item.href;
+        }}
+        className="group relative inline-block overflow-hidden cursor-pointer z-10 text-lg"
+      >
+        <TextHover titile1={item.label} titile2={item.label} />
+      </a>
+    );
+  }
+
+  // 3. Otherwise, for normal routes, use Next.js <Link> so it can do a normal client transition
   return (
-    <Link
+    <a
       href={item.href}
-      scroll={false} // Disable Next.js's auto-scroll
       className="group relative inline-block overflow-hidden cursor-pointer z-10 text-lg"
     >
       <TextHover titile1={item.label} titile2={item.label} />
-    </Link>
+    </a>
   );
 };

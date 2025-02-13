@@ -1,12 +1,12 @@
-import React from "react";
-import CardWrapper from "./cardWrapper";
+import React from 'react';
+import CardWrapper from './cardWrapper';
 
 const Card2 = () => (
   <CardWrapper>
     <div className="w-[15.23863rem] rounded-xl bg-white p-3 text-[0.5rem] text-[#212B36]">
       <div className="flex items-center justify-between py-3 font-bold">
         <div className="flex items-center justify-center gap-1">
-          <img src="delete.svg" alt="delete icon" />
+          <img src="/delete.svg" alt="delete icon" />
           <p>Delete Something?</p>
         </div>
         <img src="cross.svg" alt="cross icon" />

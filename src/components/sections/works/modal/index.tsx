@@ -89,7 +89,7 @@ export default function Modal({
             {title}
           </span>
           <img
-            src="arrow-up.svg"
+            src="/arrow-up.svg"
             className="size-[1.63rem] md:size-[2.625rem] md:group-hover:invert"
             alt="arrow icon"
           />
@@ -98,7 +98,7 @@ export default function Modal({
 
       {/* Mobile-only image block */}
       <div className="relative my-[0.63rem] h-72 w-[calc(100%-20px)] mx-[10px] bg-hero-dark p-[1.41rem_3.1rem] md:hidden">
-        <div className="relative size-full">
+        <div className="relative w-full h-full">
           <Image
             src="/project-1.png"
             alt="Full-width image"
