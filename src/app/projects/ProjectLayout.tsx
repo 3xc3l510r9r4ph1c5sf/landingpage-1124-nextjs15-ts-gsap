@@ -64,6 +64,24 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
           bg-hero-dark text-mainbody-weg
         "
       >
+        <div
+          className="
+            relative 
+            h-[30.3125rem] 
+            w-full 
+            md:sticky md:top-[3.75rem] 
+            md:w-11/12 
+            lg:w-[clamp(19rem,6.4885rem+26.8702vw,30rem)]
+          "
+        >
+          <Image
+            src={project.imageUrl}
+            alt="Project Hero"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
         <div className="flex flex-col gap-[2.5rem] pt-12 md:pt-0 lg:mb-[500px]">
           <h2 className="display-heading">
             {project.title} <br />
@@ -88,24 +106,6 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
               />
             ))}
           </div>
-        </div>
-        <div
-          className="
-            relative 
-            h-[30.3125rem] 
-            w-full 
-            md:sticky md:top-[3.75rem] 
-            md:w-11/12 
-            lg:w-[clamp(19rem,6.4885rem+26.8702vw,30rem)]
-          "
-        >
-          <Image
-            src={project.imageUrl}
-            alt="Project Hero"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-          />
         </div>
       </section>
 

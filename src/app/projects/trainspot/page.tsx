@@ -5,6 +5,7 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import AnimatedButton from '@/app/projects/AnimatedButton';
 
 import ProjectLayout from '@/app/projects/ProjectLayout';
 import { TrainspotParallax } from './TrainspotParallax';
@@ -262,36 +263,10 @@ export default function TrainspotPage() {
       <section className="max-w-[84.2rem] mx-auto px-[0.63rem] py-16 md:px-[1.25rem]">
         <h2 className="section-heading mb-8">Explore More</h2>
         <div className="flex gap-4">
-          <motion.a
+          <AnimatedButton
+            text="Figma Mockup 1"
             href="https://www.figma.com/your-mockup-link-1"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-blue-600 text-white py-2 px-4 rounded"
-          >
-            Figma Mockup 1
-          </motion.a>
-          <motion.a
-            href="https://www.figma.com/your-mockup-link-2"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-green-600 text-white py-2 px-4 rounded"
-          >
-            Figma Mockup 2
-          </motion.a>
-          <motion.a
-            href="https://www.figma.com/your-mockup-link-3"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-purple-600 text-white py-2 px-4 rounded"
-          >
-            Figma Mockup 3
-          </motion.a>
+          />
         </div>
       </section>
     </ProjectLayout>

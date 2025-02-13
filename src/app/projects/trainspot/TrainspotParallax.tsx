@@ -1,157 +1,124 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   motion,
   useScroll,
   useTransform,
   useMotionTemplate,
+  MotionValue,
 } from 'framer-motion';
 
 /**
- * This parent section is 150vh tall:
- * - You have enough scroll to see the zoom (1%->50%)
- *   and the fade near the end (99%->100%).
+ * The parent section is 150vh tall:
+ * - The zoom (from 100% to 150% background size) happens from 1% to 50% of the scroll.
+ * - The parallax images now animate over the entire height of the component.
  */
 export function TrainspotParallax() {
+  // Create a ref so we can measure scroll progress relative to this section.
+  const ref = useRef<HTMLDivElement>(null);
+  // Use extended offsets so scrollYProgress extends beyond [0, 1]
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['-40% start', 'end +90%'],
+  });
+
   return (
-    <section className="relative w-full" style={{ height: '150vh' }}>
-      <ScrollDebugMarks />
+    <section ref={ref} className="relative w-full" style={{ height: '150vh' }}>
+      {/* <ScrollDebugMarks /> */}
 
-      {/* Sticky BG pinned inside THIS section, not the entire viewport */}
-      <StickyBackground />
+      {/* Sticky background with zoom */}
+      <StickyBackground scrollYProgress={scrollYProgress} />
 
-      {/* Parallax-floating images overlay */}
-      <ParallaxOverlay />
+      {/* Overlay with parallax images spanning the full height */}
+      <ParallaxOverlay scrollYProgress={scrollYProgress} />
     </section>
   );
 }
 
 /* ---------------------------------------------
-   0) SCROLL DEBUG MARKS
+   Props Interface for Components that need scroll progress
 --------------------------------------------- */
-function ScrollDebugMarks() {
-  return (
-    <>
-      <div
-        className="absolute left-0 w-full border-t-2 border-green-500"
-        style={{ top: '25%' }}
-      >
-        <p className="text-green-600">25% SCROLL</p>
-      </div>
-      <div
-        className="absolute left-0 w-full border-t-2 border-red-500"
-        style={{ top: '50%' }}
-      >
-        <p className="text-red-600">50% SCROLL</p>
-      </div>
-      <div
-        className="absolute left-0 w-full border-t-2 border-blue-500"
-        style={{ top: '75%' }}
-      >
-        <p className="text-blue-600">75% SCROLL</p>
-      </div>
-      <div
-        className="absolute left-0 w-full border-t-4 border-yellow-500"
-        style={{ top: '100%' }}
-      >
-        <p className="text-yellow-600">100% SCROLL</p>
-      </div>
-    </>
-  );
+interface ScrollProps {
+  scrollYProgress: MotionValue<number>;
 }
 
 /* ---------------------------------------------
    1) STICKY BACKGROUND
 --------------------------------------------- */
-function StickyBackground() {
-  // read progress from 0->1 across this container (height=150vh)
-  const { scrollYProgress } = useScroll();
-
-  /*
-   * ZOOM logic:
-   *  [0,   0.01] => '100%'  (no zoom at the very top)
-   *  [0.01,0.5 ] => '150%'  (zoom from 100% to 150%)
-   *  [0.5, 1   ] => '150%'  (stay at 150%)
-   *
-   * So effectively the zoom starts at 1% scroll
-   * and finishes at 50%.
-   */
+function StickyBackground({ scrollYProgress }: ScrollProps) {
+  // ZOOM logic: start zooming from 1% scroll and finish at 50%
   const backgroundSize = useTransform(
     scrollYProgress,
     [0, 0.01, 0.5, 1],
-    ['100%', '100%', '150%', '150%']
+    ['80%', '80%', '100%', '100%']
   );
 
-  /*
-   * FADE logic:
-   *  from 0->0.99 => opacity=1
-   *  from 0.99->1 => opacity=0
-   * This means user sees the BG fully from top until 99% scroll,
-   * then it quickly fades out over the last 1%.
-   */
-  const opacity = useTransform(scrollYProgress, [0.99, 1], [1, 0]);
-
-  // If you want a mask, define it. Otherwise, keep none for clarity.
   const clipPath = useMotionTemplate`none`;
 
   return (
-    <motion.div
-      className="
-        sticky
-        top-0
-        left-0
-        w-full
-        h-[100vh]   /* pinned for 1 full screen */
-        z-0
-      "
-      style={{
-        backgroundImage: 'url("/p1.png")', // your path
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize,
-        opacity,
-        clipPath,
-      }}
-    />
+    <div className="sticky top-0 left-0 w-full h-[100vh] z-0">
+      {/* 
+          On md and smaller screens the background fills the container.
+          On lg screens, the inner container is limited to 70% of the viewport width.
+      */}
+      <motion.div
+        className="mx-auto w-full lg:max-w-[70vw] h-full"
+        style={{
+          backgroundImage: 'url("/p1.png")',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize, // animated via scroll
+          opacity: 1,
+          clipPath,
+        }}
+      />
+    </div>
   );
 }
 
 /* ---------------------------------------------
    2) OVERLAY with PARALLAX IMAGES
 --------------------------------------------- */
-function ParallaxOverlay() {
+function ParallaxOverlay({ scrollYProgress }: ScrollProps) {
   return (
+    // The overlay now takes up the full height of the component.
     <div className="pointer-events-none absolute inset-0 z-10">
-      {/* Position content so it's visible after the user starts scrolling */}
-      <div className="mx-auto max-w-5xl px-4 pt-[200px]">
+      <div className="mx-auto max-w-5xl px-4 h-full">
+        {/* You can adjust each image's start/end values and classNames as needed */}
         <FloatingImage
           src="/p2.png"
           alt="Parallax image 1"
-          start={-200}
-          end={200}
+          start={200}
+          end={800}
           className="w-1/3"
+          scrollYProgress={scrollYProgress}
         />
         <FloatingImage
           src="/p3.png"
           alt="Parallax image 2"
-          start={200}
+          start={500}
           end={-250}
           className="mx-auto w-2/3"
+          scrollYProgress={scrollYProgress}
         />
         <FloatingImage
           src="/p4.png"
           alt="Parallax image 3"
-          start={-200}
-          end={200}
+          start={-300}
+          end={100}
           className="ml-auto w-1/3"
+          scrollYProgress={scrollYProgress}
         />
       </div>
     </div>
   );
 }
 
-interface FloatingImageProps {
+/* ---------------------------------------------
+   Props Interface for FloatingImage
+--------------------------------------------- */
+interface FloatingImageProps extends ScrollProps {
   src: string;
   alt: string;
   className?: string;
@@ -159,21 +126,22 @@ interface FloatingImageProps {
   end: number;
 }
 
+/* ---------------------------------------------
+   3) FLOATING IMAGE COMPONENT
+--------------------------------------------- */
 function FloatingImage({
   src,
   alt,
   className,
   start,
   end,
+  scrollYProgress,
 }: FloatingImageProps) {
-  const { scrollYProgress } = useScroll();
+  // The transform now uses an extended range so that the images animate across the full height.
+  const y = useTransform(scrollYProgress, [-0.1, 1.1], [start, end]);
 
-  // Move from start px -> end px across entire 0->1 range
-  const y = useTransform(scrollYProgress, [0, 1], [start, end]);
-  // optional fade near bottom
-  const opacity = useTransform(scrollYProgress, [0.8, 1], [1, 0]);
-  // optional slight scale
-  const scale = useTransform(scrollYProgress, [0.8, 1], [1, 0.85]);
+  // Optional scale effect over the same extended range.
+  const scale = useTransform(scrollYProgress, [-0.1, 1.1], [1, 0.85]);
 
   const transform = useMotionTemplate`translateY(${y}px) scale(${scale})`;
 
@@ -182,7 +150,7 @@ function FloatingImage({
       src={src}
       alt={alt}
       className={className}
-      style={{ transform, opacity }}
+      style={{ transform }}
     />
   );
 }
