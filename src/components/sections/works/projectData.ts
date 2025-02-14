@@ -42,30 +42,31 @@ export const projectData: ProjectData[] = [
       '/kurskonfigurator-gallery2.jpg',
     ],
   },
-  {
-    id: '03',
-    title: 'Design System',
-    companyName: 'WBS Gruppe AG',
-    date: '2020-2023',
-    imageUrl:
-      'https://images.unsplash.com/photo-1503551723145-6c040742065b-v2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3',
-    color: '#EFE8D3',
-    slug: 'designsystem',
-    sector: 'Digital Product Design',
-    myRole: 'Lead Visual Designer',
-    gallery: ['/trainspot1.png', '/trainspot2.png', '/trainspot3.png'],
-  },
-  {
-    id: '04',
-    title: 'Kursplannung',
-    imageUrl: '/project-1.png',
-    color: '#706D63',
-    companyName: 'WBS Gruppe AG',
-    date: '2021-2022',
-    slug: 'kursplannung',
-    sector: 'Learning Management',
-    myRole: 'UX Strategist & Planner',
-    // You may include a gallery array even if it has just one image:
-    gallery: ['/kursplannung-gallery1.jpg'],
-  },
+
+  // Comment out or remove these if you do not want them accessible:
+  // {
+  //   id: '03',
+  //   title: 'Design System',
+  //   companyName: 'WBS Gruppe AG',
+  //   date: '2020-2023',
+  //   imageUrl:
+  //     'https://images.unsplash.com/photo-1503551723145-6c040742065b-v2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3',
+  //   color: '#EFE8D3',
+  //   slug: 'designsystem',
+  //   sector: 'Digital Product Design',
+  //   myRole: 'Lead Visual Designer',
+  //   gallery: ['/trainspot1.png', '/trainspot2.png', '/trainspot3.png'],
+  // },
+  // {
+  //   id: '04',
+  //   title: 'Kursplannung',
+  //   imageUrl: '/project-1.png',
+  //   color: '#706D63',
+  //   companyName: 'WBS Gruppe AG',
+  //   date: '2021-2022',
+  //   slug: 'kursplannung',
+  //   sector: 'Learning Management',
+  //   myRole: 'UX Strategist & Planner',
+  //   gallery: ['/kursplannung-gallery1.jpg'],
+  // },
 ];

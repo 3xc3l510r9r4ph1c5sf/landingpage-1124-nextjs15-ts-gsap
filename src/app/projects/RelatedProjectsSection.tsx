@@ -32,7 +32,7 @@ const RelatedProjectsSection: React.FC<RelatedProjectsSectionProps> = ({
               key={relatedProject.slug}
               className="group relative overflow-hidden border-2 border-[#ffffff33] w-full"
             >
-              <Link href={`/${relatedProject.slug}`} className="block">
+              <Link href={`/projects/${relatedProject.slug}`} className="block">
                 {/* Image (no padding) */}
                 <div className="overflow-hidden transition-transform transform duration-700 ease-in-out mb-4 relative h-[200px] w-full">
                   <Image

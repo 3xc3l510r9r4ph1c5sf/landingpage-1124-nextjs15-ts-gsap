@@ -1,4 +1,7 @@
+//src/components/Preloader/index.tsx
+
 'use client';
+
 import PreLoaderText from './PreLoaderText';
 
 const PreLoader = () => {
