@@ -1,6 +1,4 @@
-Below is the complete updated README in Markdown format, including installation, project structure, deployment, contributing, support, and license sections. You can copy this into your `README.md` file.
 
-````md
 # LandingPage 1124 - Next.js, TypeScript & GSAP
 
 ![Project Banner](./public/heroarrow.svg)
