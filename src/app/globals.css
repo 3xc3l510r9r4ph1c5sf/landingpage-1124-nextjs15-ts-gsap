@@ -86,8 +86,8 @@
       - ~18px at 520px (md)
       - Up to ~24px (above 800px)
     */
-    font-size: clamp(0.875rem, 2vw + 0.5rem, 1.5rem);
-    line-height: clamp(0.875rem, 2vw + 0.5rem, 1.5rem);
+    font-size: clamp(0.87rem, 2vw + 0.5rem, 1.5rem);
+    line-height: clamp(0.87rem, 2vw + 0.5rem, 1.5rem);
     letter-spacing: -0.03em;
     font-weight: bold;
   }
@@ -101,7 +101,7 @@
       - ~40px at 520px (md)
       - Up to ~54px (above 800px)
     */
-    font-size: clamp(1.625rem, 5vw + 1rem, 3.375rem);
+    font-size: clamp(1.62rem, 5vw + 1rem, 3.37rem);
     line-height: clamp(1.75rem, 5vw + 1rem, 3.5rem);
     letter-spacing: -0.02em;
   }
@@ -111,12 +111,12 @@
  ************************************/
   .text-medium {
     /* 
-    - Min ~18px (unter 520px)
-    - ~24px bei 520px (md)
-    - Bis zu ~32px (über 800px)
+    - Min: 16px (unter 520px) → 1rem
+    - 20px at 520px (md) → 1.25rem
+    - 26px at 800px (lg and above) → 1.62rem
   */
-    font-size: clamp(1.125rem, 2.3vw + 0.75rem, 2rem);
-    line-height: clamp(1.125rem, 2.3vw + 0.75rem, 2rem);
+    font-size: clamp(1rem, 2.14vw + 0.55rem, 1.62rem);
+    line-height: clamp(1rem, 2.54vw + 0.95rem, 1.92rem);
     letter-spacing: -0.02em;
   }
 

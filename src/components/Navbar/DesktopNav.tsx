@@ -1,5 +1,4 @@
 // src/components/Navbar/DesktopNav.tsx
-
 'use client';
 
 import React, { useState } from 'react';
@@ -22,7 +21,6 @@ export function DesktopNav() {
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
 
-  // Hide nav if scrolling down, show if scrolling up
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const prev = scrollY.getPrevious();
     if (prev && latest > prev) setHidden(true);
@@ -34,16 +32,16 @@ export function DesktopNav() {
       variants={navVariants}
       animate={hidden ? 'hidden' : 'visible'}
       className="
-        fixed top-0 left-0 z-50 w-full 
+        fixed top-0 z-50 w-full 
         h-[var(--navbar-height)] backdrop-blur-md bg-hero-dark/70 
-        px-6 py-4 hidden lg:flex items-center justify-between text-details-white
+        py-4 hidden lg:flex justify-between text-details-white
       "
     >
-      {/* UL with your dynamic nav items */}
-      <ul className="flex gap-8">
+      <ul className="flex gap-14 text-small ml-[10px] md:ml-[35px] lg:ml-[70px] ">
         {navItems.map((item) => (
           <li key={item.id}>
-            <NavItemLink item={item} />
+            {/* Pass extraClassName if you need additional classes */}
+            <NavItemLink item={item} extraClassName="" />
           </li>
         ))}
       </ul>

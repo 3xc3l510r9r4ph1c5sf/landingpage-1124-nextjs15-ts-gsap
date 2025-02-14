@@ -12,23 +12,21 @@ gsap.registerPlugin(ScrollToPlugin);
 
 interface NavItemLinkProps {
   item: NavItem;
+  extraClassName?: string; // optional className prop
 }
 
-export const NavItemLink: React.FC<NavItemLinkProps> = ({ item }) => {
+export const NavItemLink: React.FC<NavItemLinkProps> = ({
+  item,
+  extraClassName = '',
+}) => {
   const pathname = usePathname();
 
-  /**
-   * Smooth scrolling for anchor links if we are already on '/'.
-   */
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (!item.href.includes('#')) {
       gsap.to(window, {
         duration: 1.5,
-        scrollTo: {
-          y: 0,
-          offsetY: item.offset ?? 0,
-        },
+        scrollTo: { y: 0, offsetY: item.offset ?? 0 },
         ease: 'power2.out',
       });
       return;
@@ -38,51 +36,41 @@ export const NavItemLink: React.FC<NavItemLinkProps> = ({ item }) => {
 
     gsap.to(window, {
       duration: 1.5,
-      scrollTo: {
-        y: target,
-        offsetY: item.offset ?? 0,
-      },
+      scrollTo: { y: target, offsetY: item.offset ?? 0 },
       ease: 'power2.out',
     });
   };
 
-  // 1. If it's an anchor link AND we're ALREADY on "/", do local GSAP scroll:
+  // Render anchor link with minimal default styling
+  const commonProps = {
+    className: `z-10 ${extraClassName}`, // now you can pass extra classes from DesktopNav if needed
+  };
+
   if (item.type === 'anchor' && pathname === '/') {
     return (
-      <a
-        href={item.href}
-        onClick={handleSmoothScroll}
-        className="group relative inline-block overflow-hidden cursor-pointer z-10 text-lg"
-      >
+      <a href={item.href} onClick={handleSmoothScroll} {...commonProps}>
         <TextHover titile1={item.label} titile2={item.label} />
       </a>
     );
   }
 
-  // 2. If it's an anchor link, but we are on SOME OTHER PAGE (e.g. "/projects/…"):
-  //    => Force a FULL page reload by using window.location.href
   if (item.type === 'anchor' && pathname !== '/') {
     return (
       <a
         href={item.href}
         onClick={(e) => {
           e.preventDefault();
-          // Force the browser to reload the entire page:
           window.location.href = item.href;
         }}
-        className="group relative inline-block overflow-hidden cursor-pointer z-10 text-lg"
+        {...commonProps}
       >
         <TextHover titile1={item.label} titile2={item.label} />
       </a>
     );
   }
 
-  // 3. Otherwise, for normal routes, use Next.js <Link> so it can do a normal client transition
   return (
-    <a
-      href={item.href}
-      className="group relative inline-block overflow-hidden cursor-pointer z-10 text-lg"
-    >
+    <a href={item.href} {...commonProps}>
       <TextHover titile1={item.label} titile2={item.label} />
     </a>
   );

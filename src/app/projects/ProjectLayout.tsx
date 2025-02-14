@@ -56,22 +56,18 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
       {/* 1. HERO / PROJECT OVERVIEW */}
       <section
         className="
-          p-[5rem_0.625rem_0.625rem_0.625rem] 
-          sm:p-[4rem_0.5rem] 
-          md:grid md:grid-cols-2 md:gap-[1.578rem] 
-          md:p-[7.125rem_1.25rem_0.625rem_1.25rem] 
-          md:pl-[clamp(0.4453125rem,_-10.4222rem_+_23.3397vw,_10rem)]
+          px-[10px] md:px-[20px] lg:px-[73px]
+          py-20
+          md:grid md:grid-cols-2 md:gap-6
           bg-hero-dark text-mainbody-weg
         "
       >
         <div
           className="
-            relative 
-            h-[30.3125rem] 
-            w-full 
-            md:sticky md:top-[3.75rem] 
-            md:w-11/12 
-            lg:w-[clamp(19rem,6.4885rem+26.8702vw,30rem)]
+            relative
+            h-[30.3125rem]
+            md:sticky md:top-[3.75rem]
+            lg:w-[clamp(19rem,6.49rem+26.87vw,30rem)]
           "
         >
           <Image
@@ -82,6 +78,7 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
             className="object-cover"
           />
         </div>
+
         <div className="flex flex-col gap-[2.5rem] pt-12 md:pt-0 lg:mb-[500px]">
           <h2 className="display-heading">
             {project.title} <br />

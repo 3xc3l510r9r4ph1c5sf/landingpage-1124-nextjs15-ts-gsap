@@ -118,7 +118,7 @@ export function MobileNav() {
               </button>
             </div>
 
-            <ul className="flex flex-col gap-6 mt-8 ml-4 text-mainbody-weg">
+            <ul className="flex flex-col gap-6 mt-8 ml-4 section-heading text-mainbody-weg">
               {navItems.map((item) => (
                 <li key={item.id} onClick={() => setToggle(false)}>
                   <NavItemLink item={item} />

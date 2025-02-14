@@ -10,15 +10,13 @@ import AnimatedButton from '@/app/projects/AnimatedButton';
 import ProjectLayout from '@/app/projects/ProjectLayout';
 import { TrainspotParallax } from './TrainspotParallax';
 
-//
-// A small helper component for parallax images, if you still need it:
-//
 interface ParallaxImageProps {
   src: string;
   alt: string;
   start?: number;
   end?: number;
   className?: string;
+  sizes?: string;
 }
 
 function ParallaxImage({
@@ -27,6 +25,7 @@ function ParallaxImage({
   start = 0,
   end = 0,
   className = '',
+  sizes = '(max-width: 768px) 100vw, 50vw',
 }: ParallaxImageProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -43,24 +42,28 @@ function ParallaxImage({
       style={{ y }}
       className={`relative overflow-hidden ${className}`}
     >
-      <Image src={src} alt={alt} fill className="object-cover" />
+      <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
     </motion.div>
   );
 }
 
-//
-// 1. Context & Vision Section
-//
+/**
+ * 1. Context & Vision Section
+ */
 function ContextVisionSectionParallax() {
   return (
     <section
-      className="relative w-full text-center px-[0.63rem] pt-20 
-                 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] 
-                 lg:p-[10rem_1.25rem_0rem_4.5625rem]"
+      className="
+        relative 
+        w-full 
+        text-center 
+        px-[10px] md:px-[20px] lg:px-[70px]
+        pt-[4rem] md:pt-[6rem] lg:pt-[8rem]
+      "
     >
-      <div className="relative z-10 lg:flex lg:gap-[3.75rem]">
+      <div className="relative z-10 lg:flex lg:gap-[3rem]">
         <h2 className="section-heading mb-8 lg:mb-0">Context &amp; Vision</h2>
-        <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
+        <div className="flex flex-col gap-[1rem] md:gap-[1.5rem] lg:gap-4 text-left self-end">
           <p className="text-medium">
             <strong>Mein Bildungsraum</strong> is a nationwide digital learning
             initiative aimed at bridging the gap between education and
@@ -86,46 +89,39 @@ function ContextVisionSectionParallax() {
       </div>
 
       <div className="relative">
-        {/* If you want parallax images behind the text */}
         <TrainspotParallax />
       </div>
     </section>
   );
 }
 
-//
-// 2. TrainspotPage Component – the default export
-//    This uses your shared ProjectLayout with slug="trainspot".
-//
+/**
+ * 2. TrainspotPage - Default Export
+ */
 export default function TrainspotPage() {
   return (
     <ProjectLayout slug="trainspot">
-      {/* ———————————————— 
-          Everything below is the unique content for Trainspot
-          that was previously in "TrainspotContent".
-          ———————————————— */}
-
       <ContextVisionSectionParallax />
 
-      {/* 3. THE CHALLENGE SECTION */}
+      {/* 3. The Challenge Section */}
       <section
         className="
-          bg-mainbody-weg 
-          p-[5rem_0.625rem_0.625rem_0.625rem] 
-          sm:p-[4rem_0.5rem] 
-          md:grid md:grid-cols-2 md:gap-[1.578rem] 
-          md:p-[7.125rem_1.25rem_0.625rem_1.25rem] 
-          md:pl-[clamp(0.4453125rem,_-10.4222rem_+_23.3397vw,_10rem)]
+          bg-mainbody-weg
+          px-[10px] md:px-[20px] lg:px-[70px]
+          flex flex-col md:flex-row gap-[1.5rem] md:gap-[2rem] lg:gap-[3rem]
+       pt-[3rem] md:pt-[4rem] lg:pt-[6rem]
         "
       >
         <div
           className="
-            img relative 
+            relative 
             h-[18rem] 
-            w-full
-            mb-8
+            w-full 
+            max-w-[780px] 
+            mx-auto 
+            mb-8 
             md:mb-0 
-            md:h-[25rem]
+            md:h-[25rem] 
             lg:h-[30rem]
           "
         >
@@ -137,8 +133,8 @@ export default function TrainspotPage() {
             className="object-cover object-center"
           />
         </div>
-        <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
-          <h2 className="section-heading">The Challenge</h2>
+        <div className="flex flex-col">
+          <h2 className="section-heading mb-8">The Challenge</h2>
           <div className="flex flex-col gap-4">
             {/* Challenge Item 1 */}
             <div className="flex gap-[0.625rem] max-w-[55rem]">
@@ -191,10 +187,19 @@ export default function TrainspotPage() {
         </div>
       </section>
 
-      {/* 4. PROJECT GOALS & OBJECTIVES SECTION */}
-      <section className="max-w-[84.2rem] px-[0.63rem] pt-20 md:pl-[1.25rem] md:pr-[4.437rem] md:pt-[7.12rem] lg:mb-[200px] lg:p-[10rem_1.25rem_0rem_4.5625rem]">
+      {/*
+        4. PROJECT GOALS & OBJECTIVES
+        Updated to use consistent horizontal padding 
+        and a unified vertical spacing approach
+      */}
+      <section
+        className="
+    px-[10px] md:px-[20px] lg:px-[70px]
+    pt-[4rem] md:pt-[6rem] lg:pt-[8rem]
+  "
+      >
         <h2 className="section-heading mb-8">Project Goals &amp; Objectives</h2>
-        <div className="flex flex-col gap-[1.9rem] md:gap-[3.15rem]">
+        <div className="flex flex-col gap-4">
           <p className="text-medium">
             <strong>Develop an Inclusive Digital Tool:</strong> Ensure
             educators, learners, and service providers have equal access.
@@ -212,37 +217,49 @@ export default function TrainspotPage() {
             knowledge-sharing via a unified community space.
           </p>
         </div>
-      </section>
-
-      {/* 5. MY ROLE & RESPONSIBILITIES SECTION */}
-      <section
-        className="
-          bg-mainbody-weg 
-          p-[5rem_0.625rem] 
-          sm:p-[4rem_0.5rem]
-          md:p-[7.125rem_1.25rem]
-        "
-      >
-        <div className="max-w-[84.2rem] mx-auto">
-          <h2 className="section-heading mb-8">
-            My Role &amp; Responsibilities
-          </h2>
-          <p className="text-medium mb-6">
-            I led the UX/UI design stream, focusing on empathizing with user
-            needs and delivering iterative designs in line with our agile
-            workflow. Specifically, I:
-          </p>
-          <ul className="text-medium list-disc ml-4 space-y-3">
-            <li>Defined design objectives (accessibility, clarity, etc.).</li>
-            <li>Conducted user interviews for insights.</li>
-            <li>Led user testing &amp; documented findings.</li>
-            <li>Collaborated on a cohesive design system for consistency.</li>
-          </ul>
+        <div className="flex flex-wrap gap-4 mt-8">
+          <AnimatedButton
+            text="Figma Mockup 1"
+            href="https://www.figma.com/your-mockup-link-1"
+          />
         </div>
       </section>
 
-      {/* 6. CLOSING / NEXT STEPS SECTION */}
-      <section className="max-w-[84.2rem] mx-auto px-[0.63rem] py-16 md:px-[1.25rem] lg:p-[10rem_4.5625rem_4rem_4.5625rem]">
+      {/*
+  5. MY ROLE & RESPONSIBILITIES
+  Updated to share the same padding logic and left-aligned content
+*/}
+      <section
+        className="
+    bg-mainbody-weg
+    px-[10px] md:px-[20px] lg:px-[70px]
+    pt-[4rem] md:pt-[6rem] lg:pt-[8rem]
+  "
+      >
+        <h2 className="section-heading mb-8">My Role &amp; Responsibilities</h2>
+        <p className="text-medium mb-6">
+          I led the UX/UI design stream, focusing on empathizing with user needs
+          and delivering iterative designs in line with our agile workflow.
+          Specifically, I:
+        </p>
+        <ul className="text-medium list-disc ml-4 space-y-3">
+          <li>Defined design objectives (accessibility, clarity, etc.).</li>
+          <li>Conducted user interviews for insights.</li>
+          <li>Led user testing &amp; documented findings.</li>
+          <li>Collaborated on a cohesive design system for consistency.</li>
+        </ul>
+      </section>
+
+      {/*
+  6. FINAL THOUGHTS & NEXT STEPS
+  Same unified spacing approach
+*/}
+      <section
+        className="
+    px-[10px] md:px-[20px] lg:px-[70px]
+    py-16 md:py-[5rem] lg:py-[7rem]
+  "
+      >
         <h2 className="section-heading mb-8">
           Final Thoughts &amp; Next Steps
         </h2>
@@ -253,21 +270,6 @@ export default function TrainspotPage() {
           sprints—building a robust foundation for more seamless, inclusive
           learning experiences.
         </p>
-        <p className="text-medium">
-          [Add any final metrics, a roadmap for future features, or reflection
-          on lessons learned.]
-        </p>
-      </section>
-
-      {/* 7. NEW SECTION: Animated Buttons Linking to Figma Mockups */}
-      <section className="max-w-[84.2rem] mx-auto px-[0.63rem] py-16 md:px-[1.25rem]">
-        <h2 className="section-heading mb-8">Explore More</h2>
-        <div className="flex gap-4">
-          <AnimatedButton
-            text="Figma Mockup 1"
-            href="https://www.figma.com/your-mockup-link-1"
-          />
-        </div>
       </section>
     </ProjectLayout>
   );

@@ -79,7 +79,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
       onMouseLeave={handleMouseLeave}
       // Note: you can remove the Tailwind hover:bg-blue-100 if you don't want
       // the background color change; we now rely on GSAP for the bounce.
-      className={`animated-button relative rounded-full border-2 border-blue-600 px-6 py-2 text-2xl text-blue-600 transition-colors hover:bg-blue-100 ${className}`}
+      className={`animated-button relative rounded-full border-2 border-details-red px-6 py-2 text-2xl hover:bg-[rgba(228,64,33,0.1)] ${className}`}
     >
       {/* Screen-reader only text */}
       <span className="sr-only">{text}</span>

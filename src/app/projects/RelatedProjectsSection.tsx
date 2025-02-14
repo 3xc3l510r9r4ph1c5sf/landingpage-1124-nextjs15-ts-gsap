@@ -25,15 +25,15 @@ const RelatedProjectsSection: React.FC<RelatedProjectsSectionProps> = ({
         {/* Section Heading */}
         <h2 className="section-heading mb-8">Other Projects You Might Like</h2>
 
-        {/* Card Container */}
-        <div className="w-full flex flex-wrap gap-6">
+        {/* Card Container - grid with 1 column in md and 3 columns in lg */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-3 md:gap-[3rem] lg:gap-[3rem]">
           {relatedProjects.map((relatedProject) => (
             <div
               key={relatedProject.slug}
-              className="group relative overflow-hidden border-2 border-[#ffffff33] p-4 w-full sm:w-[47%] md:w-[31%] lg:w-[31%] xl:w-[31%]"
+              className="group relative overflow-hidden border-2 border-[#ffffff33] w-full"
             >
               <Link href={`/${relatedProject.slug}`} className="block">
-                {/* Image */}
+                {/* Image (no padding) */}
                 <div className="overflow-hidden transition-transform transform duration-700 ease-in-out mb-4 relative h-[200px] w-full">
                   <Image
                     src={relatedProject.imageUrl}
@@ -43,16 +43,16 @@ const RelatedProjectsSection: React.FC<RelatedProjectsSectionProps> = ({
                   />
                 </div>
 
-                {/* Title / Info */}
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-semibold text-mainbody-weg text-lg leading-snug">
+                {/* Text Container with padding and spacing */}
+                <div className="p-4 flex flex-col gap-3 text-medium">
+                  <h3 className="font-semibold text-mainbody-weg leading-snug">
                     {relatedProject.title}
                   </h3>
-                  <p className="text-gray-400 ">
-                    <strong>Company:</strong> {relatedProject.companyName}
+                  <p className="text-small">
+                    <strong></strong> {relatedProject.companyName}
                   </p>
-                  <p className="text-gray-500 ">
-                    <strong>Date:</strong> {relatedProject.date}
+                  <p className="text-small">
+                    <strong></strong> {relatedProject.date}
                   </p>
                 </div>
               </Link>
