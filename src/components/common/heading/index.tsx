@@ -10,12 +10,7 @@ const Heading = ({
   children: ReactNode;
 }) => {
   return (
-    <h2
-      className={twMerge(
-        'section-heading flex items-center ml-[50px] mr-[10px] md:ml-[65px] md:mr-[10px] lg:ml-[90px] lg:mr-[20px]',
-        className
-      )}
-    >
+    <h2 className={twMerge('section-heading flex items-left', className)}>
       <div className="">
         <svg
           className="w-[68px] h-[70px] md:w-[95px] md:h-[98px] lg:w-[110px] lg:h-[130px] text-details-red"
