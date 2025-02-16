@@ -18,7 +18,7 @@ const Footer: React.FC<FooterProps> = ({ id }) => {
   return (
     <footer
       id={id}
-      className="-z-2 relative -mt-[100vh] h-[220vh] w-full  bg-hero-dark"
+      className="-z-2 relative -mt-[100vh] h-[200vh] w-full  bg-hero-dark"
       ref={ref}
     >
       <div className="sticky top-0 flex h-svh flex-col text-mainbody-weg ml-[1.88rem] md:ml-[4.38rem] lg:ml-[4.38rem] mr-[0.63rem] md:mr-[1.25rem] lg:mr-[1.25rem] mt-[1.25rem] mb-[1.25rem] [clip-path:_inset(0_0_0_0)]">

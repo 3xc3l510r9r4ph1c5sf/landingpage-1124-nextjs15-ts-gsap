@@ -122,7 +122,7 @@ export default function Works({ id }: WorksProps) {
       id={id}
       className="relative pt-[170px] md:pt-[170px] lg:pt-[250px] w-full"
     >
-      <Heading className="mb-[20px] md:mb-[30px] lg:mb-[40px] px-[0.63rem]">
+      <Heading className="">
         <span>Recent projects</span>
       </Heading>
       <div
