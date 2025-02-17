@@ -44,7 +44,7 @@ export default function Modal({
         w-full px-[10px] pt-[10px] md:px-0 md:pt-0
       "
     >
-      <div className="flex flex-row sm:flex-row p-5 justify-between items-center w-full">
+      <div className="flex flex-row sm:flex-row p-5 justify-between items-top w-full">
         {/* Container for ID and DATE + COMPANY NAME */}
         <div className="flex flex-col gap-[10px] md:flex-row md:items-center md:gap-4 lg:gap-8">
           {/* ID */}
@@ -79,7 +79,7 @@ export default function Modal({
         {/* Title with arrow icon */}
         <h3
           className="
-            name  text-medium 
+            name  text-large 
     md:text-large lg:text-large
             flex justify-end 
             md:inline-flex md:justify-end

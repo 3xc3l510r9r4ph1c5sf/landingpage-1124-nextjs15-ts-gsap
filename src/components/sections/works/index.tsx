@@ -118,7 +118,10 @@ export default function Works({ id }: WorksProps) {
   );
 
   return (
-    <section className="bg-mainbody-weg">
+    <section
+      id={id}
+      className="relative pt-[170px] md:pt-[170px] lg:pt-[250px] w-full"
+    >
       <h2
         className="
     section-heading pt-[170px] md:pt-[170px] lg:pt-[250px]

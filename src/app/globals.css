@@ -115,7 +115,7 @@
     - 20px at 520px (md) → 1.25rem
     - 26px at 800px (lg and above) → 1.62rem
   */
-    font-size: clamp(1rem, 2.14vw + 0.55rem, 1.62rem);
+    font-size: clamp(1rem, 2.54vw + 0.95rem, 1.62rem);
     line-height: clamp(1rem, 2.54vw + 0.95rem, 1.92rem);
     letter-spacing: -0.02em;
   }
