@@ -57,7 +57,7 @@ function StickyBackground({ scrollYProgress }: ScrollProps) {
   const clipPath = useMotionTemplate`none`;
 
   return (
-    <div className="sticky top-0 left-0 w-full h-[100vh] z-0">
+    <div className="sticky top-0 left-0 w-full h-[100vh] z-30">
       {/* 
           On md and smaller screens the background fills the container.
           On lg screens, the inner container is limited to 70% of the viewport width.
@@ -83,7 +83,7 @@ function StickyBackground({ scrollYProgress }: ScrollProps) {
 function ParallaxOverlay({ scrollYProgress }: ScrollProps) {
   return (
     // The overlay now takes up the full height of the component.
-    <div className="pointer-events-none absolute inset-0 z-10">
+    <div className="pointer-events-none absolute inset-0 z-40">
       <div className="mx-auto max-w-5xl px-4 h-full">
         {/* You can adjust each image's start/end values and classNames as needed */}
         <FloatingImage

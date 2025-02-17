@@ -27,12 +27,16 @@ export default {
     extend: {
       // Ejemplo de escala de z-index centralizada:
       zIndex: {
-        '-10': '-10', // para fondos que deben quedar detrás
-        '0': '0', // capa base
-        '10': '10', // contenido principal o secciones
-        '20': '20', // otro contenido (por ejemplo, imágenes o bloques intermedios)
-        '50': '50', // navegación
-        '70': '70', // overlays o transiciones
+        '0': '0', // Base layer
+        '1': '1', //Footer
+        '5': '5', //Hero
+        '10': '10', // Main layer
+        '20': '20', // Main body
+        '30': '30', // parallax
+        '40': '40', // parallax
+        '50': '50', // desktop navigation
+        '60': '60', // navegación
+        '70': '70', // transitionrouter
         '80': '80', // preloader
         '999': '999', // indicador de Tailwind u otros elementos de debug
       },

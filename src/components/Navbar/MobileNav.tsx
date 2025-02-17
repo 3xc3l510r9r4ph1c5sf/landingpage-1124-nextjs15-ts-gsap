@@ -56,8 +56,16 @@ export function MobileNav() {
   // Ocultar/mostrar header según scroll
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const prev = scrollY.getPrevious();
-    if (prev && latest > prev) setHidden(true);
-    else setHidden(false);
+    if (!prev) return; // Evita cálculos si prev es undefined
+
+    const diff = latest - prev;
+
+    // Un umbral de ~5-10px para ignorar scrolls muy pequeños / rebotes
+    if (diff > 5) {
+      setHidden(true);
+    } else if (diff < -5) {
+      setHidden(false);
+    }
   });
 
   return (
@@ -94,7 +102,7 @@ export function MobileNav() {
             animate="animate"
             exit="exit"
             variants={menuVariants}
-            className="fixed top-0 left-0 right-0 bottom-0 bg-hero-dark flex flex-col z-[60]"
+            className="fixed top-0 left-0 right-0 bottom-0 bg-hero-dark flex flex-col z-60"
           >
             {/* Botón de cierre */}
             <div className="flex items-center justify-end h-[var(--navbar-height)] px-4 border-b border-gray-200/25">
