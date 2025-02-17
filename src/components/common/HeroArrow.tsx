@@ -1,9 +1,9 @@
-// src/components/sections/Hero/heroArrow.tsx
+// src/components/sections/Hero/HeroArrow.tsx
 
 'use client';
 
 import { motion } from 'framer-motion'; // Ensure you import from 'framer-motion'
-import { useAppContext } from '../../context/AppContext';
+import { useAppContext } from '../context/AppContext';
 
 const HeroArrow = () => {
   const { heroIconControl } = useAppContext();

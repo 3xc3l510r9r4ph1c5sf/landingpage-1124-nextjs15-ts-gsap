@@ -1,5 +1,5 @@
 // src/components/sections/Hero/index.tsx
-import HeroArrow from './heroArrow';
+import HeroArrow from '../../common/HeroArrow';
 
 const Hero: React.FC = () => {
   return (

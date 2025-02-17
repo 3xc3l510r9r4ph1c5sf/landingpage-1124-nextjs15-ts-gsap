@@ -9,7 +9,7 @@ import { motion, Variants } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
 import { projectData } from './projectData';
-import Heading from '@/components/common/heading';
+import HeadingArrow from '@/components/common/HeadingArrow';
 
 interface ModalState {
   active: boolean;
@@ -118,13 +118,20 @@ export default function Works({ id }: WorksProps) {
   );
 
   return (
-    <section
-      id={id}
-      className="relative pt-[170px] md:pt-[170px] lg:pt-[250px] w-full"
-    >
-      <Heading className="">
+    <section className="bg-mainbody-weg">
+      <h2
+        className="
+    section-heading pt-[170px] md:pt-[170px] lg:pt-[250px]
+    ml-[1.88rem] md:ml-[4.38rem] lg:ml-[4.38rem]
+    mr-[0.63rem] md:mr-[1.25rem] lg:mr-[1.25rem]
+    mb-[1.875rem] lg:mb-[2.5rem]
+    "
+      >
+        <span className="inline-block mr-[1.875rem] md:mr-[2.19rem] lg:mr-[2.19rem]">
+          <HeadingArrow />
+        </span>
         <span>Recent projects</span>
-      </Heading>
+      </h2>
       <div
         onMouseMove={(e) => {
           moveItems(e.clientX, e.clientY);

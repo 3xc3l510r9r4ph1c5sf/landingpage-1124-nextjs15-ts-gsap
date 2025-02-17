@@ -2,7 +2,7 @@
 'use client';
 
 import { useInView } from 'motion/react';
-import HeroArrow from '../sections/Hero/heroArrow';
+import HeroArrow from '../common/HeroArrow';
 import { useEffect, useRef } from 'react';
 
 interface FooterProps {
