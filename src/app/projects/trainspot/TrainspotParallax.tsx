@@ -20,13 +20,14 @@ export function TrainspotParallax() {
   // Use extended offsets so scrollYProgress extends beyond [0, 1]
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['-40% start', 'end +90%'],
+    offset: ['-20% start', 'end +20%'],
   });
 
   return (
-    <section ref={ref} className="relative w-full" style={{ height: '150vh' }}>
-      {/* <ScrollDebugMarks /> */}
-
+    <section
+      ref={ref}
+      className="relative w-full h-[37.5vh] md:h-[75vh] lg:h-[150vh] overflow-hidden"
+    >
       {/* Sticky background with zoom */}
       <StickyBackground scrollYProgress={scrollYProgress} />
 
@@ -57,11 +58,7 @@ function StickyBackground({ scrollYProgress }: ScrollProps) {
   const clipPath = useMotionTemplate`none`;
 
   return (
-    <div className="sticky top-0 left-0 w-full h-[100vh] z-30">
-      {/* 
-          On md and smaller screens the background fills the container.
-          On lg screens, the inner container is limited to 70% of the viewport width.
-      */}
+    <div className="sticky top-0 left-0 w-full h-full z-30">
       <motion.div
         className="mx-auto w-full lg:max-w-[70vw] h-full"
         style={{

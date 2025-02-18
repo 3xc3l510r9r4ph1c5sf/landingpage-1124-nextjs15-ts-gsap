@@ -57,7 +57,7 @@ const Footer: React.FC<FooterProps> = ({ id }) => {
             </a>
           </p>
           <p className="text-medium text-left">
-            Open source project available in{' '}
+            This is an source project available in{' '}
             <a
               href="https://github.com/Kano85/landingpage-1124-nextjs15-ts-gsap"
               target="_blank"
@@ -74,9 +74,18 @@ const Footer: React.FC<FooterProps> = ({ id }) => {
               rel="noopener noreferrer"
               className="font-bold hover:underline"
             >
-              Profile
+              Github Profile
             </a>{' '}
             to discover more
+            <br />{' '}
+            <a
+              href="https://www.figma.com/design/M5BundsExb0b43TyRa30sN/PORTFOLIO?node-id=1720-25274"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold hover:underline"
+            >
+              Responsive Figma Mockups
+            </a>
           </p>
         </div>
       </div>
