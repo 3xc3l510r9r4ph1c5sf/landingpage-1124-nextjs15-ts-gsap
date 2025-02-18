@@ -3,9 +3,8 @@
 export interface NavItem {
   id: number;
   label: string;
-  href: string; // e.g. "/#hero" or "/#contact"
+  href: string;
   type: 'anchor' | 'route';
-  /** Optional: custom offset for smooth scroll, if needed */
   offset?: number;
 }
 
@@ -15,15 +14,14 @@ export const navItems: NavItem[] = [
     label: 'Home',
     href: '/#hero',
     type: 'anchor',
-    // Adjust this value until the hero content is fully visible.
-    offset: 7400,
+    offset: 9000,
   },
   {
     id: 2,
     label: 'Projects',
     href: '/#projects',
     type: 'anchor',
-    offset: -120,
+    offset: -180,
   },
   {
     id: 3,
