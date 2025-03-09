@@ -7,13 +7,15 @@ import {
 } from '@/components/sections/works/projectData';
 import RelatedProjectsSection from '@/app/projects/RelatedProjectsSection';
 import { ReactNode } from 'react';
+import CodaDoc from '@/components/Coda/CodaDoc'; // Import the new CodaDoc component
 
 interface ProjectLayoutProps {
   slug: string;
   children: ReactNode;
 }
 
-// 1. Our stable helper function (same as above or imported from a utility file)
+// (Helper function getNextProjects remains unchanged)
+
 function getNextProjects(
   allProjects: ProjectData[],
   currentSlug: string
@@ -40,7 +42,6 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
   const project = projectData.find((p) => p.slug === slug);
 
   if (!project) {
-    // fallback if the project was not found
     return (
       <main className="flex items-center justify-center h-screen">
         <h1 className="text-2xl">Project Not Found</h1>
@@ -48,7 +49,6 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
     );
   }
 
-  // 2. Instead of random, pick the next 3 in a stable, wrap-around manner
   const relatedProjects = getNextProjects(projectData, slug);
 
   return (
@@ -106,10 +106,13 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
         </div>
       </section>
 
-      {/* 2. Children: the unique content (Trainspot sections, etc.) */}
+      {/* 2. Unique project content */}
       {children}
 
-      {/* 3. Other Projects (cards) */}
+      {/* 3. Insert the Coda doc content (read-only case study text) */}
+      <CodaDoc />
+
+      {/* 4. Related projects section */}
       <RelatedProjectsSection relatedProjects={relatedProjects} />
     </main>
   );

@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@types/axios": "^0.9.36",
     "@types/gsap": "^1.20.2",
+    "axios": "^1.8.2",
     "eslint": "^9.14.0",
     "eslint-config-next": "^15.0.3",
     "framer-motion": "^12.4.0",
