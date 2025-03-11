@@ -1,5 +1,5 @@
 // src/app/projects/kurskonfigurator/page.tsx
-'use client';
+// 'use client';
 
 import ProjectLayout from '@/app/projects/ProjectLayout';
 

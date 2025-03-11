@@ -1,14 +1,14 @@
 // src/app/projects/trainspot/page.tsx
 
-'use client';
+// 'use client';
 
-import React, { useRef } from 'react';
+// import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import AnimatedButton from '@/app/projects/AnimatedButton';
+// import { motion, useScroll, useTransform } from 'framer-motion';
+// import AnimatedButton from '@/components/common/AnimatedButton';
 
 import ProjectLayout from '@/app/projects/ProjectLayout';
-import { TrainspotParallax } from './TrainspotParallax';
+// import { TrainspotParallax } from './TrainspotParallax';
 
 interface ParallaxImageProps {
   src: string;
@@ -19,33 +19,33 @@ interface ParallaxImageProps {
   sizes?: string;
 }
 
-function ParallaxImage({
-  src,
-  alt,
-  start = 0,
-  end = 0,
-  className = '',
-  sizes = '(max-width: 768px) 100vw, 50vw',
-}: ParallaxImageProps) {
-  const ref = useRef<HTMLDivElement>(null);
+// function ParallaxImage({
+//   src,
+//   alt,
+//   start = 0,
+//   end = 0,
+//   className = '',
+//   sizes = '(max-width: 768px) 100vw, 50vw',
+// }: ParallaxImageProps) {
+//   const ref = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
+//   const { scrollYProgress } = useScroll({
+//     target: ref,
+//     offset: ['start end', 'end start'],
+//   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [start, end]);
+//   const y = useTransform(scrollYProgress, [0, 1], [start, end]);
 
-  return (
-    <motion.div
-      ref={ref}
-      style={{ y }}
-      className={`relative overflow-hidden ${className}`}
-    >
-      <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
-    </motion.div>
-  );
-}
+//   return (
+//     <motion.div
+//       ref={ref}
+//       style={{ y }}
+//       className={`relative overflow-hidden ${className}`}
+//     >
+//       <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
+//     </motion.div>
+//   );
+// }
 
 /**
  * 1. Context & Vision Section
@@ -88,9 +88,7 @@ function ContextVisionSectionParallax() {
         </div>
       </div>
 
-      <div className="relative">
-        <TrainspotParallax />
-      </div>
+      <div className="relative">{/* <TrainspotParallax /> */}</div>
     </section>
   );
 }
@@ -218,10 +216,10 @@ export default function TrainspotPage() {
           </p>
         </div>
         <div className="flex flex-wrap gap-4 mt-8">
-          <AnimatedButton
+          {/* <AnimatedButton
             text="Figma Mockup 1"
             href="https://www.figma.com/your-mockup-link-1"
-          />
+          /> */}
         </div>
       </section>
 

@@ -1,64 +1,79 @@
 // src/components/Coda/CodaDoc.tsx
-import React from 'react';
 
-// Helper function to request a Markdown export for the given page.
-async function getCodaPageMarkdown(): Promise<string> {
-  const { CODA_API_TOKEN, CODA_DOC_ID } = process.env;
-  if (!CODA_API_TOKEN || !CODA_DOC_ID) {
-    throw new Error('Missing Coda API credentials');
-  }
-  // Split the provided value into docId and pageId
-  const parts = CODA_DOC_ID.split('/');
-  if (parts.length < 2) {
-    throw new Error("Invalid CODA_DOC_ID format. Expected 'docId/pageId'");
-  }
-  const docId = parts[0];
-  const pageId = parts[1];
+'use client';
 
-  const baseUrl = 'https://coda.io/apis/v1';
-  const exportUrl = `${baseUrl}/docs/${docId}/pages/${pageId}/export`;
+import { useState, useEffect } from 'react';
 
-  // Initiate export request for Markdown content
-  const exportRes = await fetch(exportUrl, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${CODA_API_TOKEN}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ outputFormat: 'markdown' }),
-  });
-  const exportData = await exportRes.json();
+export default function CodaDoc() {
+  const [content, setContent] = useState<string>(
+    'Loading content from Coda...'
+  );
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // NOTE: In production, if exportData.status !== "complete",
-  // you would poll exportData.href until complete.
-  if (exportData.status !== 'complete' || !exportData.downloadLink) {
-    throw new Error('Export not complete. Please try again later.');
-  }
+  useEffect(() => {
+    async function fetchContent() {
+      try {
+        setIsLoading(true);
 
-  // Fetch the exported Markdown content
-  const contentRes = await fetch(exportData.downloadLink);
-  const markdownContent = await contentRes.text();
-  return markdownContent;
-}
+        // Use our new API route that we've already set up
+        const res = await fetch('/api/coda');
 
-// The CodaDoc component fetches and renders the exported Markdown.
-export default async function CodaDoc() {
-  let markdown = '';
-  try {
-    markdown = await getCodaPageMarkdown();
-  } catch (error) {
-    console.error('Error fetching Coda doc content:', error);
-    markdown = 'Failed to load content.';
-  }
+        if (!res.ok) {
+          const errorData = await res.json().catch(() => ({}));
+          throw new Error(
+            errorData.error || `HTTP error ${res.status}: ${res.statusText}`
+          );
+        }
+
+        const data = await res.json();
+
+        if (data.content) {
+          setContent(data.content);
+          setError(null);
+        } else {
+          throw new Error('No content returned from API');
+        }
+      } catch (err) {
+        console.error('Error fetching Coda content:', err);
+        setError(err instanceof Error ? err.message : 'Unknown error occurred');
+        setContent('');
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchContent();
+  }, []);
 
   return (
     <section className="coda-doc my-10 px-4">
       <h2 className="text-2xl font-bold mb-4">Coda Case Study Content</h2>
-      {/* Here we simply output the Markdown as preformatted text.
-          In a real app, you might convert Markdown to HTML using a library like remark */}
-      <div className="prose max-w-none">
-        <pre>{markdown}</pre>
-      </div>
+
+      {isLoading && (
+        <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded">
+          <p>Loading content from Coda...</p>
+        </div>
+      )}
+
+      {!isLoading && error ? (
+        <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded">
+          <h3 className="font-bold">Error loading content</h3>
+          <p>{error}</p>
+          <div className="mt-4 text-sm">
+            <p>Troubleshooting tips:</p>
+            <ul className="list-disc pl-5">
+              <li>Check if your document ID and page ID are correct</li>
+              <li>Make sure your API token has access to this document</li>
+              <li>Try visiting the document directly in your browser</li>
+            </ul>
+          </div>
+        </div>
+      ) : !isLoading && content ? (
+        <div className="prose max-w-none bg-white p-6 rounded shadow">
+          <pre className="whitespace-pre-wrap">{content}</pre>
+        </div>
+      ) : null}
     </section>
   );
 }
