@@ -7,7 +7,6 @@ import {
 } from '@/components/sections/works/projectData';
 import RelatedProjectsSection from '@/app/projects/RelatedProjectsSection';
 import { ReactNode } from 'react';
-import CodaDoc from '@/components/Coda/CodaDoc'; // Import the new CodaDoc component
 
 interface ProjectLayoutProps {
   slug: string;
@@ -95,11 +94,12 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
           </p>
           <div className="flex flex-wrap gap-4 items-start">
             {project.gallery?.map((photo, index) => (
-              <img
+              <Image
                 key={index}
                 src={photo}
                 alt={`${project.title} gallery image ${index + 1}`}
-                className="h-[60px] w-auto"
+                fill
+                className="w-auto h-auto"
               />
             ))}
           </div>
@@ -108,9 +108,6 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
 
       {/* 2. Unique project content */}
       {children}
-
-      {/* 3. Insert the Coda doc content (read-only case study text) */}
-      <CodaDoc />
 
       {/* 4. Related projects section */}
       <RelatedProjectsSection relatedProjects={relatedProjects} />

@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useScroll, useSpring, useTransform } from 'motion/react';
+import { useScroll, useSpring, useTransform } from 'framer-motion';
 import HeadingArrow from '../../common/HeadingArrow';
 import { useLayoutEffect, useRef, useState } from 'react';
 import Stacks from './stacks';

@@ -1,5 +1,3 @@
-//src/components/sections/specialization/index.tsx
-
 import React from 'react';
 import { Card } from './card';
 
@@ -25,8 +23,8 @@ const Specialization = () => {
             heading="Design Excellence"
             paragraph="With a college degree and experience in large companies, I create visually appealing and intuitive user interfaces that maintain brand consistency and resonate with target audiences."
           />
-          <button className="relative self-end text-right  before:absolute before:-bottom-1 before:left-0 before:right-0 before:h-px before:w-full before:bg-hero-dark">
-            Let's work together
+          <button className="relative self-end text-right before:absolute before:-bottom-1 before:left-0 before:right-0 before:h-px before:w-full before:bg-hero-dark">
+            Let&apos;s work together
           </button>
         </div>
       </div>

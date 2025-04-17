@@ -19,7 +19,7 @@
     "gsap": "^3.12.7",
     "lenis": "^1.1.20",
     "locomotive-scroll": "5.0.0-beta.8",
-    "motion": "^11.11.17",
+    "motion": "^11.18.2",
     "next": "^15.0.3",
     "next-transition-router": "^0.2.6",
     "react": "^18.2.0",

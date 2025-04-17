@@ -1,5 +1,3 @@
-//src/components/sections/purpose/index.tsx
-
 import React from 'react';
 import HeadingArrow from '../../common/HeadingArrow';
 
@@ -17,7 +15,7 @@ const Purpose: React.FC = () => {
         <span className="inline-block mr-[1.875rem] md:mr-[2.19rem] lg:mr-[2.19rem]">
           <HeadingArrow />
         </span>
-        <span>Let's design with purpose</span>
+        <span>Let&apos;s design with purpose</span>
       </h2>
     </section>
   );

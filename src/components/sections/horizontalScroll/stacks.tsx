@@ -1,4 +1,4 @@
-import { motion, MotionValue } from 'motion/react';
+import { motion, MotionValue } from 'framer-motion';
 // import Card33from "./card33";
 import Card1 from './card1';
 import Card5 from './card5';

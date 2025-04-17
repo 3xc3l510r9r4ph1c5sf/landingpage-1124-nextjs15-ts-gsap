@@ -1,5 +1,6 @@
 // src/components/Card4.tsx
 
+import Image from 'next/image';
 import CardWrapper from './cardWrapper';
 
 const Card4 = () => {
@@ -10,11 +11,14 @@ const Card4 = () => {
         <div className="flex items-center justify-between gap-2 p-5">
           <h3 className="text-[0.56rem] font-bold">Cards</h3>
           <button className="inline-flex items-center justify-center gap-1 text-[0.475rem]">
-            <img
-              src="/new.svg" // Reference to the SVG in /public
-              alt="New Icon"
-              className="w-[9px] h-[10px]"
-            />
+            <div className="relative w-[9px] h-[10px]">
+              <Image
+                src="/new.svg"
+                alt="New Icon"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
             <span>New</span>
           </button>
         </div>
@@ -32,67 +36,85 @@ const Card4 = () => {
         </div>
 
         {/* Card Items */}
-        <div className="px-[0.62rem] mt-[0.69rem]">
-          {/* First Card Item */}
+        {/** Wrap each icon exactly the same way **/}
+        <div className="px-[0.62rem] mt-[0.69rem] space-y-[0.69rem]">
+          {/** First Card Item **/}
           <div className="rounded-lg border border-[#919EAB] p-[0.62rem]">
             <div className="flex items-center justify-between">
-              <img
-                className="h-[1.1rem]"
-                src="/layer.svg" // Reference to the SVG in /public
-                alt="Layer Icon"
-              />
-              <img
-                className="h-[1.1rem]"
-                src="/3dots.svg" // Reference to the SVG in /public
-                alt="More Options"
-              />
+              <div className="relative w-[1.1rem] h-[1.1rem]">
+                <Image
+                  src="/layer.svg"
+                  alt="Layer Icon"
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+              <div className="relative w-[1.1rem] h-[1.1rem]">
+                <Image
+                  src="/3dots.svg"
+                  alt="More Options"
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
             </div>
             <p className="mt-1 text-[0.43rem]">**** **** **** 5678</p>
           </div>
-        </div>
 
-        <div className="px-[0.62rem] mt-[0.69rem]">
-          {/* Second Card Item */}
+          {/** Second Card Item **/}
           <div className="rounded-lg border border-[#212B36] p-[0.62rem]">
             <div className="flex items-center justify-between">
               <div className="inline-flex gap-2">
-                <img
-                  src="/visa.png" // Reference to the image in /public
-                  alt="Visa"
-                  className="h-[1.1rem]"
-                />
-                <img
-                  src="/default.svg" // Reference to the SVG in /public
-                  alt="Default"
-                  className="h-[1.1rem]"
+                <div className="relative w-[1.1rem] h-[1.1rem]">
+                  <Image
+                    src="/visa.png"
+                    alt="Visa"
+                    fill
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+                <div className="relative w-[1.1rem] h-[1.1rem]">
+                  <Image
+                    src="/default.svg"
+                    alt="Default"
+                    fill
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+              </div>
+              <div className="relative w-[1.1rem] h-[1.1rem]">
+                <Image
+                  src="/3dots.svg"
+                  alt="More Options"
+                  fill
+                  style={{ objectFit: 'contain' }}
                 />
               </div>
-              <img
-                className="h-[1.1rem]"
-                src="/3dots.svg" // Reference to the SVG in /public
-                alt="More Options"
-              />
             </div>
             <p className="mt-1 text-[0.43rem]">**** **** **** 1243</p>
           </div>
-        </div>
 
-        <div className="px-[0.62rem] mt-[0.69rem]">
-          {/* Third Card Item */}
+          {/** Third Card Item **/}
           <div className="rounded-lg border border-[#919EAB] p-[0.62rem]">
             <div className="flex items-center justify-between">
               <div className="inline-flex gap-2">
-                <img
-                  src="/visa.png" // Reference to the image in /public
-                  alt="Visa"
-                  className="h-[1.1rem]"
+                <div className="relative w-[1.1rem] h-[1.1rem]">
+                  <Image
+                    src="/visa.png"
+                    alt="Visa"
+                    fill
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+              </div>
+              <div className="relative w-[1.1rem] h-[1.1rem]">
+                <Image
+                  src="/3dots.svg"
+                  alt="More Options"
+                  fill
+                  style={{ objectFit: 'contain' }}
                 />
               </div>
-              <img
-                className="h-[1.1rem]"
-                src="/3dots.svg" // Reference to the SVG in /public
-                alt="More Options"
-              />
             </div>
             <p className="mt-1 text-[0.43rem]">**** **** **** 7892</p>
           </div>

@@ -10,12 +10,27 @@ export interface ProjectData {
   color: string;
   sector: string;
   myRole: string;
-  gallery?: string[]; // array of photo URLs for the “under the role” section
+  gallery?: string[]; // array of photo URLs for the "under the role" section
+  externalUrl?: string; // optional external URL for projects that link outside the app
 }
 
 export const projectData: ProjectData[] = [
   {
     id: '01',
+    companyName: 'Elysium Consulting',
+    date: '2024-2025',
+    imageUrl: '/img9.png',
+    title: 'Landingpage Elysium',
+    color: '#1E293B',
+    slug: 'elysium',
+    sector: 'Business Consulting',
+    myRole: 'Frontend Developer',
+    gallery: ['/elysium-gallery1.png', '/elysium-gallery2.png'],
+    externalUrl:
+      'https://www.figma.com/proto/Ruu68GDZ50JzPeLdM9PSSe/PROJECTS?page-id=6003%3A24158&node-id=6050-758&viewport=-1444%2C-1433%2C0.13&t=qxbnuSRvn3xjuRhr-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=6050%3A758',
+  },
+  {
+    id: '02',
     companyName: 'WBS Gruppe AG',
     date: '2023-2024',
     imageUrl: '/project1-hero.png',
@@ -27,7 +42,7 @@ export const projectData: ProjectData[] = [
     gallery: ['/trainspot2s.svg', '/trainspot3s.svg', '/trainspot1s.svg'],
   },
   {
-    id: '02',
+    id: '03',
     title: 'Kurskonfigurator',
     companyName: 'WBS Gruppe AG',
     date: '2022-2023',
@@ -45,7 +60,7 @@ export const projectData: ProjectData[] = [
 
   // Comment out or remove these if you do not want them accessible:
   // {
-  //   id: '03',
+  //   id: '04',
   //   title: 'Design System',
   //   companyName: 'WBS Gruppe AG',
   //   date: '2020-2023',
@@ -58,7 +73,7 @@ export const projectData: ProjectData[] = [
   //   gallery: ['/trainspot1.png', '/trainspot2.png', '/trainspot3.png'],
   // },
   // {
-  //   id: '04',
+  //   id: '05',
   //   title: 'Kursplannung',
   //   imageUrl: '/project-1.png',
   //   color: '#706D63',

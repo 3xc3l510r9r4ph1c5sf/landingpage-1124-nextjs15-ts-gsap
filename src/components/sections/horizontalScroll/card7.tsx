@@ -21,27 +21,30 @@ const Card7 = () => {
 
           <ToggleButton className="mt-1.5 text-[0.4rem] font-normal" />
           <fieldset className="border-gray-300 mt-1.5 rounded-lg border p-3 text-[0.4rem] font-normal text-gray">
-            <legend className="">Start Date</legend>
+            <legend>Start Date</legend>
             <p>30/12/2020 12:00 AM</p>
           </fieldset>
           <fieldset className="border-gray-300 rounded-lg border p-3 text-[0.4rem] mt-1.5 font-normal text-gray">
-            <legend className="">End Date</legend>
+            <legend>End Date</legend>
             <p>31/12/2020 12:00 AM</p>
           </fieldset>
 
           <div className="flex items-center mt-1.5 gap-1">
-            <span className="relative inline-block size-[0.435rem] rounded-full bg-[#00A76F] shadow-green">
-              <img
-                className="absolute left-1/2 top-1/2 inline-block -translate-x-1/2 -translate-y-1/2"
+            {/* Checked Dot */}
+            <span className="relative inline-block w-[0.435rem] h-[0.435rem] rounded-full bg-[#00A76F] shadow-green">
+              <Image
                 src="/check.svg"
-                alt=""
+                alt="checked"
+                fill
+                style={{ objectFit: 'contain' }}
               />
             </span>
-            <span className="relative inline-block size-[0.435rem] rounded-full bg-[#00B8D9]" />
-            <span className="relative inline-block size-[0.435rem] rounded-full bg-[#003768]" />
-            <span className="relative inline-block size-[0.435rem] rounded-full bg-[#FFAB00]" />
-            <span className="relative inline-block size-[0.435rem] rounded-full bg-[#FFAC82]" />
-            <span className="relative inline-block size-[0.435rem] rounded-full bg-[#B71D18]" />
+            {/* Other Color Dots */}
+            <span className="inline-block w-[0.435rem] h-[0.435rem] rounded-full bg-[#00B8D9]" />
+            <span className="inline-block w-[0.435rem] h-[0.435rem] rounded-full bg-[#003768]" />
+            <span className="inline-block w-[0.435rem] h-[0.435rem] rounded-full bg-[#FFAB00]" />
+            <span className="inline-block w-[0.435rem] h-[0.435rem] rounded-full bg-[#FFAC82]" />
+            <span className="inline-block w-[0.435rem] h-[0.435rem] rounded-full bg-[#B71D18]" />
           </div>
 
           <div className="flex items-center justify-end gap-1.5 text-[0.4rem] font-bold mt-1.5">

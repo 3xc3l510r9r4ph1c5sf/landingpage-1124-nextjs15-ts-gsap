@@ -10,14 +10,14 @@ import Image from 'next/image';
 import ProjectLayout from '@/app/projects/ProjectLayout';
 // import { TrainspotParallax } from './TrainspotParallax';
 
-interface ParallaxImageProps {
-  src: string;
-  alt: string;
-  start?: number;
-  end?: number;
-  className?: string;
-  sizes?: string;
-}
+// interface ParallaxImageProps {
+//   src: string;
+//   alt: string;
+//   start?: number;
+//   end?: number;
+//   className?: string;
+//   sizes?: string;
+// }
 
 // function ParallaxImage({
 //   src,

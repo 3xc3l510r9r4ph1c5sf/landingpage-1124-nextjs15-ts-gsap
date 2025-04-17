@@ -1,7 +1,7 @@
 // src/components/footer/index.tsx
 'use client';
 
-import { useInView } from 'motion/react';
+import { useInView } from 'framer-motion';
 import HeroArrow from '../common/HeroArrow';
 import { useEffect, useRef } from 'react';
 
@@ -76,10 +76,10 @@ const Footer: React.FC<FooterProps> = ({ id }) => {
             >
               Github Profile
             </a>{' '}
-            to discover more
+            to discover more projects.
             <br />{' '}
             <a
-              href="https://www.figma.com/design/M5BundsExb0b43TyRa30sN/PORTFOLIO?node-id=1720-25274"
+              href="https://www.figma.com/design/cOPSeeYp8TCOYwPmMr1lqT/PORTFOLIO-WEB?node-id=1720-25274"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold hover:underline"

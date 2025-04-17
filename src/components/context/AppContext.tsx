@@ -8,7 +8,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { animate, useAnimationControls } from 'motion/react';
+import { animate, useAnimationControls } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { useScramble } from 'use-scramble';
