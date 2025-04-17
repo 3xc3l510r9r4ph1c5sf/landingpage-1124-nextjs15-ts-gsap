@@ -92,17 +92,6 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
             <strong>Timeframe:</strong> {project.date} <br />
             <strong>My Role:</strong> {project.myRole}
           </p>
-          <div className="flex flex-wrap gap-4 items-start">
-            {project.gallery?.map((photo, index) => (
-              <Image
-                key={index}
-                src={photo}
-                alt={`${project.title} gallery image ${index + 1}`}
-                fill
-                className="w-auto h-auto"
-              />
-            ))}
-          </div>
         </div>
       </section>
 
