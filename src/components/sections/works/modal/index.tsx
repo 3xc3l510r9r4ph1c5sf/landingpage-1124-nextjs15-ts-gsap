@@ -9,6 +9,7 @@ interface ModalProjectData {
   companyName: string;
   slug: string;
   externalUrl?: string;
+  comingSoon?: boolean;
 }
 
 interface ModalProps {
@@ -22,7 +23,8 @@ export default function Modal({
   projectsData,
   manageModal,
 }: ModalProps) {
-  const { id, title, date, companyName, slug, externalUrl } = projectsData;
+  const { id, title, date, companyName, slug, externalUrl, comingSoon } =
+    projectsData;
 
   const handleHover = (e: React.MouseEvent, active: boolean) => {
     if (window.innerWidth >= 768) {
@@ -75,7 +77,14 @@ export default function Modal({
     </div>
   );
 
-  if (externalUrl) {
+  if (comingSoon) {
+    return (
+      <div className="block w-full border-t-[3px] p-5">
+        <h2 className="number section-heading">{id}</h2>
+        <p>{title} is coming soon</p>
+      </div>
+    );
+  } else if (externalUrl) {
     return (
       <a
         href={externalUrl}
@@ -86,11 +95,11 @@ export default function Modal({
         {content}
       </a>
     );
+  } else {
+    return (
+      <Link href={`/projects/${slug}`} className="block w-full">
+        {content}
+      </Link>
+    );
   }
-
-  return (
-    <Link href={`/projects/${slug}`} className="block w-full">
-      {content}
-    </Link>
-  );
 }
