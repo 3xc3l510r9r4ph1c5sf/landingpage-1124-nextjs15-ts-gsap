@@ -110,7 +110,8 @@ export default function ParallaxIntro() {
         <div className="sticky top-0 h-screen flex items-center justify-center z-[999] pointer-events-none">
           <div
             ref={titleRef}
-            className="text-5xl md:text-7xl font-bold text-center px-4 text-
+            className="text-5xl md:text-7xl font-bold text-center px-4 text-hero-dark
+            
 
                     "
           >
