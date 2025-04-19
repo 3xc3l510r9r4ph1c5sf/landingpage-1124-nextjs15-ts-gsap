@@ -8,6 +8,7 @@ interface ModalProjectData {
   date: string;
   companyName: string;
   slug: string;
+  imageUrl: string; // Added imageUrl here
   externalUrl?: string;
   comingSoon?: boolean;
 }
@@ -23,8 +24,16 @@ export default function Modal({
   projectsData,
   manageModal,
 }: ModalProps) {
-  const { id, title, date, companyName, slug, externalUrl, comingSoon } =
-    projectsData;
+  const {
+    id,
+    title,
+    date,
+    companyName,
+    slug,
+    imageUrl,
+    externalUrl,
+    comingSoon,
+  } = projectsData;
 
   const handleHover = (e: React.MouseEvent, active: boolean) => {
     if (window.innerWidth >= 768) {
@@ -64,11 +73,12 @@ export default function Modal({
         </h3>
       </div>
 
+      {/* Updated to use the imageUrl dynamically */}
       <div className="relative my-[0.63rem] h-72 w-[calc(100%-20px)] mx-[10px] bg-hero-dark p-[1.41rem_3.1rem] md:hidden">
         <div className="relative w-full h-full">
           <Image
-            src="/project-1.png"
-            alt="Full-width image"
+            src={imageUrl} // Dynamically use the imageUrl from projectData
+            alt={`${title} image`}
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}
           />

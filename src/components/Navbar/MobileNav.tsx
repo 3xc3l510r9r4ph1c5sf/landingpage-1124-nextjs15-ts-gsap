@@ -74,7 +74,7 @@ export function MobileNav() {
       <motion.div
         variants={navVariants}
         animate={hidden ? 'hidden' : 'visible'}
-        className="lg:hidden fixed top-0 left-0 w-full h-[var(--navbar-height)] px-4 bg-hero-dark/70 backdrop-blur-md flex items-center justify-end z-50"
+        className="lg:hidden fixed top-0 left-0 w-screen h-[var(--navbar-height)] px-4 bg-hero-dark/70 backdrop-blur-md flex items-center justify-end z-50 overflow-hidden" // Ensure w-screen is used
       >
         <button onClick={() => setToggle(true)} aria-label="Abrir menú móvil">
           <svg
@@ -102,7 +102,7 @@ export function MobileNav() {
             animate="animate"
             exit="exit"
             variants={menuVariants}
-            className="fixed top-0 left-0 right-0 bottom-0 bg-hero-dark flex flex-col z-60"
+            className="fixed top-0 left-0 right-0 bottom-0 w-screen bg-hero-dark flex flex-col z-60 overflow-hidden" // Ensure w-screen is used
           >
             {/* Botón de cierre */}
             <div className="flex items-center justify-end h-[var(--navbar-height)] px-4 border-b border-gray-200/25">

@@ -13,15 +13,17 @@ export interface ProjectData {
   gallery?: string[]; // array of photo URLs for the "under the role" section
   externalUrl?: string; // optional external URL for projects that link outside the app
   comingSoon?: boolean; // optional flag to indicate if the project is coming soon
+  headingImage?: string; // New heading image for projects
 }
 
 export const projectData: ProjectData[] = [
   {
     id: '01',
-    companyName: 'Elysium Consulting',
+    companyName: 'Elysium Consulting- UX case study',
     date: '2024-2025',
     imageUrl: '/elysiumurl.png',
-    title: 'Landingpage Elysium',
+    headingImage: '/elysiumintro.png', // New heading image for Elysium
+    title: 'Elysium Consulting',
     color: '#0C0C0C',
     slug: 'elysium',
     sector: 'Business Consulting',
@@ -33,6 +35,7 @@ export const projectData: ProjectData[] = [
     companyName: 'WBS Gruppe AG',
     date: '2023-2024',
     imageUrl: '/project1-hero.png',
+    headingImage: '/trainspot-heading.png',
     title: 'Trainspot',
     color: '#0C0C0C',
     slug: 'trainspot',

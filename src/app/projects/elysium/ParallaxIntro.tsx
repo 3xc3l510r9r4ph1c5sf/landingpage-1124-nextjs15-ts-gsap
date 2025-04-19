@@ -12,7 +12,7 @@ export default function ParallaxIntro() {
   const image1Ref = useRef<HTMLDivElement>(null);
   const image2Ref = useRef<HTMLDivElement>(null);
   const image3Ref = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -59,7 +59,7 @@ export default function ParallaxIntro() {
           image3Ref.current,
           { y: 0 },
           {
-            y: 900,
+            y: 600,
             ease: 'none',
             scrollTrigger: {
               trigger: parallaxRef.current,
@@ -108,54 +108,57 @@ export default function ParallaxIntro() {
       <section ref={sectionRef} className="relative min-h-[300vh]">
         {/* Capa de texto */}
         <div className="sticky top-0 h-screen flex items-center justify-center z-[999] pointer-events-none">
-          <div
+          <h2
             ref={titleRef}
-            className="text-5xl md:text-7xl font-bold text-center px-4 text-hero-dark
+            className="text-5xl md:text-7xl text-center px-4 text-hero-dark
             
 
                     "
           >
             Educational Ecosystem Reinvented
-          </div>
+          </h2>
         </div>
 
         {/* Capa de imágenes */}
         <div ref={parallaxRef} className="absolute inset-0 min-h-[300vh] z-0">
           <div
             ref={image1Ref}
-            className="absolute top-[15%] left-[5%] w-[300px] h-[400px] overflow-hidden rounded-xl"
+            className="absolute top-[15%] left-[5%] overflow-hidden rounded-xl"
           >
             <Image
-              src="/projects/trainspot/dashboard-preview.jpg"
+              src="/elysiumparallax1.png"
               alt="Dashboard"
-              fill
-              className="object-cover"
+              width={1440}
+              height={900}
+              className="max-w-[90vw] md:max-w-[65vw] lg:max-w-[50vw] h-auto"
               priority
             />
           </div>
 
           <div
             ref={image2Ref}
-            className="absolute top-[35%] right-[10%] w-[250px] h-[350px] overflow-hidden rounded-xl"
+            className="absolute top-[35%] right-[10%] overflow-hidden rounded-xl"
           >
             <Image
-              src="/projects/trainspot/collaboration-view.jpg"
+              src="/elysiumparallax2.png"
               alt="Collaboration"
-              fill
-              className="object-cover"
+              width={1440}
+              height={900}
+              className="max-w-[90vw] md:max-w-[65vw] lg:max-w-[50vw] h-auto"
               priority
             />
           </div>
 
           <div
             ref={image3Ref}
-            className="absolute top-[60%] left-[20%] w-[350px] h-[250px] overflow-hidden rounded-xl"
+            className="absolute top-[60%] left-[20%] overflow-hidden rounded-xl"
           >
             <Image
-              src="/projects/trainspot/progress-tracking.jpg"
+              src="/elysiumparallax3.png"
               alt="Progress"
-              fill
-              className="object-cover"
+              width={1440}
+              height={900}
+              className="max-w-[90vw] md:max-w-[65vw] lg:max-w-[50vw] h-auto"
               priority
             />
           </div>
