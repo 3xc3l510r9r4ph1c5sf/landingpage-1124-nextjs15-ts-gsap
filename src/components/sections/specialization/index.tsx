@@ -16,7 +16,7 @@ const Specialization = () => {
           <Card
             number={2}
             heading="Web Development Expertise"
-            paragraph="Specializing in Vue.js, I build robust and user-friendly web applications, leveraging the latest technologies to provide long-term value to clients."
+            paragraph="Specializing in React/Next.js, I build robust and user-friendly web applications, leveraging the latest technologies like  Headless CMS, Tailwind, Vercel to provide long-term value to clients."
           />
           <Card
             number={3}

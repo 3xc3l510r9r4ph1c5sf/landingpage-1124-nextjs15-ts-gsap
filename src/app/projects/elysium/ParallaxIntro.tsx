@@ -115,7 +115,7 @@ export default function ParallaxIntro() {
 
                     "
           >
-            Educational Ecosystem Reinvented
+            “Behind the Scenes of ELYSIUM’s High‑Impact Client Partnerships.”
           </h2>
         </div>
 

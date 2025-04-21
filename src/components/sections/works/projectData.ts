@@ -19,22 +19,22 @@ export interface ProjectData {
 export const projectData: ProjectData[] = [
   {
     id: '01',
-    companyName: 'Elysium Consulting- UX case study',
-    date: '2024-2025',
+    companyName: 'Case study Elysium',
+    date: '2024-2025 ( On Going Project )',
     imageUrl: '/elysiumurl.png',
     headingImage: '/elysiumintro.png', // New heading image for Elysium
     title: 'Elysium Consulting',
     color: '#0C0C0C',
     slug: 'elysium',
-    sector: 'Business Consulting',
-    myRole: 'Frontend Developer',
+    sector: 'Business & Finance Consulting',
+    myRole: 'Design & Development',
     gallery: ['/public/elysiumurl.png', '/elysium-gallery2.png'],
   },
   {
     id: '02',
-    companyName: 'WBS Gruppe AG',
+    companyName: 'UX/UI Case Study - WBS Gruppe AG',
     date: '2023-2024',
-    imageUrl: '/project1-hero.png',
+    imageUrl: '/project-2.png',
     headingImage: '/trainspot-heading.png',
     title: 'Trainspot',
     color: '#0C0C0C',
@@ -48,10 +48,9 @@ export const projectData: ProjectData[] = [
   {
     id: '03',
     title: 'KundeV',
-    companyName: 'WBS Gruppe AG',
+    companyName: 'UX/UI Case Study - WBS Gruppe AG ',
     date: '2022-2023',
-    imageUrl:
-      'https://images.unsplash.com/photo-1676793894040-b6dd72276620?q=80&w=2089&auto=format&fit=crop&ixlib=rb-4.0.3',
+    imageUrl: '/project-3.png',
     color: '#0C0C0C',
     slug: 'kundev',
     sector: 'E-Learning Solutions',

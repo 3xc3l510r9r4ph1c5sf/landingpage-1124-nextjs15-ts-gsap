@@ -129,8 +129,8 @@ export default function ProjectLayout({ slug, children }: ProjectLayoutProps) {
           {/* Project details */}
           <div className="flex flex-col gap-6 lg:gap-10 max-w-full lg:max-w-[60%]">
             <p className="text-medium">
-              <strong>Project&nbsp;Name:</strong> {project.title} <br />
-              <strong>Client:</strong> {project.companyName} <br />
+              <strong>Project&nbsp;Name:</strong> {project.companyName} <br />
+              <strong>Client:</strong> {project.title} <br />
               <strong>Sector:</strong> {project.sector}
             </p>
 

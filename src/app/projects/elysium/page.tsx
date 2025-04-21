@@ -1,6 +1,7 @@
 import ProjectLayout from '@/app/projects/ProjectLayout';
 import ParallaxIntro from './ParallaxIntro';
 import Image from 'next/image';
+import AnimatedButton from '@/components/common/AnimatedButton';
 
 export default function ElysiumPage() {
   // Key marketing & web‑development challenges tackled in the redesign
@@ -15,13 +16,13 @@ export default function ElysiumPage() {
       number: '02',
       title: 'Performance & Scalability',
       description:
-        'The legacy site was slow and hard to scale. We needed a modern stack (Next.js + Tailwind) with excellent Core Web Vitals.',
+        'The legacy site was slow and hard to scale. We needed a modern stack (Next.js + Tailwind+Headless CMS) with excellent Core Web Vitals.',
     },
     {
       number: '03',
-      title: 'Frictionless Internationalization',
+      title: 'Startup Challenges',
       description:
-        'The site must support multiple languages and comply with regulations across jurisdictions without duplicating content.',
+        'With a small team and limited specialized staff, tight resources, and constant multitasking under strict time constraints, the project demanded efficient solutions and smart prioritization at every step.',
     },
   ];
 
@@ -29,7 +30,7 @@ export default function ElysiumPage() {
     <ProjectLayout slug="elysium">
       {/* Hero & Heading */}
       <div className="relative flex h-[--about-heading--height] flex-col justify-center pl-[2.29rem] md:pl-[4.38rem] pr-2.5 md:pr-5 lg:pr-5">
-        <h2 className="section-heading">Marketing & Web‑Dev Case Study</h2>
+        <h2 className="section-heading">Case Study</h2>
         <div className="mt-[0.62rem] flex justify-between items-center pb-5">
           <p className="text-small invisible" />
         </div>
@@ -51,19 +52,28 @@ export default function ElysiumPage() {
             </p>
 
             <a
-              href="https://www.figma.com/proto/EoFDjKc42XrGWjNNPvrNa7/Web-prototype?page-id=350%3A384"
+              href="https://elysiumconsultingfirm.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 underline text-medium mb-4"
             >
-              View Figma Prototype
+              Vie old website
             </a>
 
             <p className="text-medium">
               The redesign needed to align <strong>marketing</strong> and{' '}
               <strong>development</strong>: brand storytelling, lead generation,
-              and a tech core ready for multilingual growth.
+              and a tech core ready for multilingual growth. Key initiatives
+              included:
             </p>
+            <ul className="list-disc list-inside mt-2 text-medium">
+              <li>Branding guide</li>
+              <li>Complete website redesign</li>
+              <li>Viability workshops and usability testing</li>
+              <li>
+                Creation of an app to schedule first appointments with clients
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -123,9 +133,22 @@ export default function ElysiumPage() {
           </p>
           <p className="text-medium">
             <strong>Marketing‑Friendly Editing:</strong> Integrate a headless
-            CMS so content teams can update copy and case studies without
-            touching code.
+            CMS so content teams can update and edit blog posts without touching
+            code.
           </p>
+        </div>
+
+        {/* Insert three animated buttons below */}
+        <div className="mt-16 flex flex-wrap gap-4">
+          <AnimatedButton
+            text="Mockups Web (spanish)"
+            href="https://www.figma.com/design/FplnyN6b6KO3TmN0hmcilJ/BEISPIEL-ELYSIUM?node-id=350-384"
+          />
+          <AnimatedButton
+            text="Repository GitHub"
+            href="https://github.com/Kano85/elysium-febe-gh-210924"
+          />
+          <AnimatedButton text="Brand Design" href="/contact" />
         </div>
       </section>
 
@@ -144,18 +167,6 @@ export default function ElysiumPage() {
             Setting up a headless CMS and content workflows for marketing.
           </li>
         </ul>
-      </section>
-
-      {/* Final Thoughts */}
-      <section className="px-[10px] md:px-[20px] lg:px-[70px] py-16 md:py-[5rem] lg:py-[7rem]">
-        <h2 className="section-heading mb-8">Final Thoughts & Next Steps</h2>
-        <p className="text-medium">
-          The <strong>Elysium</strong> redesign turned a static website into a
-          scalable, conversion‑oriented platform. We have already seen a{' '}
-          <em>‑37 %</em> decrease in load time and a <em>+22 %</em> increase in
-          qualified leads. Next steps: copy A/B testing, marketing automation,
-          and data‑driven UX iterations.
-        </p>
       </section>
     </ProjectLayout>
   );
