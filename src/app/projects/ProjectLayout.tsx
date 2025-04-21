@@ -1,6 +1,7 @@
+//src/app/projects/ProjectLayout.tsx
+
 'use client';
 
-import Image from 'next/image';
 import {
   projectData,
   ProjectData,
