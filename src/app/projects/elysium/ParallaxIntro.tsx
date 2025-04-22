@@ -82,7 +82,7 @@ export default function ParallaxIntro() {
               start: 'top 20%',
               end: 'bottom 80%',
               scrub: 1,
-              markers: true, // Activar true para debug
+              markers: false, // Activar true para debug
             },
           })
           .fromTo(
