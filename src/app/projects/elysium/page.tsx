@@ -148,7 +148,7 @@ export default function ElysiumPage() {
           </p>
         </div>
         {/* Insert three animated buttons below */}
-        <div className="mt-16 flex flex-wrap gap-4">
+        <div className="mt-16 mb-24 flex flex-wrap gap-4">
           <AnimatedButton
             text="Mockups Web (Spanish)"
             href="https://www.figma.com/design/FplnyN6b6KO3TmN0hmcilJ/BEISPIEL-ELYSIUM?node-id=350-384&t=w8xjcYkbR5b720cx-1"
@@ -165,7 +165,7 @@ export default function ElysiumPage() {
       </section>
 
       {/* My Role */}
-      <section className="bg-mainbody-weg px-[10px] md:px-[20px] lg:px-[70px] py-[4rem] md:py-[6rem] lg:py-[8rem]">
+      {/* <section className="bg-mainbody-weg px-[10px] md:px-[20px] lg:px-[70px] py-[4rem] md:py-[6rem] lg:py-[8rem]">
         <h2 className="section-heading mb-8">My Role & Responsibilities</h2>
         <p className="text-medium mb-6">
           I led the <strong>UX/UI ↔ Front‑End</strong> integration, aligning
@@ -179,7 +179,7 @@ export default function ElysiumPage() {
             Setting up a headless CMS and content workflows for marketing.
           </li>
         </ul>
-      </section>
+      </section> */}
     </ProjectLayout>
   );
 }
