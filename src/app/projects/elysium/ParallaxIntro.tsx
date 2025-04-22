@@ -87,10 +87,10 @@ export default function ParallaxIntro() {
           })
           .fromTo(
             titleRef.current,
-            { opacity: 0, y: 100 },
+            { opacity: 0, y: -300 },
             { opacity: 1, y: 0, duration: 1 }
           )
-          .to(titleRef.current, { opacity: 0, y: -100, duration: 1 }, '+=0.5');
+          .to(titleRef.current, { opacity: 0, y: -100, duration: 1 });
       }
     };
 
