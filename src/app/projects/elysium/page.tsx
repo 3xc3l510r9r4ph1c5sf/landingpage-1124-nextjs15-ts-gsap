@@ -138,17 +138,29 @@ export default function ElysiumPage() {
           </p>
         </div>
 
+        {/* Asset Overview */}
+        <div className="mt-16 mb-8">
+          <p className="text-medium mb-8">
+            Here is a showcase of the web pages and components we used to build
+            the site. Our branding process established a cohesive visual
+            identity—colors, typography, and imagery—that brings consistency and
+            personality to every page.
+          </p>
+        </div>
         {/* Insert three animated buttons below */}
         <div className="mt-16 flex flex-wrap gap-4">
           <AnimatedButton
-            text="Mockups Web (spanish)"
-            href="https://www.figma.com/design/FplnyN6b6KO3TmN0hmcilJ/BEISPIEL-ELYSIUM?node-id=350-384"
+            text="Mockups Web (Spanish)"
+            href="https://www.figma.com/design/FplnyN6b6KO3TmN0hmcilJ/BEISPIEL-ELYSIUM?node-id=350-384&t=w8xjcYkbR5b720cx-1"
           />
           <AnimatedButton
             text="Repository GitHub"
             href="https://github.com/Kano85/elysium-febe-gh-210924"
           />
-          <AnimatedButton text="Brand Design" href="/contact" />
+          <AnimatedButton
+            text="Brand Design (Spanish)"
+            href="https://www.figma.com/proto/EoFDjKc42XrGWjNNPvrNa7/Elysium-case?page-id=506%3A423&node-id=860-4683&viewport=2028%2C-375%2C0.13&t=pXhftSLFikO5o7hn-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=860%3A4683"
+          />
         </div>
       </section>
 
