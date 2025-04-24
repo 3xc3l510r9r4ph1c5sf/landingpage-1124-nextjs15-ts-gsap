@@ -42,7 +42,7 @@ const HorizontalSection = () => {
         className="h-[300svh] overflow-x-clip px-[0.62rem] md:h-[200svh]"
         ref={container}
       >
-        <div className="sticky top-0 h-svh pb-[1.88rem]">
+        <div className="sticky top-12 h-svh pb-[1.88rem]">
           <h2
             className="
 section-heading
