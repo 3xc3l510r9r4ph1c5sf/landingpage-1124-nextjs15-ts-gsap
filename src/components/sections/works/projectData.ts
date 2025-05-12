@@ -29,6 +29,8 @@ export const projectData: ProjectData[] = [
     sector: 'Business & Finance Consulting',
     myRole: 'Design & Development',
     gallery: ['/public/elysiumurl.png', '/elysium-gallery2.png'],
+    externalUrl:
+      'https://www.figma.com/proto/fL8vxgeOVwvC3acrsOfZvl/PROJECTS-WEB?page-id=8410%3A3867&node-id=8410-3868&viewport=403%2C153%2C0.11&t=3bOXh6Q2LLUObPqE-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=8410%3A3868',
   },
   {
     id: '02',
