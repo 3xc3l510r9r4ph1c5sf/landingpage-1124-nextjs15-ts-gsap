@@ -57,7 +57,7 @@ const Footer: React.FC<FooterProps> = ({ id }) => {
             </a>
           </p>
           <p className="text-medium text-left">
-            This is an source project available in{' '}
+            open-source project that I created and made freely available in{' '}
             <a
               href="https://github.com/Kano85/landingpage-1124-nextjs15-ts-gsap"
               target="_blank"
