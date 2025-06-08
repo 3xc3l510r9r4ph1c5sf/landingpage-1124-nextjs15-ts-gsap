@@ -20,7 +20,7 @@ export const projectData: ProjectData[] = [
   {
     id: '01',
     companyName: 'Case study Elysium',
-    date: '2024-2025 ( On Going Project )',
+    date: '2024-2025 (ongoing project)',
     imageUrl: '/elysiumurl.png',
     headingImage: '/elysiumintro.png', // New heading image for Elysium
     title: 'Elysium Consulting',
