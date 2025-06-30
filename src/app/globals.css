@@ -1,146 +1,327 @@
-/* src/styles/global.css */
+/* ExcelsiorGraphicDesign Global Styles */
 
-/* 1) Import Tailwind Layers First */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 2) Base Layer Overrides & Global Elements */
 @layer base {
-  /************************************
-   * Scrollbar Hiding & Global HTML
-   ************************************/
+  /* Hide scrollbars */
   ::-webkit-scrollbar {
     display: none;
   }
   html {
     scrollbar-width: none;
+    scroll-behavior: smooth;
   }
 
-  /************************************
-   * CSS Variables
-   ************************************/
+  /* CSS Variables */
   :root {
-    --navbar-height: 3.38rem;
-    --about-heading--height: 10.25rem;
-    --hero-section--height: calc(
-      100svh - var(--navbar-height) - var(--about-heading--height)
-    );
+    --navbar-height: 4rem;
+    --futura-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --bone-white: #FAF9F6;
+    --warm-gray: #8B8680;
+    --soft-gold: #D4AF37;
+    --bronze: #CD7F32;
+    --charcoal: #2C2C2C;
+    --glass-bg: rgba(250, 249, 246, 0.1);
+    --glass-border: rgba(250, 249, 246, 0.2);
   }
 
-  /************************************
-   * Body & Utility Classes
-   ************************************/
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--futura-font);
+    background-color: var(--bone-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
   }
 
-  /* Prevent Scrolling on .lock-scroll */
+  /* Prevent scrolling when locked */
   body.lock-scroll {
     position: fixed;
-    clip-path: inset(0);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Custom cursor */
+  * {
+    cursor: none;
+  }
+
+  /* Selection styles */
+  ::selection {
+    background-color: var(--soft-gold);
+    color: var(--charcoal);
   }
 }
 
-/* 3) Components Layer */
 @layer components {
+  /* Futura-inspired typography */
+  .futura-black {
+    font-family: var(--futura-font);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-align: center;
+  }
+
+  .futura-bold {
+    font-family: var(--futura-font);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /* Liquid Glass UI Components */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(250, 249, 246, 0.15);
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-button {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 12px 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .glass-button:hover::before {
+    left: 100%;
+  }
+
+  .glass-button:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--soft-gold);
+    transform: translateY(-1px);
+  }
+
+  /* Magnetic button effect */
+  .magnetic-btn {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Bento grid system */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .bento-item {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bento-item:hover {
+    transform: scale(1.02);
+    z-index: 10;
+  }
+
+  /* Grid item sizes */
+  .bento-large {
+    grid-column: span 8;
+    grid-row: span 2;
+    min-height: 400px;
+  }
+
+  .bento-medium {
+    grid-column: span 4;
+    grid-row: span 2;
+    min-height: 300px;
+  }
+
+  .bento-small {
+    grid-column: span 4;
+    grid-row: span 1;
+    min-height: 200px;
+  }
+
+  .bento-wide {
+    grid-column: span 6;
+    grid-row: span 1;
+    min-height: 250px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .bento-grid {
+      grid-template-columns: repeat(8, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+    }
+    
+    .bento-large {
+      grid-column: span 8;
+    }
+    
+    .bento-medium {
+      grid-column: span 4;
+    }
+    
+    .bento-wide {
+      grid-column: span 8;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .bento-large,
+    .bento-medium,
+    .bento-wide,
+    .bento-small {
+      grid-column: span 4;
+      min-height: 200px;
+    }
+  }
 }
 
-/* 4) Utilities Layer - Additional Classes */
 @layer utilities {
-  /************************************
-   * Display Heading (H1 in Figma)
-   ************************************/
-  .display-heading {
-    /* 
-      - Min ~65px (below 520px)
-      - ~100px at 520px (md)
-      - Up to ~130px (above 800px)
-    */
-    font-size: clamp(4.0625rem, 10vw + 2.5rem, 8.125rem);
-    line-height: clamp(4.0625rem, 10vw + 2.5rem, 8.125rem);
-    font-weight: 400; /* Normal */
-    letter-spacing: -0.13rem;
+  /* Typography scales */
+  .text-hero {
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height: 0.9;
+    font-weight: 900;
   }
 
-  /************************************
- * Section Heading (H2 in Figma)
- ************************************/
-  .section-heading {
-    /* 
-    - Min ~40px (below 520px)
-    - ~56px at 520px (md)
-    - Up to ~76px (above 800px)
-  */
-    font-size: clamp(2.5rem, 6vw + 1.5rem, 4.75rem);
-    line-height: clamp(2.5rem, 6vw + 1.5rem, 4.75rem);
-    letter-spacing: -0.02rem;
+  .text-display {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+    font-weight: 700;
   }
 
-  /************************************
-   * Subheading (H6 in Figma)
-   ************************************/
-  .subheading {
-    /* 
-      - Min ~14px (below 520px)
-      - ~18px at 520px (md)
-      - Up to ~24px (above 800px)
-    */
-    font-size: clamp(0.87rem, 2vw + 0.5rem, 1.5rem);
-    line-height: clamp(0.87rem, 2vw + 0.5rem, 1.5rem);
-    letter-spacing: -0.03em;
-    font-weight: bold;
+  .text-heading {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    font-weight: 600;
   }
 
-  /************************************
-   * Large Body Text (Text-1 in Figma)
-   ************************************/
-  .text-large {
-    /* 
-      - Min ~26px (below 520px)
-      - ~40px at 520px (md)
-      - Up to ~54px (above 800px)
-    */
-    font-size: clamp(1.62rem, 5vw + 1rem, 3.37rem);
-    line-height: clamp(1.75rem, 5vw + 1rem, 3.5rem);
-    letter-spacing: -0.02em;
+  .text-body {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.6;
+    font-weight: 400;
   }
 
-  /************************************
- * Medium Body Text (Text-2 in Figma)
- ************************************/
-  .text-medium {
-    /* 
-    - Min: 16px (unter 520px) → 1rem
-    - 20px at 520px (md) → 1.25rem
-    - 26px at 800px (lg and above) → 1.62rem
-  */
-    font-size: clamp(1rem, 2.54vw + 0.95rem, 1.62rem);
-    line-height: clamp(1rem, 2.54vw + 0.95rem, 1.92rem);
-    letter-spacing: -0.02em;
+  .text-caption {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: 1.4;
+    font-weight: 300;
   }
 
-  /************************************
-   * Small Body Text (Text-3 in Figma)
-   ************************************/
-  .text-small {
-    /* 
-      - Min ~12px (below 520px)
-      - ~14px at 520px (md)
-      - Up to ~16px (above 800px)
-    */
-    font-size: clamp(0.75rem, 1.5vw + 0.5rem, 1rem);
-    line-height: clamp(0.75rem, 1.5vw + 0.5rem, 1rem);
-    letter-spacing: -0.02rem;
+  /* Color utilities */
+  .text-bone { color: var(--bone-white); }
+  .text-warm-gray { color: var(--warm-gray); }
+  .text-soft-gold { color: var(--soft-gold); }
+  .text-bronze { color: var(--bronze); }
+  .text-charcoal { color: var(--charcoal); }
+
+  .bg-bone { background-color: var(--bone-white); }
+  .bg-warm-gray { background-color: var(--warm-gray); }
+  .bg-soft-gold { background-color: var(--soft-gold); }
+  .bg-bronze { background-color: var(--bronze); }
+  .bg-charcoal { background-color: var(--charcoal); }
+
+  /* Animation utilities */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 
-  /************************************
-   * Search SVG Background
-   ************************************/
-  .bg-search-svg {
-    background-image: url('/search.svg'); /* Ensure the path is correct */
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 1rem; /* Adjust size as needed */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
   }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes glow {
+    from { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+    to { box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+  }
+
+  /* Texture overlay */
+  .texture-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--soft-gold), var(--bronze));
+    transform-origin: left;
+    z-index: 1000;
+  }
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bone-white: #1A1A1A;
+    --warm-gray: #A0A0A0;
+    --charcoal: #F5F5F5;
+    --glass-bg: rgba(26, 26, 26, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--warm-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--soft-gold);
 }
